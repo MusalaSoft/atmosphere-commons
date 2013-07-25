@@ -17,8 +17,6 @@ import java.util.Map;
  */
 public class Pair<K, V> implements Map.Entry<K, V>, Serializable
 {
-	// TODO move to package AtmosphereCommons ( which will be held on all three sides - Client, Server and Agent )
-
 	/**
 	 * 
 	 */
