@@ -175,6 +175,11 @@ public class DeviceAcceleration implements Serializable
 		return accelerationZ;
 	}
 
+	/**
+	 * Parses the {@link DeviceAcceleration} object in format suitable for the emulator console.
+	 * 
+	 * @return - string in format suitable to the emulator console.
+	 */
 	public String parseCommand()
 	{
 

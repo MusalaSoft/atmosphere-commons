@@ -268,10 +268,21 @@ public class DeviceOrientation implements Serializable
 		return roll;
 	}
 
+	/**
+	 * Parses the {@link DeviceOrientation} object in format suitable for the emulator console.
+	 * 
+	 * @return - string in format suitable to the emulator console.
+	 */
+	public String parseCommand()
+	{
+
+		return String.format("%s:%s:%s", azimuth, pitch, roll);
+	}
+
 	@Override
 	public String toString()
 	{
-		String orientationString = String.format("%s:%s:%s", azimuth, pitch, roll);
+		String orientationString = String.format("[azimuth: %s, pitch: %s, roll: %s]", azimuth, pitch, roll);
 		return orientationString;
 	}
 }
