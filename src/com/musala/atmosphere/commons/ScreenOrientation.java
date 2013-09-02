@@ -8,7 +8,7 @@ package com.musala.atmosphere.commons;
  */
 public enum ScreenOrientation
 {
-	LANDSCAPE(0), PORTRAIT(1), UPSIDE_DOWN_LANDSCAPE(2), UPSIDE_DOWN_PORTRAIT(3);
+	LANDSCAPE(1), PORTRAIT(0), UPSIDE_DOWN_LANDSCAPE(3), UPSIDE_DOWN_PORTRAIT(2);
 
 	private int orientationNumber;
 
