@@ -74,7 +74,7 @@ public class PropertiesLoader
 	 * 
 	 * @param property
 	 *        The Agent property to be returned.
-	 * @return Returns the desired agent property value. Returns String properties only!
+	 * @return the desired agent property value. Returns String properties only!
 	 */
 	public synchronized String getPropertyString(String property)
 	{
