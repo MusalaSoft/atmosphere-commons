@@ -2,7 +2,6 @@ package com.musala.atmosphere.commons;
 
 import java.io.Serializable;
 
-
 /**
  * <p>
  * Information container for the basic device properties, which will be used in the device selection process.
