@@ -1,4 +1,4 @@
-package com.musala.atmosphere.commons;
+package com.musala.atmosphere.commons.util;
 
 import java.io.FileReader;
 import java.io.IOException;
