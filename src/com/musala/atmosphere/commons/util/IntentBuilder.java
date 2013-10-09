@@ -44,7 +44,9 @@ public class IntentBuilder
 				"broadcast"), BATTERY_OKAY("android.intent.action.BATTERY_OKAY", "broadcast"), BATTERY_CHANGED(
 				"android.intent.action.BATTERY_CHANGED", "broadcast"), ACTION_POWER_CONNECTED(
 				"android.intent.action.ACTION_POWER_CONNECTED", "broadcast"), ACTION_POWER_DISCONNECTED(
-				"android.intent.action.ACTION_POWER_DISCONNECTED", "broadcast");
+				"android.intent.action.ACTION_POWER_DISCONNECTED", "broadcast"), START_ATMOSPHERE_SERVICE(null,
+				"startservice"), ATMOSPHERE_SERVICE_CONTROL("com.musala.atmosphere.service.SERVICE_CONTROL",
+				"broadcast");
 
 		private String value;
 
@@ -70,6 +72,8 @@ public class IntentBuilder
 	private IntentAction action;
 
 	private String component;
+
+	private Integer userId;
 
 	private Integer flags;
 
@@ -106,6 +110,12 @@ public class IntentBuilder
 		{
 			extraStrings.remove(key);
 		}
+		return this;
+	}
+
+	public IntentBuilder setUserId(Integer userId)
+	{
+		this.userId = userId;
 		return this;
 	}
 
@@ -239,6 +249,13 @@ public class IntentBuilder
 		String type = action.getTypeString();
 		queryBuilder.append(type);
 		queryBuilder.append(" ");
+
+		if (userId != null)
+		{
+			queryBuilder.append("--user ");
+			queryBuilder.append(userId);
+			queryBuilder.append(" ");
+		}
 
 		String actionString = action.getIntentString();
 		if (actionString != null)
