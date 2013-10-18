@@ -66,7 +66,7 @@ public class DeviceOrientation implements Serializable
 	{
 		if (azimuth < 0 || azimuth >= 360)
 		{
-			throw new IllegalArgumentException(azimuth + "is out of azimuth range.");
+			throw new IllegalArgumentException(azimuth + " is out of azimuth range.");
 		}
 		else
 		{
@@ -74,7 +74,7 @@ public class DeviceOrientation implements Serializable
 		}
 		if (pitch < -180 || pitch > 180)
 		{
-			throw new IllegalArgumentException(pitch + "is out of pitch range.");
+			throw new IllegalArgumentException(pitch + " is out of pitch range.");
 		}
 		else
 		{
@@ -82,7 +82,7 @@ public class DeviceOrientation implements Serializable
 		}
 		if (roll < -90 || roll > 90)
 		{
-			throw new IllegalArgumentException(roll + "is out of roll range.");
+			throw new IllegalArgumentException(roll + " is out of roll range.");
 		}
 		else
 		{
