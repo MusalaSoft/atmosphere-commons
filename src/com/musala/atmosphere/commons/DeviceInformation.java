@@ -30,6 +30,8 @@ public class DeviceInformation implements Serializable
 
 	public static final String FALLBACK_CPU_IDENTIFIER = "unknown";
 
+	public static final int FALLBACK_API_LEVEL = 0;
+
 	/**
 	 * Default constructor that fills this structure with the FALLBACK constants.
 	 */
@@ -43,6 +45,7 @@ public class DeviceInformation implements Serializable
 		serialNumber = FALLBACK_SERIALNUMBER_VALUE;
 		ram = FALLBACK_RAM_AMOUNT;
 		cpu = FALLBACK_CPU_IDENTIFIER;
+		apiLevel = FALLBACK_API_LEVEL;
 	}
 
 	/**
@@ -90,6 +93,11 @@ public class DeviceInformation implements Serializable
 	 */
 	private String cpu;
 
+	/**
+	 * Device API level.
+	 */
+	private int apiLevel;
+
 	public String getSerialNumber()
 	{
 		return serialNumber;
@@ -128,6 +136,16 @@ public class DeviceInformation implements Serializable
 	public void setOs(String os)
 	{
 		this.os = os;
+	}
+
+	public int getApiLevel()
+	{
+		return apiLevel;
+	}
+
+	public void setApiLevel(int apiLevel)
+	{
+		this.apiLevel = apiLevel;
 	}
 
 	public String getModel()
