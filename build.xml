@@ -7,4 +7,12 @@
     <target name="build-tests"/>
     <target name="tests-jar"/>
 
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="src.classpath"
+            source="1.6" target="1.6">
+            <compilerarg value="-Xlint:none"/>
+            <compilerarg value="-verbose"/>
+        </javac>
+    </target>
 </project>
