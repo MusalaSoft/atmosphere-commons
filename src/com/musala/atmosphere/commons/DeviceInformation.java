@@ -187,4 +187,19 @@ public class DeviceInformation implements Serializable
 	{
 		return cpu;
 	}
+
+	@Override
+	public String toString()
+	{
+		return String.format(	"[Emulator: %s, Model: %s, OS: %s, API: %s, RAM: %s, CPU: %s, Resolution: %s, Dpi: %s, SerialNo: %s]",
+								isEmulator,
+								model,
+								os,
+								apiLevel,
+								ram,
+								cpu,
+								resolution,
+								dpi,
+								serialNumber);
+	}
 }
