@@ -191,4 +191,20 @@ public class DeviceAcceleration implements Serializable
 	{
 		return String.format("[X: %s, Y: %s, Z: %s]", accelerationX, accelerationY, accelerationZ);
 	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj == null)
+		{
+			return false;
+		}
+		if (getClass() != obj.getClass())
+		{
+			return false;
+		}
+		final DeviceAcceleration other = (DeviceAcceleration) obj;
+		return accelerationX == other.getAccelerationX() && accelerationY == other.getAccelerationY()
+				&& accelerationZ == other.getAccelerationZ();
+	}
 }
