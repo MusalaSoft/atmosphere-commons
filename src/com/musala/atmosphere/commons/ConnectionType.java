@@ -1,7 +1,7 @@
 package com.musala.atmosphere.commons;
 
 /**
- * Containing the different connection types as defined by android.net.ConnectivityManager.
+ * Enumeration that contains the different network connection types as defined by android.net.ConnectivityManager.
  * 
  * @author yordan.petrov
  * 

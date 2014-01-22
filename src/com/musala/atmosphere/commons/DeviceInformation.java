@@ -98,91 +98,180 @@ public class DeviceInformation implements Serializable
 	 */
 	private int apiLevel;
 
+	/**
+	 * @return the serial number of the device.
+	 */
 	public String getSerialNumber()
 	{
 		return serialNumber;
 	}
 
+	/**
+	 * Sets device serial number in this DeviceInformation.
+	 * 
+	 * @param serialNumber
+	 *        - the serial number to be set.
+	 */
 	public void setSerialNumber(String serialNumber)
 	{
 		this.serialNumber = serialNumber;
 	}
 
+	/**
+	 * @return <code>true</code> if this device is an emulator.<br>
+	 *         <code>false</code> if the device is real physical device.
+	 */
 	public boolean isEmulator()
 	{
 		return isEmulator;
 	}
 
+	/**
+	 * Sets device type in this DeviceInformation.
+	 * 
+	 * @param isEmulator
+	 *        - <code>true</code> for emulator, <code>false</code> for real device.
+	 */
 	public void setEmulator(boolean isEmulator)
 	{
 		this.isEmulator = isEmulator;
 	}
 
+	/**
+	 * 
+	 * @return {@link Pair} object, containing the resolution (width, height) of device's screen.
+	 */
 	public Pair<Integer, Integer> getResolution()
 	{
 		return resolution;
 	}
 
+	/**
+	 * Sets the device resolution in this DeviceInformation.
+	 * 
+	 * @param resolution
+	 *        - (width, height) pair to be set as device's resolution.
+	 */
 	public void setResolution(Pair<Integer, Integer> resolution)
 	{
 		this.resolution = resolution;
 	}
 
+	/**
+	 * 
+	 * @return device's operating system.
+	 */
 	public String getOS()
 	{
 		return os;
 	}
 
+	/**
+	 * Sets the device's operating system in this DeviceInformation.
+	 * 
+	 * @param os
+	 *        - operating system to set.
+	 */
 	public void setOs(String os)
 	{
 		this.os = os;
 	}
 
+	/**
+	 * 
+	 * @return Android API level of device.
+	 */
 	public int getApiLevel()
 	{
 		return apiLevel;
 	}
 
+	/**
+	 * Sets device's Android API level in this DeviceInformation.
+	 * 
+	 * @param os
+	 *        - operating system to set.
+	 */
 	public void setApiLevel(int apiLevel)
 	{
 		this.apiLevel = apiLevel;
 	}
 
+	/**
+	 * 
+	 * @return device model.
+	 */
 	public String getModel()
 	{
 		return model;
 	}
 
+	/**
+	 * Sets device model in this DeviceInformation.
+	 * 
+	 * @param model
+	 *        - device model to set.
+	 */
 	public void setModel(String model)
 	{
 		this.model = model;
 	}
 
+	/**
+	 * 
+	 * @return the dpi (dots per inch) of device's screen.
+	 */
 	public int getDpi()
 	{
 		return dpi;
 	}
 
+	/**
+	 * Sets device screen dpi (dots per inch) in this DeviceInformation.
+	 * 
+	 * @param dpi
+	 *        - screen dpi to set.
+	 */
 	public void setDpi(int dpi)
 	{
 		this.dpi = dpi;
 	}
 
+	/**
+	 * 
+	 * @return total device RAM.
+	 */
 	public int getRam()
 	{
 		return ram;
 	}
 
+	/**
+	 * Sets total device RAM in this DeviceInformation.
+	 * 
+	 * @param ram
+	 *        - device RAM to set.
+	 */
 	public void setRam(int ram)
 	{
 		this.ram = ram;
 	}
 
+	/**
+	 * Sets device CPU model identifier in this DeviceInformation.
+	 * 
+	 * @param cpu
+	 *        - device CPU model to set.
+	 */
 	public void setCpu(String cpu)
 	{
 		this.cpu = cpu;
 	}
 
+	/**
+	 * 
+	 * @return device CPU model identifier.
+	 */
 	public String getCpu()
 	{
 		return cpu;

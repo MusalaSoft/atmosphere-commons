@@ -1,8 +1,32 @@
 package com.musala.atmosphere.commons;
 
+/**
+ * Enumeration of possible mobile data states for a device.
+ * 
+ * 
+ */
 public enum MobileDataState
 {
-	UNREGISTERED("unregistered"), HOME("home"), ROAMING("roaming"), SEARCHING("searching"), DENIED("denied");
+	/**
+	 * No network available.
+	 */
+	UNREGISTERED("unregistered"),
+	/**
+	 * On local network, non-roaming.
+	 */
+	HOME("home"),
+	/**
+	 * On roaming network.
+	 */
+	ROAMING("roaming"),
+	/**
+	 * Searching networks.
+	 */
+	SEARCHING("searching"),
+	/**
+	 * Emergency calls only.
+	 */
+	DENIED("denied");
 
 	private String mobileDataStateValue;
 
