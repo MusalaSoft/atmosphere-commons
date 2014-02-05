@@ -1,7 +1,6 @@
 package com.musala.atmosphere.commons;
 
 import java.io.Serializable;
-import java.util.regex.Pattern;
 
 /**
  * A class that represents a simple SMS structure
@@ -11,19 +10,25 @@ import java.util.regex.Pattern;
  */
 public class SmsMessage implements Serializable
 {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 581600099577260811L;
 
-	private String phoneNumber;
+	private PhoneNumber phoneNumber;
 
 	private String text;
 
-	public SmsMessage(String phoneNumber, String text) throws IllegalArgumentException
+	public SmsMessage(PhoneNumber phoneNumber, String text)
 	{
-		this.phoneNumber = verifyPhone(phoneNumber);
+		this.phoneNumber = phoneNumber;
 		this.text = text;
 	}
 
-	public String getPhoneNumber()
+	public SmsMessage(String phoneNumber, String text) throws IllegalArgumentException
+	{
+		this.phoneNumber = new PhoneNumber(phoneNumber);
+		this.text = text;
+	}
+
+	public PhoneNumber getPhoneNumber()
 	{
 		return phoneNumber;
 	}
@@ -31,18 +36,5 @@ public class SmsMessage implements Serializable
 	public String getText()
 	{
 		return text;
-	}
-
-	private String verifyPhone(String phoneNumber) throws IllegalArgumentException
-	{
-		if (phoneNumber.length() == 0)
-		{
-			throw new IllegalArgumentException("Zero length phone number.");
-		}
-		if (!Pattern.matches("[+]*[0-9]+", phoneNumber))
-		{
-			throw new IllegalArgumentException("Phone number is not according expected pattern [+](0-9)* .");
-		}
-		return phoneNumber;
 	}
 }
