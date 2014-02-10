@@ -1,18 +1,20 @@
-package com.musala.atmosphere.commons;
+package com.musala.atmosphere.commons.beans;
 
 import java.io.Serializable;
 
+import com.musala.atmosphere.commons.parameters.CommandParameter;
+
 /**
  * Container class for the device orientation in space.
- * 
+ *
  * @author yordan.petrov
- * 
+ *
  */
-public class DeviceOrientation implements Serializable
+public class DeviceOrientation implements Serializable, CommandParameter
 {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 5579467936945061534L;
 
@@ -53,7 +55,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Creates a new instance of the class setting the fields to the given arguments.
-	 * 
+	 *
 	 * @param azimuth
 	 *        - angle between the magnetic north direction and the y-axis, around the z-axis (0 to 359). 0=North,
 	 *        90=East, 180=South, 270=West
@@ -92,7 +94,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Gets new {@link DeviceOrientation} instance in portrait orientation.
-	 * 
+	 *
 	 * @return - new {@link DeviceOrientation} instance in portrait orientation.
 	 */
 	public static DeviceOrientation getPortraitOrientation()
@@ -106,7 +108,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Gets new {@link DeviceOrientation} instance in landscape orientation.
-	 * 
+	 *
 	 * @return new {@link DeviceOrientation} instance in landscape orientation.
 	 */
 	public static DeviceOrientation getLandscapeOrientation()
@@ -120,7 +122,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Gets new {@link DeviceOrientation} instance in upside down portrait orientation.
-	 * 
+	 *
 	 * @return - new {@link DeviceOrientation} instance in upside down portrait orientation.
 	 */
 	public static DeviceOrientation getUpsideDownPortrait()
@@ -136,7 +138,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Gets new {@link DeviceOrientation} instance in upside down landscape orientation.
-	 * 
+	 *
 	 * @return - new {@link DeviceOrientation} instance in upside down landscape orientation.
 	 */
 	public static DeviceOrientation getUpsideDownLandscape()
@@ -184,7 +186,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Sets device orientation azimuth.
-	 * 
+	 *
 	 * @param azimuth
 	 *        - angle between the magnetic north direction and the y-axis, around the z-axis (0 to 359). 0=North,
 	 *        90=East, 180=South, 270=West
@@ -203,7 +205,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Gets device orientation azimuth.
-	 * 
+	 *
 	 * @return - angle between the magnetic north direction and the y-axis, around the z-axis (0 to 359). 0=North,
 	 *         90=East, 180=South, 270=West
 	 */
@@ -214,7 +216,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Sets device orientation pitch.
-	 * 
+	 *
 	 * @param pitch
 	 *        - rotation around x-axis (-180 to 180), with positive values when the z-axis moves toward the y-axis.
 	 */
@@ -232,7 +234,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Gets device orientation pitch.
-	 * 
+	 *
 	 * @return - rotation around x-axis (-180 to 180), with positive values when the z-axis moves toward the y-axis.
 	 */
 	public float getPitch()
@@ -242,7 +244,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Sets device orientation roll.
-	 * 
+	 *
 	 * @param roll
 	 *        - rotation around the y-axis (-90 to 90) increasing as the device moves clockwise.
 	 */
@@ -260,7 +262,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Gets device orientation roll.
-	 * 
+	 *
 	 * @return - rotation around the y-axis (-90 to 90) increasing as the device moves clockwise.
 	 */
 	public float getRoll()
@@ -270,7 +272,7 @@ public class DeviceOrientation implements Serializable
 
 	/**
 	 * Parses the {@link DeviceOrientation} object in format suitable for the emulator console.
-	 * 
+	 *
 	 * @return - string in format suitable to the emulator console.
 	 */
 	public String parseCommand()
@@ -284,5 +286,11 @@ public class DeviceOrientation implements Serializable
 	{
 		String orientationString = String.format("[azimuth: %s, pitch: %s, roll: %s]", azimuth, pitch, roll);
 		return orientationString;
+	}
+
+	@Override
+	public String getParameterValue(boolean forEmulator)
+	{
+		return parseCommand();
 	}
 }

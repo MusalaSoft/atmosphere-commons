@@ -2,6 +2,8 @@ package com.musala.atmosphere.commons;
 
 import java.io.Serializable;
 
+import com.musala.atmosphere.commons.beans.PhoneNumber;
+
 /**
  * A class that represents a simple SMS structure
  * 

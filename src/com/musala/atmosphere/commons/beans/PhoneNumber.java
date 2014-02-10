@@ -1,15 +1,17 @@
-package com.musala.atmosphere.commons;
+package com.musala.atmosphere.commons.beans;
 
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
+import com.musala.atmosphere.commons.parameters.CommandParameter;
+
 /**
  * A class that represents a phone number.
- * 
+ *
  * @author yordan.petrov
- * 
+ *
  */
-public class PhoneNumber implements Serializable
+public class PhoneNumber implements Serializable, CommandParameter
 {
 	private static final long serialVersionUID = -5016732032561627449L;
 
@@ -18,6 +20,12 @@ public class PhoneNumber implements Serializable
 	public PhoneNumber(String phoneNumber)
 	{
 		this.phoneNumber = verifyPhone(phoneNumber);
+	}
+
+	@Override
+	public String getParameterValue(boolean forEmulator)
+	{
+		return phoneNumber;
 	}
 
 	@Override

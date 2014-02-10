@@ -1,17 +1,19 @@
-package com.musala.atmosphere.commons;
+package com.musala.atmosphere.commons.beans;
 
 import java.io.Serializable;
 
+import com.musala.atmosphere.commons.parameters.CommandParameter;
+
 /**
  * Class containing information about the device acceleration.
- * 
+ *
  * @author yordan.petrov
- * 
+ *
  */
-public class DeviceAcceleration implements Serializable
+public class DeviceAcceleration implements Serializable, CommandParameter
 {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 3379968408421438681L;
 
@@ -40,7 +42,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Creates new {@link DeviceAcceleration} setting fields to the given parameters' value.
-	 * 
+	 *
 	 * @param accelerationX
 	 *        - acceleration on the X axis.
 	 * @param accelerationY
@@ -57,7 +59,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Returns a new {@link DeviceAcceleration} instance representing device in portrait perspective.
-	 * 
+	 *
 	 * @return - a new {@link DeviceAcceleration} instance representing device in portrait perspective.
 	 */
 	public static DeviceAcceleration getPortrait()
@@ -71,7 +73,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Returns a new {@link DeviceAcceleration} instance representing device in reverse portrait perspective.
-	 * 
+	 *
 	 * @return - a new {@link DeviceAcceleration} instance representing device in reverse portrait perspective.
 	 */
 	public static DeviceAcceleration getReversePortrait()
@@ -87,7 +89,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Returns a new {@link DeviceAcceleration} instance representing device in landscape perspective.
-	 * 
+	 *
 	 * @return - a new {@link DeviceAcceleration} instance representing device in landscape perspective.
 	 */
 	public static DeviceAcceleration getLandscape()
@@ -101,7 +103,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Returns a new {@link DeviceAcceleration} instance representing device in reverse landscape perspective.
-	 * 
+	 *
 	 * @return - a new {@link DeviceAcceleration} instance representing device in reverse landscape perspective.
 	 */
 	public static DeviceAcceleration getReverseLandscape()
@@ -117,7 +119,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Returns a new {@link DeviceAcceleration} instance representing device in lie down perspective.
-	 * 
+	 *
 	 * @return - a new {@link DeviceAcceleration} instance representing device in lie down perspective.
 	 */
 	public static DeviceAcceleration getLieDown()
@@ -131,7 +133,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Returns a new {@link DeviceAcceleration} instance representing device in reverse lie down perspective.
-	 * 
+	 *
 	 * @return - a new {@link DeviceAcceleration} instance representing device in reverse lie down perspective.
 	 */
 	public static DeviceAcceleration getReverseLieDown()
@@ -147,7 +149,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Gets the acceleration on the X axis.
-	 * 
+	 *
 	 * @return - the acceleration on the X axis.
 	 */
 	public float getAccelerationX()
@@ -157,7 +159,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Gets the acceleration on the Y axis.
-	 * 
+	 *
 	 * @return - the acceleration on the Y axis.
 	 */
 	public float getAccelerationY()
@@ -167,7 +169,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Gets the acceleration on the Z axis.
-	 * 
+	 *
 	 * @return - the acceleration on the Z axis.
 	 */
 	public float getAccelerationZ()
@@ -177,7 +179,7 @@ public class DeviceAcceleration implements Serializable
 
 	/**
 	 * Parses the {@link DeviceAcceleration} object in format suitable for the emulator console.
-	 * 
+	 *
 	 * @return - string in format suitable to the emulator console.
 	 */
 	public String parseCommand()
@@ -206,5 +208,11 @@ public class DeviceAcceleration implements Serializable
 		final DeviceAcceleration other = (DeviceAcceleration) obj;
 		return accelerationX == other.getAccelerationX() && accelerationY == other.getAccelerationY()
 				&& accelerationZ == other.getAccelerationZ();
+	}
+
+	@Override
+	public String getParameterValue(boolean forEmulator)
+	{
+		return parseCommand();
 	}
 }

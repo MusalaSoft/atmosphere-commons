@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.musala.atmosphere.commons.beans.DeviceAcceleration;
+
 public class DeviceAccelerationTest
 {
 

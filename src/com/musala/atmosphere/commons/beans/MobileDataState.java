@@ -1,11 +1,13 @@
-package com.musala.atmosphere.commons;
+package com.musala.atmosphere.commons.beans;
+
+import com.musala.atmosphere.commons.parameters.CommandParameter;
 
 /**
  * Enumeration of possible mobile data states for a device.
- * 
- * 
+ *
+ *
  */
-public enum MobileDataState
+public enum MobileDataState implements CommandParameter
 {
 	/**
 	 * No network available.
@@ -36,7 +38,7 @@ public enum MobileDataState
 	}
 
 	@Override
-	public String toString()
+	public String getParameterValue(boolean forEmulator)
 	{
 		return mobileDataStateValue;
 	}

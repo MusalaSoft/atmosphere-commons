@@ -1,4 +1,4 @@
-package com.musala.atmosphere.commons;
+package com.musala.atmosphere.commons.exceptions;
 
 /**
  * Thrown when a command passed to the shell of a device has failed to execute.

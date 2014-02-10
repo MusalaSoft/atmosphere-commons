@@ -1,16 +1,20 @@
-package com.musala.atmosphere.commons;
+package com.musala.atmosphere.commons.beans;
+
+import com.musala.atmosphere.commons.parameters.CommandParameter;
 
 /**
  * Enumerates all possible states of the battery - unknown, charging, discharging, not charging and full
- * 
+ *
  * @author vladimir.vladimirov
- * 
+ *
  */
 
-public enum BatteryState
+public enum BatteryState implements CommandParameter
 {
 	UNKNOWN("unknown", 1), CHARGING("charging", 2), DISCHARGING("discharging", 3), NOT_CHARGING("not_charging", 4), FULL(
 			"full", 5);
+
+	private static final String EMULATOR_NOT_CHARGING_STATE_VALUE = "not-charging";
 
 	private String batteryStateValue;
 
@@ -45,5 +49,16 @@ public enum BatteryState
 			}
 		}
 		return stateToReturn;
+	}
+
+	@Override
+	public String getParameterValue(boolean forEmulator)
+	{
+		if (this == NOT_CHARGING && forEmulator)
+		{
+			// NOT_CHARGING battery state string in emulator console differs from that for real devices
+			return EMULATOR_NOT_CHARGING_STATE_VALUE;
+		}
+		return batteryStateValue;
 	}
 }
