@@ -81,7 +81,7 @@ public enum RoutingAction implements Serializable {
      * Invokes the method that sets the device WiFi state (on or off). Requires a boolean (the new WiFi state) as a
      * parameter.
      */
-    SET_WIFI_STATE,
+    SET_WIFI_STATE(Boolean.class),
     /**
      * Invokes the method that sets the device mobile data state of an <b>emulator</b>. Requires a
      * {@link MobileDataState} instance (the new mobile data state) as a parameter.
