@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.musala.atmosphere.commons.beans.DeviceAcceleration;
+import com.musala.atmosphere.commons.beans.DeviceMagneticField;
 import com.musala.atmosphere.commons.beans.DeviceOrientation;
 import com.musala.atmosphere.commons.beans.MobileDataState;
 import com.musala.atmosphere.commons.beans.PhoneNumber;
@@ -92,6 +93,11 @@ public enum RoutingAction implements Serializable {
      * {@link DeviceAcceleration} instance (the new acceleration readings) as a parameter.
      */
     SET_ACCELERATION(DeviceAcceleration.class),
+    /**
+     * Invokes the method that sets the device magnetic field of an <b>emulator</b>. Requires a
+     * {@link DeviceMagneticField} instance (the new acceleration readings) as a parameter.
+     */
+    SET_MAGNETIC_FIELD(DeviceMagneticField.class),
     /**
      * Invokes the method that sets the device orientation of an <b>emulators</b>. Requires a {@link DeviceOrientation}
      * instance (the new device acceleration readings) as a parameter.
