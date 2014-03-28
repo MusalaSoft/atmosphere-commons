@@ -8,6 +8,7 @@ import com.musala.atmosphere.commons.beans.DeviceMagneticField;
 import com.musala.atmosphere.commons.beans.DeviceOrientation;
 import com.musala.atmosphere.commons.beans.MobileDataState;
 import com.musala.atmosphere.commons.beans.PhoneNumber;
+import com.musala.atmosphere.commons.beans.SwipeDirection;
 import com.musala.atmosphere.commons.gesture.Gesture;
 import com.musala.atmosphere.commons.ui.UiElementDescriptor;
 import com.musala.atmosphere.commons.util.Pair;
@@ -161,7 +162,13 @@ public enum RoutingAction implements Serializable {
      * Invokes the method that sends an SMS to an emulator. Requires a {@link SmsMessage} instance (the SMS information)
      * as a parameter.
      */
-    SMS_RECEIVE(SmsMessage.class);
+    SMS_RECEIVE(SmsMessage.class),
+    /**
+     * Invokes the method behind UI element swiping. Requires a {@link UiElementDescriptor} instance (the element
+     * descriptor for the element that should be swiped) and {@link SwipeDirection} enum member (the swipe direction) as
+     * parameters.
+     */
+    ELEMENT_SWIPE(UiElementDescriptor.class, SwipeDirection.class);
 
     private Class<?>[] argumentTypes;
 
