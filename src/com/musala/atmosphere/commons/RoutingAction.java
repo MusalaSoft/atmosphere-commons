@@ -168,7 +168,12 @@ public enum RoutingAction implements Serializable {
      * descriptor for the element that should be swiped) and {@link SwipeDirection} enum member (the swipe direction) as
      * parameters.
      */
-    ELEMENT_SWIPE(UiElementDescriptor.class, SwipeDirection.class);
+    ELEMENT_SWIPE(UiElementDescriptor.class, SwipeDirection.class),
+    /**
+     * Invokes the method that starts an application in the service. Requires a {@link String} package name as a
+     * parameter. Returns a <code>boolean</code> indicator of the operation success.
+     */
+    START_APP(String.class);
 
     private Class<?>[] argumentTypes;
 
