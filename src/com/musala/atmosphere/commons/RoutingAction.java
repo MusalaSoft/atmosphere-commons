@@ -173,9 +173,18 @@ public enum RoutingAction implements Serializable {
      * Invokes the method that starts an application in the service. Requires a {@link String} package name as a
      * parameter. Returns a <code>boolean</code> indicator of the operation success.
      */
-    START_APP(String.class);
+    START_APP(String.class),
+    /**
+     * Queries the ATMOSPHERE Service for the awake status of the device. Returns <code>true</code> if the device is
+     * awake and <code>false</code>.
+     */
+    GET_AWAKE_STATUS;
 
     private Class<?>[] argumentTypes;
+
+    private RoutingAction(Class<?>... classes) {
+        argumentTypes = classes;
+    }
 
     /**
      * Validates if the passed arguments are valid for the current command.
@@ -199,9 +208,5 @@ public enum RoutingAction implements Serializable {
                 throw new IllegalArgumentException(message);
             }
         }
-    }
-
-    private RoutingAction(Class<?>... classes) {
-        argumentTypes = classes;
     }
 }
