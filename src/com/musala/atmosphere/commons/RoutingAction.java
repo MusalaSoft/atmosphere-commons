@@ -26,6 +26,11 @@ public enum RoutingAction implements Serializable {
      */
     CLEAR_FIELD(UiElementDescriptor.class),
     /**
+     * Invokes the method behind UI element wait for existence. Requires a {@link UiElementDescriptor} instance (the
+     * element descriptor for the element that should exist after given time) as a parameter.
+     */
+    WAIT_FOR_EXISTS(UiElementDescriptor.class, Long.class),
+    /**
      * Invokes the device free RAM amount getting method, which returns a {@link Long} instance (memory in Mb).
      */
     GET_FREE_RAM,
@@ -182,10 +187,6 @@ public enum RoutingAction implements Serializable {
 
     private Class<?>[] argumentTypes;
 
-    private RoutingAction(Class<?>... classes) {
-        argumentTypes = classes;
-    }
-
     /**
      * Validates if the passed arguments are valid for the current command.
      * 
@@ -208,5 +209,9 @@ public enum RoutingAction implements Serializable {
                 throw new IllegalArgumentException(message);
             }
         }
+    }
+
+    private RoutingAction(Class<?>... classes) {
+        argumentTypes = classes;
     }
 }
