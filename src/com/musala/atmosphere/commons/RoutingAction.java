@@ -183,7 +183,22 @@ public enum RoutingAction implements Serializable {
      * Queries the ATMOSPHERE Service for the awake status of the device. Returns <code>true</code> if the device is
      * awake and <code>false</code>.
      */
-    GET_AWAKE_STATUS;
+    GET_AWAKE_STATUS,
+
+    /**
+     * Routes scrolling in some direction to the ATMOSPHERE Service. Requires {@link UiElementDescriptor} instance (the
+     * UI element that would be scrolled), maximum swipes and steps to execute and a boolean to determine whether the
+     * view is with vertical orientation or not.
+     */
+    SCROLL_TO_DIRECTION(ScrollDirection.class, UiElementDescriptor.class, Integer.class, Integer.class, Boolean.class),
+
+    /**
+     * Routes scrolling into a view or a contained text to the ATMOSPHERE Service. Requires {@link UiElementDescriptor}
+     * instance (the UI element that would be scrolled), {@link UiElementDescriptor} instance (the UI element to which
+     * would be scrolled) and a boolean to determine whether the view is with vertical orientation or not.
+     * 
+     */
+    SCROLL_INTO_VIEW(UiElementDescriptor.class, UiElementDescriptor.class, Boolean.class);
 
     private Class<?>[] argumentTypes;
 
