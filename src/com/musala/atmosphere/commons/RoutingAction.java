@@ -29,12 +29,7 @@ public enum RoutingAction implements Serializable {
      * Invokes the method behind UI element wait for existence. Requires a {@link UiElementDescriptor} instance (the
      * element descriptor for the element that should exist after given time) as a parameter.
      */
-    WAIT_FOR_EXISTS(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Long.class)),
-    /**
-     * Invokes the method behind waiting for a window update event to occur for a given package. Requires a
-     * <code>String</code> package name and a <code>long</code> timeout value.
-     */
-    WAIT_FOR_WINDOW_UPDATE(new RoutingActionArgumentValidator(String.class, true), new RoutingActionArgumentValidator(Long.class)),
+    WAIT_FOR_EXISTS(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Integer.class)),
     /**
      * Invokes the device free RAM amount getting method, which returns a {@link Long} instance (memory in Mb).
      */
