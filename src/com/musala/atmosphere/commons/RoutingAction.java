@@ -24,12 +24,17 @@ public enum RoutingAction implements Serializable {
      * Invokes the method behind UI element field clearing. Requires a {@link UiElementDescriptor} instance (the element
      * descriptor for the element that should be cleared) as a parameter.
      */
-    CLEAR_FIELD(UiElementDescriptor.class),
+    CLEAR_FIELD(new RoutingActionArgumentValidator(UiElementDescriptor.class)),
     /**
      * Invokes the method behind UI element wait for existence. Requires a {@link UiElementDescriptor} instance (the
      * element descriptor for the element that should exist after given time) as a parameter.
      */
-    WAIT_FOR_EXISTS(UiElementDescriptor.class, Long.class),
+    WAIT_FOR_EXISTS(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Long.class)),
+    /**
+     * Invokes the method behind waiting for a window update event to occur for a given package. Requires a
+     * <code>String</code> package name and a <code>long</code> timeout value.
+     */
+    WAIT_FOR_WINDOW_UPDATE(new RoutingActionArgumentValidator(String.class, true), new RoutingActionArgumentValidator(Long.class)),
     /**
      * Invokes the device free RAM amount getting method, which returns a {@link Long} instance (memory in Mb).
      */
@@ -38,12 +43,12 @@ public enum RoutingAction implements Serializable {
      * Invokes the method behind device shell command execution, which returns a {@link String} instance (result of the
      * execution).
      */
-    EXECUTE_SHELL_COMMAND(String.class),
+    EXECUTE_SHELL_COMMAND(new RoutingActionArgumentValidator(String.class)),
     /**
      * Invokes the method behind sequential shell command execution (passed as a {@link List<String>}, which returns a
      * {@link List<String> instance (command execution results).
      */
-    EXECUTE_SHELL_COMMAND_SEQUENCE(List.class),
+    EXECUTE_SHELL_COMMAND_SEQUENCE(new RoutingActionArgumentValidator(List.class)),
     /**
      * Invokes the method behind fetching a {@link DeviceInformation DeviceInformation} instance for the current device.
      */
@@ -61,12 +66,12 @@ public enum RoutingAction implements Serializable {
      * Invokes the method behind appending bytes to the .apk file that is currently being built. Requires a byte array
      * (the actual data) and an integer (the byte array length) as parameters.
      */
-    APK_APPEND_DATA(byte[].class, Integer.class),
+    APK_APPEND_DATA(new RoutingActionArgumentValidator(byte[].class), new RoutingActionArgumentValidator(Integer.class)),
     /**
      * Invokes the method behind building, uploading and installing the transfered .apk file on the current device.
      * Requires a boolean (to force install or not) as parameter.
      */
-    APK_BUILD_AND_INSTALL(Boolean.class),
+    APK_BUILD_AND_INSTALL(new RoutingActionArgumentValidator(Boolean.class)),
     /**
      * Invokes the method behind discarding all data that was previously transferred using {@link #APK_APPEND_DATA} and
      * frees the resources allocated by using {@link #APK_INIT_INSTALL}.
@@ -84,42 +89,42 @@ public enum RoutingAction implements Serializable {
      * Invokes the method that sets the device power-related environment properties. Requires a {@link PowerProperties}
      * instance (the new power environment data container) as a parameter.
      */
-    SET_POWER_PROPERTIES(PowerProperties.class),
+    SET_POWER_PROPERTIES(new RoutingActionArgumentValidator(PowerProperties.class)),
     /**
      * Invokes the method that sets the device WiFi state (on or off). Requires a boolean (the new WiFi state) as a
      * parameter.
      */
-    SET_WIFI_STATE(Boolean.class),
+    SET_WIFI_STATE(new RoutingActionArgumentValidator(Boolean.class)),
     /**
      * Invokes the method that sets the device mobile data state of an <b>emulator</b>. Requires a
      * {@link MobileDataState} instance (the new mobile data state) as a parameter.
      */
-    SET_MOBILE_DATA_STATE(MobileDataState.class),
+    SET_MOBILE_DATA_STATE(new RoutingActionArgumentValidator(MobileDataState.class)),
     /**
      * Invokes the method that sets the device acceleration readings of an <b>emulator</b>. Requires a
      * {@link DeviceAcceleration} instance (the new acceleration readings) as a parameter.
      */
-    SET_ACCELERATION(DeviceAcceleration.class),
+    SET_ACCELERATION(new RoutingActionArgumentValidator(DeviceAcceleration.class)),
     /**
      * Invokes the method that sets the device magnetic field of an <b>emulator</b>. Requires a
      * {@link DeviceMagneticField} instance (the new acceleration readings) as a parameter.
      */
-    SET_MAGNETIC_FIELD(DeviceMagneticField.class),
+    SET_MAGNETIC_FIELD(new RoutingActionArgumentValidator(DeviceMagneticField.class)),
     /**
      * Invokes the method that sets the device orientation of an <b>emulators</b>. Requires a {@link DeviceOrientation}
      * instance (the new device acceleration readings) as a parameter.
      */
-    SET_ORIENTATION(DeviceOrientation.class),
+    SET_ORIENTATION(new RoutingActionArgumentValidator(DeviceOrientation.class)),
     /**
-     * Invokes the method that sets the device maximum upload/download speed. Reqiores a {@link Pair<Integer, Integer>}
+     * Invokes the method that sets the device maximum upload/download speed. Requires a {@link Pair<Integer, Integer>}
      * instance (the new upload/download speeds) as a parameter.
      */
-    SET_NETWORK_SPEED(Pair.class),
+    SET_NETWORK_SPEED(new RoutingActionArgumentValidator(Pair.class)),
     /**
      * Invokes the method behind predefined gesture execution. Requires a {@link Gesture} instance (the predefined
      * gesture) as a parameter.
      */
-    PLAY_GESTURE(Gesture.class),
+    PLAY_GESTURE(new RoutingActionArgumentValidator(Gesture.class)),
     /**
      * Invokes the method that obtains information about the telephony services on the device. Returns a
      * {@link TelephonyInformation} data container instance.
@@ -148,38 +153,38 @@ public enum RoutingAction implements Serializable {
      * Invokes the method that cancels a call to an emulator. Requires a {@link PhoneNumber} instance (the phone number
      * that cancels the call) as a parameter.
      */
-    CALL_CANCEL(PhoneNumber.class),
+    CALL_CANCEL(new RoutingActionArgumentValidator(PhoneNumber.class)),
     /**
      * Invokes the method that holds a call to an emulator. Requires a {@link PhoneNumber} instance (the phone number
      * that holds the call) as a parameter.
      */
-    CALL_HOLD(PhoneNumber.class),
+    CALL_HOLD(new RoutingActionArgumentValidator(PhoneNumber.class)),
     /**
      * Invokes the method that sends a call to an emulator. Requires a {@link PhoneNumber} instance (the phone number
      * that makes the call) as a parameter.
      */
-    CALL_RECEIVE(PhoneNumber.class),
+    CALL_RECEIVE(new RoutingActionArgumentValidator(PhoneNumber.class)),
     /**
      * Invokes the method that accepts a call to an emulator. Requires a {@link PhoneNumber} instance (the phone number
      * that calls and should be answered) as a parameter.
      */
-    CALL_ACCEPT(PhoneNumber.class),
+    CALL_ACCEPT(new RoutingActionArgumentValidator(PhoneNumber.class)),
     /**
      * Invokes the method that sends an SMS to an emulator. Requires a {@link SmsMessage} instance (the SMS information)
      * as a parameter.
      */
-    SMS_RECEIVE(SmsMessage.class),
+    SMS_RECEIVE(new RoutingActionArgumentValidator(SmsMessage.class)),
     /**
      * Invokes the method behind UI element swiping. Requires a {@link UiElementDescriptor} instance (the element
      * descriptor for the element that should be swiped) and {@link SwipeDirection} enum member (the swipe direction) as
      * parameters.
      */
-    ELEMENT_SWIPE(UiElementDescriptor.class, SwipeDirection.class),
+    ELEMENT_SWIPE(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(SwipeDirection.class)),
     /**
      * Invokes the method that starts an application in the service. Requires a {@link String} package name as a
      * parameter. Returns a <code>boolean</code> indicator of the operation success.
      */
-    START_APP(String.class),
+    START_APP(new RoutingActionArgumentValidator(String.class)),
     /**
      * Queries the ATMOSPHERE Service for the awake status of the device. Returns <code>true</code> if the device is
      * awake and <code>false</code>.
@@ -191,7 +196,7 @@ public enum RoutingAction implements Serializable {
      * UI element that would be scrolled), maximum swipes and steps to execute and a boolean to determine whether the
      * view is with vertical orientation or not.
      */
-    SCROLL_TO_DIRECTION(ScrollDirection.class, UiElementDescriptor.class, Integer.class, Integer.class, Boolean.class),
+    SCROLL_TO_DIRECTION(new RoutingActionArgumentValidator(ScrollDirection.class), new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Boolean.class)),
 
     /**
      * Routes scrolling into a view or a contained text to the ATMOSPHERE Service. Requires {@link UiElementDescriptor}
@@ -199,35 +204,32 @@ public enum RoutingAction implements Serializable {
      * would be scrolled) and a boolean to determine whether the view is with vertical orientation or not.
      * 
      */
-    SCROLL_INTO_VIEW(UiElementDescriptor.class, UiElementDescriptor.class, Boolean.class);
+    SCROLL_INTO_VIEW(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Boolean.class));
 
-    private Class<?>[] argumentTypes;
+    private RoutingActionArgumentValidator[] argumentValidators;
 
     /**
      * Validates if the passed arguments are valid for the current command.
      * 
      * @param args
      *        - the command arguments.
-     * @throws IllegalArgumentException
      */
-    public void validateArguments(Object[] args) throws IllegalArgumentException {
-        if (argumentTypes.length != args.length) {
+    public void validateArguments(Object[] args) {
+        if (argumentValidators.length != args.length) {
             throw new IllegalArgumentException("Passed arguments count does not match expected argument count.");
         }
-        for (int i = 0; i < argumentTypes.length; i++) {
-            if (!argumentTypes[i].isInstance(args[i])) {
-                String expectedClass = argumentTypes[i].getName();
-                String actualClass = args[i].getClass().getName();
-                String message = String.format("Argument [%d] is not a valid instance of %s (instead is %s).",
-                                               i,
-                                               expectedClass,
-                                               actualClass);
-                throw new IllegalArgumentException(message);
+
+        for (int i = 0; i < argumentValidators.length; i++) {
+            try {
+                argumentValidators[i].validateArgument(args[i]);
+            } catch (IllegalArgumentException e) {
+                String errorMessage = String.format("Validation of command argument number %d failed.", i);
+                throw new IllegalArgumentException(errorMessage, e);
             }
         }
     }
 
-    private RoutingAction(Class<?>... classes) {
-        argumentTypes = classes;
+    private RoutingAction(RoutingActionArgumentValidator... validators) {
+        argumentValidators = validators;
     }
 }
