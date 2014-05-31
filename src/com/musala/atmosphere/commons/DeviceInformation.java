@@ -33,6 +33,8 @@ public class DeviceInformation implements Serializable {
 
     public static final int FALLBACK_API_LEVEL = 0;
 
+    public static final boolean FALLBACK_HAS_CAMERA_OPTION = false;
+
     /**
      * Default constructor that fills this structure with the FALLBACK constants.
      */
@@ -47,6 +49,7 @@ public class DeviceInformation implements Serializable {
         cpu = FALLBACK_CPU_IDENTIFIER;
         apiLevel = FALLBACK_API_LEVEL;
         manufacturer = FALLBACK_MANUFACTURER_NAME;
+        hasCamera = FALLBACK_HAS_CAMERA_OPTION;
     }
 
     /**
@@ -103,6 +106,11 @@ public class DeviceInformation implements Serializable {
      * Device manufacturer
      */
     private String manufacturer;
+
+    /**
+     * Indicates if a camera is available on the device.
+     */
+    private boolean hasCamera;
 
     /**
      * @return the serial number of the device.
@@ -295,5 +303,24 @@ public class DeviceInformation implements Serializable {
                              dpi,
                              serialNumber,
                              manufacturer);
+    }
+
+    /**
+     * Sets if the device has a camera.
+     * 
+     * @param hasCamera
+     *        - the flag to set if the device has a camera.
+     */
+    public void setCamera(boolean hasCamera) {
+        this.hasCamera = hasCamera;
+    }
+
+    /**
+     * Checks if the device has a camera.
+     * 
+     * @return - true if the device has a camera, else false.
+     */
+    public boolean hasCamera() {
+        return hasCamera;
     }
 }
