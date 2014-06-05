@@ -21,6 +21,8 @@ public class DeviceInformation implements Serializable {
 
     public static final boolean FALLBACK_ISEMULATOR_SETTING = true;
 
+    public static final boolean FALLBACK_ISTABLET_SETTING = true;
+
     public static final String FALLBACK_MODEL_VALUE = "not set";
 
     public static final String FALLBACK_OS_VALUE = "not set";
@@ -40,6 +42,7 @@ public class DeviceInformation implements Serializable {
      */
     public DeviceInformation() {
         isEmulator = FALLBACK_ISEMULATOR_SETTING;
+        isTablet = FALLBACK_ISTABLET_SETTING;
         dpi = FALLBACK_DISPLAY_DENSITY;
         model = FALLBACK_MODEL_VALUE;
         os = FALLBACK_OS_VALUE;
@@ -53,8 +56,8 @@ public class DeviceInformation implements Serializable {
     }
 
     /**
-	 * 
-	 */
+     * 
+     */
     private static final long serialVersionUID = -6289200803789024053L;
 
     /**
@@ -66,6 +69,11 @@ public class DeviceInformation implements Serializable {
      * True if this device is an emulator, false if the device is physical.
      */
     private boolean isEmulator;
+
+    /**
+     * True if this device is a tablet, false if it isn't.
+     */
+    private boolean isTablet;
 
     /**
      * Device screen resolution.
@@ -283,6 +291,7 @@ public class DeviceInformation implements Serializable {
     }
 
     /**
+     * Gets device manufacturer.
      * 
      * @return device manufacturer.
      */
@@ -290,19 +299,24 @@ public class DeviceInformation implements Serializable {
         return manufacturer;
     }
 
-    @Override
-    public String toString() {
-        return String.format("[Emulator: %s, Model: %s, OS: %s, API: %s, RAM: %s, CPU: %s, Resolution: %s, Dpi: %s, SerialNo: %s, Manufacturer: %s]",
-                             isEmulator,
-                             model,
-                             os,
-                             apiLevel,
-                             ram,
-                             cpu,
-                             resolution,
-                             dpi,
-                             serialNumber,
-                             manufacturer);
+    /**
+     * Sets device type in this DeviceInformation - (tablet or other device).
+     * 
+     * @param isTablet
+     *        - <code>true</code> for tablet, <code>false</code> for other device.
+     */
+    public void setTablet(boolean isTablet) {
+        this.isTablet = isTablet;
+    }
+
+    /**
+     * Indicates whether the device is a tablet.
+     * 
+     * @return <code>true</code> if this device is a tablet.<br>
+     *         <code>false</code> if the device is not a tablet.
+     */
+    public boolean isTablet() {
+        return isTablet;
     }
 
     /**
@@ -322,5 +336,22 @@ public class DeviceInformation implements Serializable {
      */
     public boolean hasCamera() {
         return hasCamera;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[Emulator: %s, Model: %s, OS: %s, API: %s, RAM: %s, CPU: %s, Resolution: %s, Dpi: %s, SerialNo: %s, Manufacturer: %s, Tablet: %s, Camera: %s]",
+                             isEmulator,
+                             model,
+                             os,
+                             apiLevel,
+                             ram,
+                             cpu,
+                             resolution,
+                             dpi,
+                             serialNumber,
+                             manufacturer,
+                             isTablet,
+                             hasCamera);
     }
 }
