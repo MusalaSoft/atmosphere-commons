@@ -31,6 +31,11 @@ public enum RoutingAction implements Serializable {
      */
     WAIT_FOR_EXISTS(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Integer.class)),
     /**
+     * Invokes the method behind UI element wait until gone. Requires a {@link UiElementDescriptor} instance (the
+     * element descriptor for the element that should exist after given time) as a parameter.
+     */
+    WAIT_UNTIL_GONE(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Integer.class)),
+    /**
      * Invokes the method behind waiting for a window update event to occur for a given package. Requires a
      * <code>String</code> package name and a <code>int</code> timeout value.
      */
