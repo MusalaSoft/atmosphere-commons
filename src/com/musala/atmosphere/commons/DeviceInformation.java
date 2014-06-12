@@ -35,7 +35,7 @@ public class DeviceInformation implements Serializable {
 
     public static final int FALLBACK_API_LEVEL = 0;
 
-    public static final boolean FALLBACK_HAS_CAMERA_OPTION = false;
+    public static final Boolean FALLBACK_HAS_CAMERA_OPTION = null;
 
     /**
      * Default constructor that fills this structure with the FALLBACK constants.
@@ -118,7 +118,7 @@ public class DeviceInformation implements Serializable {
     /**
      * Indicates if a camera is available on the device.
      */
-    private boolean hasCamera;
+    private Boolean hasCamera;
 
     /**
      * @return the serial number of the device.
@@ -334,13 +334,13 @@ public class DeviceInformation implements Serializable {
      * 
      * @return - true if the device has a camera, else false.
      */
-    public boolean hasCamera() {
+    public Boolean hasCamera() {
         return hasCamera;
     }
 
     @Override
     public String toString() {
-        return String.format("[Emulator: %s, Model: %s, OS: %s, API: %s, RAM: %s, CPU: %s, Resolution: %s, Dpi: %s, SerialNo: %s, Manufacturer: %s, Tablet: %s, Camera: %s]",
+        return String.format("[Emulator: %s, Model: %s, OS: %s, API: %s, RAM: %s, CPU: %s, Resolution: %s, Dpi: %s, SerialNo: %s, Manufacturer: %s, Tablet: %s, Camera: %b]",
                              isEmulator,
                              model,
                              os,
