@@ -2,6 +2,9 @@ package com.musala.atmosphere.commons;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.musala.atmosphere.commons.util.Pair;
 
 /**
@@ -353,5 +356,46 @@ public class DeviceInformation implements Serializable {
                              manufacturer,
                              isTablet,
                              hasCamera);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null) {
+            return false;
+        }
+        if (this.getClass() != object.getClass()) {
+            return false;
+        }
+        DeviceInformation deviceInfo = (DeviceInformation) object;
+        return new EqualsBuilder().append(serialNumber, deviceInfo.serialNumber)
+                                  .append(isEmulator, deviceInfo.isEmulator)
+                                  .append(isTablet, deviceInfo.isTablet)
+                                  .append(resolution, deviceInfo.resolution)
+                                  .append(os, deviceInfo.os)
+                                  .append(model, deviceInfo.model)
+                                  .append(dpi, deviceInfo.dpi)
+                                  .append(ram, deviceInfo.ram)
+                                  .append(cpu, deviceInfo.cpu)
+                                  .append(apiLevel, deviceInfo.apiLevel)
+                                  .append(manufacturer, deviceInfo.manufacturer)
+                                  .append(hasCamera, deviceInfo.hasCamera)
+                                  .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 31).append(serialNumber)
+                                          .append(isEmulator)
+                                          .append(isTablet)
+                                          .append(resolution)
+                                          .append(os)
+                                          .append(model)
+                                          .append(dpi)
+                                          .append(ram)
+                                          .append(cpu)
+                                          .append(apiLevel)
+                                          .append(manufacturer)
+                                          .append(hasCamera)
+                                          .toHashCode();
     }
 }
