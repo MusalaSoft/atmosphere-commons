@@ -197,6 +197,11 @@ public enum RoutingAction implements Serializable {
     GET_AWAKE_STATUS,
 
     /**
+     * Invokes the method that checks if there are running Processes with the given package. Returns <code>true</code>
+     * if there are such processes and <code>false</code> otherwise.
+     */
+    GET_PROCESS_RUNNING(new RoutingActionArgumentValidator(String.class)),
+    /**
      * Routes scrolling in some direction to the ATMOSPHERE Service. Requires {@link UiElementDescriptor} instance (the
      * UI element that would be scrolled), maximum swipes and steps to execute and a boolean to determine whether the
      * view is with vertical orientation or not.
