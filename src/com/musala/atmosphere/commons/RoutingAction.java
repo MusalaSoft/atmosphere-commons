@@ -202,6 +202,16 @@ public enum RoutingAction implements Serializable {
      */
     GET_PROCESS_RUNNING(new RoutingActionArgumentValidator(String.class)),
     /**
+     * Invokes the method that force stops a process by given package. Requires a {@link String} package name as a
+     * parameter.
+     */
+    FORCE_STOP_PROCESS(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Invokes the method that save stops a background process by given package. Requires a {@link String} package name
+     * as a parameter.
+     */
+    STOP_BACKGROUND_PROCESS(new RoutingActionArgumentValidator(String.class)),
+    /**
      * Routes scrolling in some direction to the ATMOSPHERE Service. Requires {@link UiElementDescriptor} instance (the
      * UI element that would be scrolled), maximum swipes and steps to execute and a boolean to determine whether the
      * view is with vertical orientation or not.
