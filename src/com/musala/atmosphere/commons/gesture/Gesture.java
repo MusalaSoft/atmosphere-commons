@@ -8,12 +8,11 @@ import java.util.LinkedList;
  * @author georgi.gaydarov
  * 
  */
-public class Gesture extends LinkedList<Timeline>
-{
+public class Gesture extends LinkedList<Timeline> {
 
-	/**
-	 * auto-generated serialization id
-	 */
-	private static final long serialVersionUID = -5546428458678128751L;
+    /**
+     * auto-generated serialization id
+     */
+    private static final long serialVersionUID = -5546428458678128751L;
 
 }

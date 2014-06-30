@@ -9,11 +9,10 @@ import java.util.LinkedList;
  * @author georgi.gaydarov
  * 
  */
-public class Timeline extends LinkedList<Anchor>
-{
+public class Timeline extends LinkedList<Anchor> {
 
-	/**
-	 * auto-generated serialization id
-	 */
-	private static final long serialVersionUID = 4037933611110545542L;
+    /**
+     * auto-generated serialization id
+     */
+    private static final long serialVersionUID = 4037933611110545542L;
 }

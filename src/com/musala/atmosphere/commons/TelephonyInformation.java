@@ -17,301 +17,266 @@ import com.musala.atmosphere.commons.util.telephony.SimState;
  * @author yordan.petrov
  * 
  */
-public class TelephonyInformation implements Serializable
-{
-	private static final long serialVersionUID = -1482637719107518924L;
+public class TelephonyInformation implements Serializable {
+    private static final long serialVersionUID = -1482637719107518924L;
 
-	private CallState callState;
+    private CallState callState;
 
-	private DataActivity dataActivity;
+    private DataActivity dataActivity;
 
-	private DataState dataState;
+    private DataState dataState;
 
-	private NetworkType networkType;
+    private NetworkType networkType;
 
-	private PhoneType phoneType;
+    private PhoneType phoneType;
 
-	private SimState simState;
+    private SimState simState;
 
-	private String deviceId;
+    private String deviceId;
 
-	private String deviceSoftwareVersion;
+    private String deviceSoftwareVersion;
 
-	private String line1Number;
+    private String line1Number;
 
-	private String networkCountryIso;
+    private String networkCountryIso;
 
-	private String networkOperator;
+    private String networkOperator;
 
-	private String networkOperatorName;
+    private String networkOperatorName;
 
-	private String simOperator;
+    private String simOperator;
 
-	private String simOperatorName;
+    private String simOperatorName;
 
-	private String subscriberId;
+    private String subscriberId;
 
-	private String voiceMailAlphaTag;
+    private String voiceMailAlphaTag;
 
-	private String voiceMailNumber;
+    private String voiceMailNumber;
 
-	/**
-	 * Returns a constant indicating the call state (cellular) on the device.
-	 * 
-	 * @return {@link CallState} member.
-	 */
-	public CallState getCallState()
-	{
-		return callState;
-	}
+    /**
+     * Returns a constant indicating the call state (cellular) on the device.
+     * 
+     * @return {@link CallState} member.
+     */
+    public CallState getCallState() {
+        return callState;
+    }
 
-	public void setCallState(CallState callState)
-	{
-		this.callState = callState;
-	}
+    public void setCallState(CallState callState) {
+        this.callState = callState;
+    }
 
-	/**
-	 * Returns a constant indicating the type of activity on a data connection (cellular).
-	 * 
-	 * @return {@link DataActivity} member.
-	 */
-	public DataActivity getDataActivity()
-	{
-		return dataActivity;
-	}
+    /**
+     * Returns a constant indicating the type of activity on a data connection (cellular).
+     * 
+     * @return {@link DataActivity} member.
+     */
+    public DataActivity getDataActivity() {
+        return dataActivity;
+    }
 
-	/**
-	 * 
-	 * 
-	 * @param dataActivity
-	 */
-	public void setDataActivity(DataActivity dataActivity)
-	{
-		this.dataActivity = dataActivity;
-	}
+    /**
+     * 
+     * 
+     * @param dataActivity
+     */
+    public void setDataActivity(DataActivity dataActivity) {
+        this.dataActivity = dataActivity;
+    }
 
-	/**
-	 * Returns a constant indicating the current data connection state (cellular).
-	 * 
-	 * @return {@link DataState} member.
-	 */
-	public DataState getDataState()
-	{
-		return dataState;
-	}
+    /**
+     * Returns a constant indicating the current data connection state (cellular).
+     * 
+     * @return {@link DataState} member.
+     */
+    public DataState getDataState() {
+        return dataState;
+    }
 
-	public void setDataState(DataState dataState)
-	{
-		this.dataState = dataState;
-	}
+    public void setDataState(DataState dataState) {
+        this.dataState = dataState;
+    }
 
-	/**
-	 * Returns a constant indicating the device network type.
-	 * 
-	 * @return {@link NetworkType} member.
-	 */
-	public NetworkType getNetworkType()
-	{
-		return networkType;
-	}
+    /**
+     * Returns a constant indicating the device network type.
+     * 
+     * @return {@link NetworkType} member.
+     */
+    public NetworkType getNetworkType() {
+        return networkType;
+    }
 
-	public void setNetworkType(NetworkType networkType)
-	{
-		this.networkType = networkType;
-	}
+    public void setNetworkType(NetworkType networkType) {
+        this.networkType = networkType;
+    }
 
-	/**
-	 * Returns a constant indicating the device phone type.
-	 * 
-	 * @return {@link PhoneType} member.
-	 */
-	public PhoneType getPhoneType()
-	{
-		return phoneType;
-	}
+    /**
+     * Returns a constant indicating the device phone type.
+     * 
+     * @return {@link PhoneType} member.
+     */
+    public PhoneType getPhoneType() {
+        return phoneType;
+    }
 
-	public void setPhoneType(PhoneType phoneType)
-	{
-		this.phoneType = phoneType;
-	}
+    public void setPhoneType(PhoneType phoneType) {
+        this.phoneType = phoneType;
+    }
 
-	/**
-	 * Returns a constant indicating the state of the device SIM card.
-	 * 
-	 * @return {@link SimState} member.
-	 */
-	public SimState getSimState()
-	{
-		return simState;
-	}
+    /**
+     * Returns a constant indicating the state of the device SIM card.
+     * 
+     * @return {@link SimState} member.
+     */
+    public SimState getSimState() {
+        return simState;
+    }
 
-	public void setSimState(SimState simState)
-	{
-		this.simState = simState;
-	}
+    public void setSimState(SimState simState) {
+        this.simState = simState;
+    }
 
-	/**
-	 * Returns the unique device ID, for example, the IMEI for GSM and the MEID or ESN for CDMA phones.
-	 * 
-	 * @return the unique device ID.
-	 */
-	public String getDeviceId()
-	{
-		return deviceId;
-	}
+    /**
+     * Returns the unique device ID, for example, the IMEI for GSM and the MEID or ESN for CDMA phones.
+     * 
+     * @return the unique device ID.
+     */
+    public String getDeviceId() {
+        return deviceId;
+    }
 
-	public void setDeviceId(String deviceId)
-	{
-		this.deviceId = deviceId;
-	}
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
 
-	/**
-	 * Returns the software version number for the device, for example, the IMEI/SV for GSM phones.
-	 * 
-	 * @return the software version number.
-	 */
-	public String getDeviceSoftwareVersion()
-	{
-		return deviceSoftwareVersion;
-	}
+    /**
+     * Returns the software version number for the device, for example, the IMEI/SV for GSM phones.
+     * 
+     * @return the software version number.
+     */
+    public String getDeviceSoftwareVersion() {
+        return deviceSoftwareVersion;
+    }
 
-	public void setDeviceSoftwareVersion(String deviceSoftwareVersion)
-	{
-		this.deviceSoftwareVersion = deviceSoftwareVersion;
-	}
+    public void setDeviceSoftwareVersion(String deviceSoftwareVersion) {
+        this.deviceSoftwareVersion = deviceSoftwareVersion;
+    }
 
-	/**
-	 * Returns the phone number string for line 1, for example, the MSISDN for a GSM phone.
-	 * 
-	 * @return the phone number string for line 1, for example, the MSISDN for a GSM phone.
-	 */
-	public String getLine1Number()
-	{
-		return line1Number;
-	}
+    /**
+     * Returns the phone number string for line 1, for example, the MSISDN for a GSM phone.
+     * 
+     * @return the phone number string for line 1, for example, the MSISDN for a GSM phone.
+     */
+    public String getLine1Number() {
+        return line1Number;
+    }
 
-	public void setLine1Number(String line1Number)
-	{
-		this.line1Number = line1Number;
-	}
+    public void setLine1Number(String line1Number) {
+        this.line1Number = line1Number;
+    }
 
-	/**
-	 * Returns the ISO country code equivalent of the current registered operator's MCC (Mobile Country Code).
-	 * 
-	 * @return the ISO country code equivalent of the current registered operator's MCC (Mobile Country Code).
-	 */
-	public String getNetworkCountryIso()
-	{
-		return networkCountryIso;
-	}
+    /**
+     * Returns the ISO country code equivalent of the current registered operator's MCC (Mobile Country Code).
+     * 
+     * @return the ISO country code equivalent of the current registered operator's MCC (Mobile Country Code).
+     */
+    public String getNetworkCountryIso() {
+        return networkCountryIso;
+    }
 
-	public void setNetworkCountryIso(String networkCountryIso)
-	{
-		this.networkCountryIso = networkCountryIso;
-	}
+    public void setNetworkCountryIso(String networkCountryIso) {
+        this.networkCountryIso = networkCountryIso;
+    }
 
-	/**
-	 * Returns the numeric name (MCC+MNC) of current registered operator.
-	 * 
-	 * @return the numeric name (MCC+MNC) of current registered operator.
-	 */
-	public String getNetworkOperator()
-	{
-		return networkOperator;
-	}
+    /**
+     * Returns the numeric name (MCC+MNC) of current registered operator.
+     * 
+     * @return the numeric name (MCC+MNC) of current registered operator.
+     */
+    public String getNetworkOperator() {
+        return networkOperator;
+    }
 
-	public void setNetworkOperator(String networkOperator)
-	{
-		this.networkOperator = networkOperator;
-	}
+    public void setNetworkOperator(String networkOperator) {
+        this.networkOperator = networkOperator;
+    }
 
-	/**
-	 * Returns the alphabetic name of current registered operator.
-	 * 
-	 * @return the alphabetic name of current registered operator.
-	 */
-	public String getNetworkOperatorName()
-	{
-		return networkOperatorName;
-	}
+    /**
+     * Returns the alphabetic name of current registered operator.
+     * 
+     * @return the alphabetic name of current registered operator.
+     */
+    public String getNetworkOperatorName() {
+        return networkOperatorName;
+    }
 
-	public void setNetworkOperatorName(String networkOperatorName)
-	{
-		this.networkOperatorName = networkOperatorName;
-	}
+    public void setNetworkOperatorName(String networkOperatorName) {
+        this.networkOperatorName = networkOperatorName;
+    }
 
-	/**
-	 * Returns the MCC+MNC (mobile country code + mobile network code) of the provider of the SIM.
-	 * 
-	 * @return the MCC+MNC (mobile country code + mobile network code) of the provider of the SIM.
-	 */
-	public String getSimOperator()
-	{
-		return simOperator;
-	}
+    /**
+     * Returns the MCC+MNC (mobile country code + mobile network code) of the provider of the SIM.
+     * 
+     * @return the MCC+MNC (mobile country code + mobile network code) of the provider of the SIM.
+     */
+    public String getSimOperator() {
+        return simOperator;
+    }
 
-	public void setSimOperator(String simOperator)
-	{
-		this.simOperator = simOperator;
-	}
+    public void setSimOperator(String simOperator) {
+        this.simOperator = simOperator;
+    }
 
-	/**
-	 * Returns the Service Provider Name (SPN).
-	 * 
-	 * @return the Service Provider Name (SPN).
-	 */
-	public String getSimOperatorName()
-	{
-		return simOperatorName;
-	}
+    /**
+     * Returns the Service Provider Name (SPN).
+     * 
+     * @return the Service Provider Name (SPN).
+     */
+    public String getSimOperatorName() {
+        return simOperatorName;
+    }
 
-	public void setSimOperatorName(String simOperatorName)
-	{
-		this.simOperatorName = simOperatorName;
-	}
+    public void setSimOperatorName(String simOperatorName) {
+        this.simOperatorName = simOperatorName;
+    }
 
-	/**
-	 * Returns the unique subscriber ID, for example, the IMSI for a GSM phone.
-	 * 
-	 * @return the unique subscriber ID, for example, the IMSI for a GSM phone.
-	 */
-	public String getSubscriberId()
-	{
-		return subscriberId;
-	}
+    /**
+     * Returns the unique subscriber ID, for example, the IMSI for a GSM phone.
+     * 
+     * @return the unique subscriber ID, for example, the IMSI for a GSM phone.
+     */
+    public String getSubscriberId() {
+        return subscriberId;
+    }
 
-	public void setSubscriberId(String subscriberId)
-	{
-		this.subscriberId = subscriberId;
-	}
+    public void setSubscriberId(String subscriberId) {
+        this.subscriberId = subscriberId;
+    }
 
-	/**
-	 * Retrieves the alphabetic identifier associated with the voice mail number.
-	 * 
-	 * @return the alphabetic identifier associated with the voice mail number.
-	 */
-	public String getVoiceMailAlphaTag()
-	{
-		return voiceMailAlphaTag;
-	}
+    /**
+     * Retrieves the alphabetic identifier associated with the voice mail number.
+     * 
+     * @return the alphabetic identifier associated with the voice mail number.
+     */
+    public String getVoiceMailAlphaTag() {
+        return voiceMailAlphaTag;
+    }
 
-	public void setVoiceMailAlphaTag(String voiceMailAlphaTag)
-	{
-		this.voiceMailAlphaTag = voiceMailAlphaTag;
-	}
+    public void setVoiceMailAlphaTag(String voiceMailAlphaTag) {
+        this.voiceMailAlphaTag = voiceMailAlphaTag;
+    }
 
-	/**
-	 * Returns the voice mail number.
-	 * 
-	 * @return the voice mail number.
-	 */
-	public String getVoiceMailNumber()
-	{
-		return voiceMailNumber;
-	}
+    /**
+     * Returns the voice mail number.
+     * 
+     * @return the voice mail number.
+     */
+    public String getVoiceMailNumber() {
+        return voiceMailNumber;
+    }
 
-	public void setVoiceMailNumber(String voiceMailNumber)
-	{
-		this.voiceMailNumber = voiceMailNumber;
-	}
+    public void setVoiceMailNumber(String voiceMailNumber) {
+        this.voiceMailNumber = voiceMailNumber;
+    }
 }
