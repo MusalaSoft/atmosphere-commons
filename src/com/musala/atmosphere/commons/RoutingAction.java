@@ -224,7 +224,12 @@ public enum RoutingAction implements Serializable {
      * would be scrolled) and a boolean to determine whether the view is with vertical orientation or not.
      * 
      */
-    SCROLL_INTO_VIEW(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Boolean.class));
+    SCROLL_INTO_VIEW(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Boolean.class)),
+
+    /**
+     * Invokes the method behind UI device open notification bar.
+     */
+    OPEN_NOTIFICATION_BAR;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
