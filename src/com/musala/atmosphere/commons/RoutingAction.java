@@ -229,7 +229,12 @@ public enum RoutingAction implements Serializable {
     /**
      * Invokes the method behind UI device open notification bar.
      */
-    OPEN_NOTIFICATION_BAR;
+    OPEN_NOTIFICATION_BAR,
+
+    /**
+     * Invokes the method behind UI device open quick settings.
+     */
+    OPEN_QUICK_SETTINGS;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
