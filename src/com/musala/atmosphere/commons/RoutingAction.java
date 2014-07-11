@@ -217,24 +217,19 @@ public enum RoutingAction implements Serializable {
      * view is with vertical orientation or not.
      */
     SCROLL_TO_DIRECTION(new RoutingActionArgumentValidator(ScrollDirection.class), new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Boolean.class)),
-
-    /**
-     * Routes scrolling into a view or a contained text to the ATMOSPHERE Service. Requires {@link UiElementDescriptor}
-     * instance (the UI element that would be scrolled), {@link UiElementDescriptor} instance (the UI element to which
-     * would be scrolled) and a boolean to determine whether the view is with vertical orientation or not.
-     * 
-     */
-    SCROLL_INTO_VIEW(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Boolean.class)),
-
     /**
      * Invokes the method behind UI device open notification bar.
      */
     OPEN_NOTIFICATION_BAR,
-
     /**
      * Invokes the method behind UI device open quick settings.
      */
-    OPEN_QUICK_SETTINGS;
+    OPEN_QUICK_SETTINGS,
+    /**
+     * Time picker widget interaction that does not require additional parameters, except the {@link PickerAction}
+     * itself.
+     */
+    TIME_PICKER_INTERACTION(new RoutingActionArgumentValidator(PickerAction.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
