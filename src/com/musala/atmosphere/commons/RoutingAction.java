@@ -229,7 +229,15 @@ public enum RoutingAction implements Serializable {
      * Time picker widget interaction that does not require additional parameters, except the {@link PickerAction}
      * itself.
      */
-    TIME_PICKER_INTERACTION(new RoutingActionArgumentValidator(PickerAction.class));
+    TIME_PICKER_INTERACTION(new RoutingActionArgumentValidator(PickerAction.class)),
+    /**
+     * Sets the IME with the given ID as default on the device.
+     */
+    SET_DEFAULT_INPUT_METHOD(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Sets the Atmosphere IME as default on the device.
+     */
+    SET_ATMOSPHERE_IME_AS_DEFAULT;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
