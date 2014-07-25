@@ -195,7 +195,6 @@ public enum RoutingAction implements Serializable {
      * awake and <code>false</code>.
      */
     GET_AWAKE_STATUS,
-
     /**
      * Invokes the method that checks if there are running Processes with the given package. Returns <code>true</code>
      * if there are such processes and <code>false</code> otherwise.
@@ -232,7 +231,12 @@ public enum RoutingAction implements Serializable {
     /**
      * Sets the Atmosphere IME as default on the device.
      */
-    SET_ATMOSPHERE_IME_AS_DEFAULT;
+    SET_ATMOSPHERE_IME_AS_DEFAULT,
+    /**
+     * Invokes the method that uninstalls an application process by given package. Requires a {@link String} package
+     * name as a parameter.
+     */
+    UNINSTALL_APP(new RoutingActionArgumentValidator(String.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
