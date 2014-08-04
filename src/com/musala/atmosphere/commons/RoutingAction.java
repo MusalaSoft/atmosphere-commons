@@ -11,6 +11,7 @@ import com.musala.atmosphere.commons.beans.PhoneNumber;
 import com.musala.atmosphere.commons.beans.SwipeDirection;
 import com.musala.atmosphere.commons.gesture.Gesture;
 import com.musala.atmosphere.commons.ui.UiElementDescriptor;
+import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
 
 /**
@@ -236,7 +237,12 @@ public enum RoutingAction implements Serializable {
      * Invokes the method that uninstalls an application process by given package. Requires a {@link String} package
      * name as a parameter.
      */
-    UNINSTALL_APP(new RoutingActionArgumentValidator(String.class));
+    UNINSTALL_APP(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Mocks the current location of the device. Requires a {@link GeoLocation} object representing the location to be
+     * mocked.
+     */
+    MOCK_LOCATION(new RoutingActionArgumentValidator(GeoLocation.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
