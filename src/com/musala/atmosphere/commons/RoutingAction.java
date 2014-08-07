@@ -6,6 +6,7 @@ import java.util.List;
 import com.musala.atmosphere.commons.beans.DeviceAcceleration;
 import com.musala.atmosphere.commons.beans.DeviceMagneticField;
 import com.musala.atmosphere.commons.beans.DeviceOrientation;
+import com.musala.atmosphere.commons.beans.DeviceProximity;
 import com.musala.atmosphere.commons.beans.MobileDataState;
 import com.musala.atmosphere.commons.beans.PhoneNumber;
 import com.musala.atmosphere.commons.beans.SwipeDirection;
@@ -117,6 +118,11 @@ public enum RoutingAction implements Serializable {
      */
     SET_MAGNETIC_FIELD(new RoutingActionArgumentValidator(DeviceMagneticField.class)),
     /**
+     * Invokes the method that sets the device proximity readings of an <b>emulator</b>. Requires a
+     * {@link DeviceProximity} instance (the new proximity readings) as a parameter.
+     */
+    SET_PROXIMITY(new RoutingActionArgumentValidator(Float.class)),
+    /**
      * Invokes the method that sets the device orientation of an <b>emulators</b>. Requires a {@link DeviceOrientation}
      * instance (the new device acceleration readings) as a parameter.
      */
@@ -146,7 +152,7 @@ public enum RoutingAction implements Serializable {
      */
     GET_DEVICE_ORIENTATION,
     /**
-     * Invokes the method that gets the device acceleration. The orientation sensor on the device must be active.
+     * Invokes the method that gets the device acceleration. The acceleration sensor on the device must be active.
      * Returns a {@link DeviceAcceleration} data container instance.
      * */
     GET_DEVICE_ACCELERATION,
