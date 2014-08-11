@@ -157,6 +157,11 @@ public enum RoutingAction implements Serializable {
      * */
     GET_DEVICE_ACCELERATION,
     /**
+     * Invokes the method that gets the device proximity. The proximity sensor on the device must be active. Returns a
+     * float representing the device proximity.
+     */
+    GET_DEVICE_PROXIMITY,
+    /**
      * Invokes the method that gets the device mobile data state of an <b>emulator</b>. Returns a
      * {@link MobileDataState} enum instance.
      */
