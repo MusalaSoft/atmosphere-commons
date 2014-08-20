@@ -253,7 +253,23 @@ public enum RoutingAction implements Serializable {
      * Mocks the current location of the device. Requires a {@link GeoLocation} object representing the location to be
      * mocked.
      */
-    MOCK_LOCATION(new RoutingActionArgumentValidator(GeoLocation.class));
+    MOCK_LOCATION(new RoutingActionArgumentValidator(GeoLocation.class)),
+    /**
+     * Sets the state of the keyguard of the device.
+     */
+    SET_KEYGUARD(new RoutingActionArgumentValidator(Boolean.class)),
+    /**
+     * Used to request bring to front a given task on the device.
+     */
+    BRING_TASK_TO_FRONT(new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class)),
+    /**
+     * Used to request getting the running tasks ids on the device.
+     */
+    GET_RUNNING_TASK_IDS(new RoutingActionArgumentValidator(Integer.class)),
+    /**
+     * Used to request wait method for the given task to go to the given position in Running tasks.
+     */
+    WAIT_FOR_TASKS_UPDATE(new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
