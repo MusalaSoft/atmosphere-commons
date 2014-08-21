@@ -255,6 +255,11 @@ public enum RoutingAction implements Serializable {
      */
     MOCK_LOCATION(new RoutingActionArgumentValidator(GeoLocation.class)),
     /**
+     * Disables mocking a location provider on the device. Requires a {@link String} object representing the provider
+     * name.
+     */
+    DISABLE_MOCK_LOCATION(new RoutingActionArgumentValidator(String.class)),
+    /**
      * Sets the state of the keyguard of the device.
      */
     SET_KEYGUARD(new RoutingActionArgumentValidator(Boolean.class)),
