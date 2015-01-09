@@ -160,7 +160,7 @@ public class DeviceInformation implements Serializable {
 
     /**
      * 
-     * @return {@link Pair} object, containing the resolution (width, height) of device's screen.
+     * @return {@link Pair} object, containing the resolution (height, width) of device's screen.
      */
     public Pair<Integer, Integer> getResolution() {
         return resolution;
