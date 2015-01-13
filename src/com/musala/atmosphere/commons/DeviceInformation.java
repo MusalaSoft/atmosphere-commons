@@ -22,7 +22,7 @@ public class DeviceInformation implements Serializable {
 
     public static final Pair<Integer, Integer> FALLBACK_SCREEN_RESOLUTION = new Pair<Integer, Integer>(0, 0);
 
-    public static final boolean FALLBACK_ISEMULATOR_SETTING = true;
+    public static final boolean FALLBACK_ISEMULATOR_SETTING = false;
 
     public static final boolean FALLBACK_ISTABLET_SETTING = true;
 
