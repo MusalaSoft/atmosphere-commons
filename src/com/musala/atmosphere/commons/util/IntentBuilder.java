@@ -38,7 +38,8 @@ public class IntentBuilder {
      */
     public enum IntentAction {
         START_COMPONENT(null, "start"),
-        ATMOSPHERE_TEXT_INPUT("atmosphere.intent.action.TEXT", "broadcast"),
+        ATMOSPHERE_TEXT_INPUT("atmosphere.intent.ime.action.INPUT", "broadcast"),
+        ATMOSPHERE_CLEAR_TEXT("atmosphere.intent.ime.action.DELETE", "broadcast"),
         AIRPLANE_MODE_NOTIFICATION("android.intent.action.AIRPLANE_MODE", "broadcast"),
         BATTERY_LOW("android.intent.action.BATTERY_LOW", "broadcast"),
         BATTERY_OKAY("android.intent.action.BATTERY_OKAY", "broadcast"),
