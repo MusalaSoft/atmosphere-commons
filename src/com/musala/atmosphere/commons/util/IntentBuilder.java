@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.musala.atmosphere.commons.ime.KeyboardAction;
+
 /**
  * Intent command building utility class.
  * 
@@ -38,8 +40,8 @@ public class IntentBuilder {
      */
     public enum IntentAction {
         START_COMPONENT(null, "start"),
-        ATMOSPHERE_TEXT_INPUT("atmosphere.intent.ime.action.INPUT", "broadcast"),
-        ATMOSPHERE_CLEAR_TEXT("atmosphere.intent.ime.action.DELETE", "broadcast"),
+        ATMOSPHERE_TEXT_INPUT(KeyboardAction.INPUT_TEXT.intentAction, "broadcast"),
+        ATMOSPHERE_CLEAR_TEXT(KeyboardAction.DELETE_ALL.intentAction, "broadcast"),
         AIRPLANE_MODE_NOTIFICATION("android.intent.action.AIRPLANE_MODE", "broadcast"),
         BATTERY_LOW("android.intent.action.BATTERY_LOW", "broadcast"),
         BATTERY_OKAY("android.intent.action.BATTERY_OKAY", "broadcast"),

@@ -12,6 +12,7 @@ import com.musala.atmosphere.commons.beans.PhoneNumber;
 import com.musala.atmosphere.commons.beans.SwipeDirection;
 import com.musala.atmosphere.commons.gesture.Gesture;
 import com.musala.atmosphere.commons.ui.UiElementDescriptor;
+import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
 
@@ -56,6 +57,10 @@ public enum RoutingAction implements Serializable {
      * {@link List<String> instance (command execution results).
      */
     EXECUTE_SHELL_COMMAND_SEQUENCE(new RoutingActionArgumentValidator(List.class)),
+    /**
+     * Broadcast the given intent to all interested BroadcastReceivers on the current device.
+     */
+    SEND_BROADCAST(new RoutingActionArgumentValidator(AtmosphereIntent.class)),
     /**
      * Invokes the method behind fetching a {@link DeviceInformation DeviceInformation} instance for the current device.
      */
