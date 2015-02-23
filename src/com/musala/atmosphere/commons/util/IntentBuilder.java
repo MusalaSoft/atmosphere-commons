@@ -44,6 +44,7 @@ public class IntentBuilder {
         ATMOSPHERE_CLEAR_TEXT(KeyboardAction.DELETE_ALL.intentAction, "broadcast"),
         ATMOSPHERE_SELECT_ALL_TEXT(KeyboardAction.SELECT_ALL.intentAction, "broadcast"),
         ATMOSPHERE_PASTE_TEXT(KeyboardAction.PASTE_TEXT.intentAction, "broadcast"),
+        ATMOSPHERE_COPY_TEXT(KeyboardAction.COPY_TEXT.intentAction, "broadcast"),
         AIRPLANE_MODE_NOTIFICATION("android.intent.action.AIRPLANE_MODE", "broadcast"),
         BATTERY_LOW("android.intent.action.BATTERY_LOW", "broadcast"),
         BATTERY_OKAY("android.intent.action.BATTERY_OKAY", "broadcast"),
