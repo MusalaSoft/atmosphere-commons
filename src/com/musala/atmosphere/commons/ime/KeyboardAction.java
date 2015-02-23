@@ -11,7 +11,8 @@ public enum KeyboardAction {
     SELECT_ALL("atmosphere.intent.ime.action.SELECTALL", android.R.id.selectAll),
     DELETE_ALL("atmosphere.intent.ime.action.DELETE", 1),
     PASTE_TEXT("atmosphere.intent.ime.action.PASTE", android.R.id.paste),
-    COPY_TEXT("atmosphere.intent.ime.action.COPY", android.R.id.copy);
+    COPY_TEXT("atmosphere.intent.ime.action.COPY", android.R.id.copy),
+    CUT_TEXT("atmosphere.intent.ime.action.CUT", android.R.id.cut);
 
     public static final String INTENT_EXTRA_TEXT = "text";
 
