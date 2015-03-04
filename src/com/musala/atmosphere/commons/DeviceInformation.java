@@ -287,7 +287,8 @@ public class DeviceInformation implements Serializable {
     /**
      * Sets device manufacturer.
      * 
-     * @parm manufacturer - device manufacturer to set.
+     * @param manufacturer
+     *        - device manufacturer to set.
      */
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
