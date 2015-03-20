@@ -279,7 +279,19 @@ public enum RoutingAction implements Serializable {
     /**
      * Used to request wait method for the given task to go to the given position in Running tasks.
      */
-    WAIT_FOR_TASKS_UPDATE(new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class));
+    WAIT_FOR_TASKS_UPDATE(new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class)),
+    /**
+     * Used to execute shell command in a separated thread.
+     */
+    EXECUTE_SHELL_COMMAND_IN_BACKGROUND(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Used to terminate the execution of a shell command that is executed in a separate thread.
+     */
+    TERMINATE_BACKGROUND_SHELL_COMMAND(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Pulls a single file from the device and saves it locally.
+     */
+    PULL_FILE(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
