@@ -289,6 +289,10 @@ public enum RoutingAction implements Serializable {
      */
     TERMINATE_BACKGROUND_SHELL_COMMAND(new RoutingActionArgumentValidator(String.class)),
     /**
+     * Used to check the lock state of the device.
+     */
+    IS_LOCKED,
+    /**
      * Pulls a single file from the device and saves it locally.
      */
     PULL_FILE(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class));
