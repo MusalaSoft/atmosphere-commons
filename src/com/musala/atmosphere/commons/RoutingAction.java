@@ -285,9 +285,9 @@ public enum RoutingAction implements Serializable {
      */
     EXECUTE_SHELL_COMMAND_IN_BACKGROUND(new RoutingActionArgumentValidator(String.class)),
     /**
-     * Used to terminate the execution of a shell command that is executed in a separate thread.
+     * Used to interrupt the execution of a process that is executed in a separate thread.
      */
-    TERMINATE_BACKGROUND_SHELL_COMMAND(new RoutingActionArgumentValidator(String.class)),
+    INTERRUPT_BACKGROUND_SHELL_PROCESS(new RoutingActionArgumentValidator(String.class)),
     /**
      * Used to check the lock state of the device.
      */
