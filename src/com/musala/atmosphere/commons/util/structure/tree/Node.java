@@ -1,8 +1,10 @@
-package com.musala.atmosphere.commons.util.tree;
+package com.musala.atmosphere.commons.util.structure.tree;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.musala.atmosphere.commons.util.structure.Hierarchical;
 
 /**
  * A generic serializable node representation. The node is represented by a data, parent node and a list of children.
@@ -12,7 +14,7 @@ import java.util.List;
  * @param <T>
  *        - a class that specifies the generic data
  */
-public class Node<T extends Serializable> implements Serializable {
+public class Node<T extends Serializable> implements Serializable, Hierarchical {
     private static final long serialVersionUID = -7376384070663720379L;
 
     protected T data;
@@ -22,42 +24,27 @@ public class Node<T extends Serializable> implements Serializable {
     protected List<Node<T>> children;
 
     /**
-     * Initializes a {@link Node node} with the given data, no parent and no children.
+     * Initializes a {@link Node node} with the given data and no children.
      * 
      * @param data
      *        - the node's data
      */
     public Node(T data) {
-        this(data, null);
-    }
-
-    /**
-     * Initializes a {@link Node node} with the given data and parent, and no children.
-     * 
-     * @param data
-     *        - the node's data
-     * @param parent
-     *        - the node's parent
-     */
-    public Node(T data, Node<T> parent) {
         this.data = data;
-        this.parent = parent;
         this.children = new ArrayList<Node<T>>();
     }
 
     /**
-     * Initializes a {@link Node node} with the given data, parent and children.
+     * Initializes a {@link Node node} with the given data and children.
      * 
      * @param data
      *        - the node's data
-     * @param parent
-     *        - the node's parent
      * @param children
      *        - the node's children
      */
-    public Node(T data, Node<T> parent, List<Node<T>> children) {
-        this(data, parent);
-        this.children.addAll(children);
+    public Node(T data, List<Node<T>> children) {
+        this(data);
+        addChildren(children);
     }
 
     public T getData() {
@@ -68,20 +55,16 @@ public class Node<T extends Serializable> implements Serializable {
         this.data = data;
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
     public Node<T> getParent() {
         return parent;
     }
 
-    public void setParent(Node<T> parent) {
-        this.parent = parent;
-    }
-
+    @SuppressWarnings("unchecked")
+    @Override
     public List<Node<T>> getChildren() {
         return new ArrayList<Node<T>>(children);
-    }
-
-    public void setChildren(List<Node<T>> children) {
-        this.children = children;
     }
 
     /**
@@ -101,6 +84,19 @@ public class Node<T extends Serializable> implements Serializable {
      */
     public void addChild(Node<T> child) {
         children.add(child);
+        child.parent = this;
+    }
+
+    /**
+     * Adds all child {@link Node nodes} to the list of children.
+     * 
+     * @param children
+     *        - the child {@link Node nodes} to be added
+     */
+    public void addChildren(List<Node<T>> children) {
+        for (Node<T> child : children) {
+            addChild(child);
+        }
     }
 
     /**
@@ -131,13 +127,20 @@ public class Node<T extends Serializable> implements Serializable {
             return null;
         }
 
-        return children.remove(index);
+        Node<T> obsoleteChild = children.remove(index);
+        obsoleteChild.parent = null;
+
+        return obsoleteChild;
     }
 
     /**
      * Clears the list of child {@link Node nodes}.
      */
     public void clearChildren() {
-        children.clear();
+        int childCount = children.size();
+        for (int i = 0; i < childCount; i++) {
+            removeChild(i);
+        }
     }
+
 }

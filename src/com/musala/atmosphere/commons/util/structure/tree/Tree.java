@@ -1,4 +1,4 @@
-package com.musala.atmosphere.commons.util.tree;
+package com.musala.atmosphere.commons.util.structure.tree;
 
 import java.io.Serializable;
 

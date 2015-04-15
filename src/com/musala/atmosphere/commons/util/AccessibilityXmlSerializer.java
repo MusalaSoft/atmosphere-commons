@@ -3,8 +3,8 @@ package com.musala.atmosphere.commons.util;
 import com.musala.atmosphere.commons.geometry.Bounds;
 import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
-import com.musala.atmosphere.commons.util.tree.Node;
-import com.musala.atmosphere.commons.util.tree.Tree;
+import com.musala.atmosphere.commons.util.structure.tree.Node;
+import com.musala.atmosphere.commons.util.structure.tree.Tree;
 
 /**
  * Utility that generates xml compatible with android`s ui automator view hierarchy from {@link AccessibilityElement
