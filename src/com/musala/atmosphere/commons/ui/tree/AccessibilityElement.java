@@ -1,8 +1,7 @@
 package com.musala.atmosphere.commons.ui.tree;
 
-import java.io.Serializable;
-
 import com.musala.atmosphere.commons.geometry.Bounds;
+import com.musala.atmosphere.commons.ui.UiElementPropertiesContainer;
 
 /**
  * Serializable wrapper around the <a
@@ -12,7 +11,7 @@ import com.musala.atmosphere.commons.geometry.Bounds;
  * @author yordan.petrov
  * 
  */
-public class AccessibilityElement implements Serializable {
+public class AccessibilityElement implements UiElementPropertiesContainer {
     private static final long serialVersionUID = -3060768747010930125L;
 
     private int index;
@@ -47,6 +46,7 @@ public class AccessibilityElement implements Serializable {
 
     private Bounds bounds;
 
+    @Override
     public int getIndex() {
         return index;
     }
@@ -55,6 +55,7 @@ public class AccessibilityElement implements Serializable {
         this.index = index;
     }
 
+    @Override
     public String getText() {
         return text;
     }
@@ -63,6 +64,7 @@ public class AccessibilityElement implements Serializable {
         this.text = text;
     }
 
+    @Override
     public boolean isClickable() {
         return clickable;
     }
@@ -71,6 +73,7 @@ public class AccessibilityElement implements Serializable {
         this.clickable = clickable;
     }
 
+    @Override
     public boolean isScrollable() {
         return scrollable;
     }
@@ -79,6 +82,7 @@ public class AccessibilityElement implements Serializable {
         this.scrollable = scrollable;
     }
 
+    @Override
     public boolean isLongClickable() {
         return longClickable;
     }
@@ -87,6 +91,7 @@ public class AccessibilityElement implements Serializable {
         this.longClickable = longClickable;
     }
 
+    @Override
     public boolean isSelected() {
         return selected;
     }
@@ -95,6 +100,7 @@ public class AccessibilityElement implements Serializable {
         this.selected = selected;
     }
 
+    @Override
     public boolean isPassword() {
         return password;
     }
@@ -103,6 +109,7 @@ public class AccessibilityElement implements Serializable {
         this.password = password;
     }
 
+    @Override
     public Bounds getBounds() {
         return bounds;
     }
@@ -119,6 +126,7 @@ public class AccessibilityElement implements Serializable {
         this.checked = checked;
     }
 
+    @Override
     public String getClassName() {
         return className;
     }
@@ -127,6 +135,7 @@ public class AccessibilityElement implements Serializable {
         this.className = className;
     }
 
+    @Override
     public String getPackageName() {
         return packageName;
     }
@@ -135,6 +144,7 @@ public class AccessibilityElement implements Serializable {
         this.packageName = packageName;
     }
 
+    @Override
     public String getContentDescriptor() {
         return contentDescriptor;
     }
@@ -143,6 +153,7 @@ public class AccessibilityElement implements Serializable {
         this.contentDescriptor = contentDescriptor;
     }
 
+    @Override
     public boolean isCheckable() {
         return checkable;
     }
@@ -151,6 +162,7 @@ public class AccessibilityElement implements Serializable {
         this.checkable = checkable;
     }
 
+    @Override
     public boolean isChecked() {
         return checked;
     }
@@ -159,6 +171,7 @@ public class AccessibilityElement implements Serializable {
         this.checked = checked;
     }
 
+    @Override
     public boolean isFocusable() {
         return focusable;
     }
@@ -167,6 +180,7 @@ public class AccessibilityElement implements Serializable {
         this.focusable = focusable;
     }
 
+    @Override
     public boolean isFocused() {
         return focused;
     }
@@ -175,6 +189,7 @@ public class AccessibilityElement implements Serializable {
         this.focused = focused;
     }
 
+    @Override
     public boolean isEnabled() {
         return enabled;
     }
