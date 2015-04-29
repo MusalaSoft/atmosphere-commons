@@ -46,6 +46,8 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
 
     private Bounds bounds;
 
+    private String path;
+
     @Override
     public int getIndex() {
         return index;
@@ -196,5 +198,24 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    /**
+     * Sets the string representation of the path to this element.
+     * 
+     * @param path
+     *        - string representation of the path to this element
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    /**
+     * Gets string representation of the path to this element.
+     * 
+     * @return string representation of the path to this element
+     */
+    public String getPath() {
+        return path;
     }
 }
