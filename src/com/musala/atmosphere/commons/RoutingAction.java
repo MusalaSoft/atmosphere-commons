@@ -295,7 +295,11 @@ public enum RoutingAction implements Serializable {
     /**
      * Pulls a single file from the device and saves it locally.
      */
-    PULL_FILE(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class));
+    PULL_FILE(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class)),
+    /*
+     * Gets the UI tree representation of the current screen.
+     */
+    GET_UI_TREE(new RoutingActionArgumentValidator(Boolean.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
