@@ -36,7 +36,7 @@ public class UiElementSelectorMatcher implements UiElementMatcher<UiElementSelec
         Boolean isSelected = selector.getBooleanValue(CssAttribute.SELECTED);
 
         Rect nodeBounds = new Rect();
-        nodeInformation.getBoundsInParent(nodeBounds);
+        nodeInformation.getBoundsInScreen(nodeBounds);
 
         if (selectorBounds != null) {
             Point selectorBoundsUpperCorner = selectorBounds.getUpperLeftCorner();
