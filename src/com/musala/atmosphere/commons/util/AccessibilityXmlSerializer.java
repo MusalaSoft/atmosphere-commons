@@ -11,7 +11,7 @@ import com.musala.atmosphere.commons.util.structure.tree.Tree;
  * accessibility elements} hierarchy.
  * 
  * @author vassil.angelov
- *
+ * 
  */
 public class AccessibilityXmlSerializer {
 
@@ -85,6 +85,12 @@ public class AccessibilityXmlSerializer {
 
     private static void serialize(Node<AccessibilityElement> node, AccessibilityXmlSerializer xmlBuilder) {
         AccessibilityElement element = node.getData();
+
+        // null or non-visible node
+        if (element == null) {
+            return;
+        }
+
         xmlBuilder.startTag("node");
 
         xmlBuilder.addAttribute("index", Integer.toString(element.getIndex()));
