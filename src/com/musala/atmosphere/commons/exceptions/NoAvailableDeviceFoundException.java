@@ -1,6 +1,4 @@
-package com.musala.atmosphere.commons.sa.exceptions;
-
-import com.musala.atmosphere.commons.exceptions.AtmosphereRuntimeException;
+package com.musala.atmosphere.commons.exceptions;
 
 /**
  * Thrown when there is no available device to get.
