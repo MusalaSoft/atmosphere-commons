@@ -12,6 +12,7 @@ import com.musala.atmosphere.commons.beans.PhoneNumber;
 import com.musala.atmosphere.commons.beans.SwipeDirection;
 import com.musala.atmosphere.commons.gesture.Gesture;
 import com.musala.atmosphere.commons.ui.UiElementDescriptor;
+import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
 import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
@@ -300,6 +301,10 @@ public enum RoutingAction implements Serializable {
      * Gets the UI tree representation of the current screen.
      */
     GET_UI_TREE(new RoutingActionArgumentValidator(Boolean.class)),
+    /**
+     * Gets all UI elements matching the given element selector.
+     */
+    GET_UI_ELEMENTS(new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class)),
     /**
      * Starts recording actions executed on the device.
      */
