@@ -13,6 +13,7 @@ import com.musala.atmosphere.commons.beans.SwipeDirection;
 import com.musala.atmosphere.commons.gesture.Gesture;
 import com.musala.atmosphere.commons.ui.UiElementDescriptor;
 import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
+import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
 import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
@@ -312,7 +313,14 @@ public enum RoutingAction implements Serializable {
     /**
      * Stops recording actions executed on the device.
      */
-    STOP_RECORDING;
+    STOP_RECORDING,
+    /**
+     * Gets all child UI elements matching the given {@link UiElementSelector selector}. If the first boolean parameter
+     * is <code>true</code> only direct children are returned, else all children are traversed and checked for a match.
+     * The last argument determines whether only visible elements in the UI hierarchy are traversed, if
+     * <code>false</code> all elements are traversed.
+     */
+    GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
