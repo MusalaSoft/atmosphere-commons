@@ -307,7 +307,15 @@ public enum RoutingAction implements Serializable {
     /**
      * Stops recording actions executed on the device.
      */
-    STOP_RECORDING;
+    STOP_RECORDING,
+    /**
+     * Used to open the location settings activity of the device.
+     */
+    OPEN_LOCATION_SETTINGS,
+    /**
+     * Used to check the GPS location state of the device.
+     */
+    IS_GPS_LOCATION_ENABLED;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
