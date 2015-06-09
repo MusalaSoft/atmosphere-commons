@@ -2,6 +2,9 @@ package com.musala.atmosphere.commons.geometry;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 /**
  * Represent the coordinates of a point in a 2D space.
  * 
@@ -197,7 +200,7 @@ public class Point implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("[X: %d, Y: %d]", x, y);
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("X", x).append("Y", y).toString();
     }
 
     @Override

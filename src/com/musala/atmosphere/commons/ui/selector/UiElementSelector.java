@@ -6,6 +6,8 @@ import java.util.Map.Entry;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.log4j.Logger;
 
 import com.musala.atmosphere.commons.geometry.Bounds;
@@ -325,5 +327,49 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     @Override
     public boolean isEnabled() {
         return getBooleanValue(CssAttribute.ENABLED);
+    }
+
+    @Override
+    public String getResourceId() {
+        return getStringValue(CssAttribute.RESOURCE_ID);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append(CssAttribute.INDEX.toString(),
+                                                                                getIntegerValue(CssAttribute.INDEX))
+                                                                        .append(CssAttribute.TEXT.toString(),
+                                                                                getStringValue(CssAttribute.TEXT))
+                                                                        .append(CssAttribute.CLASS_NAME.toString(),
+                                                                                getStringValue(CssAttribute.CLASS_NAME))
+                                                                        .append(CssAttribute.PACKAGE_NAME.toString(),
+                                                                                getStringValue(CssAttribute.PACKAGE_NAME))
+                                                                        .append(CssAttribute.CONTENT_DESCRIPTION.toString(),
+                                                                                getStringValue(CssAttribute.CONTENT_DESCRIPTION))
+                                                                        .append(CssAttribute.BOUNDS.toString(),
+                                                                                getBoundsValue(CssAttribute.BOUNDS))
+                                                                        .append(CssAttribute.CLICKABLE.toString(),
+                                                                                getBooleanValue(CssAttribute.CLICKABLE))
+                                                                        .append(CssAttribute.SCROLLABLE.toString(),
+                                                                                getBooleanValue(CssAttribute.SCROLLABLE))
+                                                                        .append(CssAttribute.LONG_CLICKABLE.toString(),
+                                                                                getBooleanValue(CssAttribute.LONG_CLICKABLE))
+                                                                        .append(CssAttribute.SELECTED.toString(),
+                                                                                getBooleanValue(CssAttribute.SELECTED))
+                                                                        .append(CssAttribute.PASSWORD.toString(),
+                                                                                getBooleanValue(CssAttribute.PASSWORD))
+                                                                        .append(CssAttribute.CHECKABLE.toString(),
+                                                                                getBooleanValue(CssAttribute.CHECKABLE))
+                                                                        .append(CssAttribute.CHECKED.toString(),
+                                                                                getBooleanValue(CssAttribute.CHECKED))
+                                                                        .append(CssAttribute.FOCUSABLE.toString(),
+                                                                                getBooleanValue(CssAttribute.FOCUSABLE))
+                                                                        .append(CssAttribute.FOCUSED.toString(),
+                                                                                getBooleanValue(CssAttribute.FOCUSED))
+                                                                        .append(CssAttribute.ENABLED.toString(),
+                                                                                getBooleanValue(CssAttribute.ENABLED))
+                                                                        .append(CssAttribute.RESOURCE_ID.toString(),
+                                                                                getStringValue(CssAttribute.RESOURCE_ID))
+                                                                        .toString();
     }
 }

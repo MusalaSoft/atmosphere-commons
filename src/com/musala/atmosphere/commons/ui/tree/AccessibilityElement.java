@@ -1,7 +1,11 @@
 package com.musala.atmosphere.commons.ui.tree;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import com.musala.atmosphere.commons.geometry.Bounds;
 import com.musala.atmosphere.commons.ui.UiElementPropertiesContainer;
+import com.musala.atmosphere.commons.ui.selector.CssAttribute;
 
 /**
  * Serializable wrapper around the <a
@@ -45,6 +49,8 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
     private boolean password;
 
     private Bounds bounds;
+
+    private String resourceId;
 
     private String path;
 
@@ -210,6 +216,11 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
         this.path = path;
     }
 
+    @Override
+    public String getResourceId() {
+        return resourceId;
+    }
+
     /**
      * Gets string representation of the path to this element.
      * 
@@ -217,5 +228,43 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
      */
     public String getPath() {
         return path;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append(CssAttribute.INDEX.toString(),
+                                                                                getIndex())
+                                                                        .append(CssAttribute.TEXT.toString(), getText())
+                                                                        .append(CssAttribute.CLASS_NAME.toString(),
+                                                                                getClassName())
+                                                                        .append(CssAttribute.PACKAGE_NAME.toString(),
+                                                                                getPackageName())
+                                                                        .append(CssAttribute.CONTENT_DESCRIPTION.toString(),
+                                                                                getContentDescriptor())
+                                                                        .append(CssAttribute.BOUNDS.toString(),
+                                                                                getBounds())
+                                                                        .append(CssAttribute.CLICKABLE.toString(),
+                                                                                isClickable())
+                                                                        .append(CssAttribute.SCROLLABLE.toString(),
+                                                                                isScrollable())
+                                                                        .append(CssAttribute.LONG_CLICKABLE.toString(),
+                                                                                isLongClickable())
+                                                                        .append(CssAttribute.SELECTED.toString(),
+                                                                                isSelected())
+                                                                        .append(CssAttribute.PASSWORD.toString(),
+                                                                                isPassword())
+                                                                        .append(CssAttribute.CHECKABLE.toString(),
+                                                                                isCheckable())
+                                                                        .append(CssAttribute.CHECKED.toString(),
+                                                                                isChecked())
+                                                                        .append(CssAttribute.FOCUSABLE.toString(),
+                                                                                isFocusable())
+                                                                        .append(CssAttribute.FOCUSED.toString(),
+                                                                                isFocused())
+                                                                        .append(CssAttribute.ENABLED.toString(),
+                                                                                isEnabled())
+                                                                        .append(CssAttribute.RESOURCE_ID.toString(),
+                                                                                getResourceId())
+                                                                        .toString();
     }
 }

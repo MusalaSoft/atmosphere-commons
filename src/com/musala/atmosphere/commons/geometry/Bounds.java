@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Class representing bounds as a upper left corner point, width and height.
@@ -253,5 +255,13 @@ public class Bounds implements Serializable {
     @Override
     public int hashCode() {
         return new HashCodeBuilder().append(upperLeftCorner).append(width).append(height).toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("Upper left corner", upperLeftCorner)
+                                                                          .append("width", width)
+                                                                          .append("height", height)
+                                                                          .toString();
     }
 }
