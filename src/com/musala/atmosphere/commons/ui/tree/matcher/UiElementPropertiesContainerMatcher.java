@@ -44,15 +44,16 @@ public class UiElementPropertiesContainerMatcher implements UiElementMatcher<UiE
             return false;
         }
 
+        String nodeContentDescription = nodeInformation.getContentDescription() != null ? nodeInformation.getContentDescription()
+                                                                                                         .toString()
+                : null;
         if (propertiesContainer.getContentDescriptor() != null
-                && nodeInformation.getContentDescription() != null
-                && !propertiesContainer.getContentDescriptor().equals(nodeInformation.getContentDescription()
-                                                                                     .toString())) {
+                && !propertiesContainer.getContentDescriptor().equals(nodeContentDescription)) {
             return false;
         }
 
-        if (propertiesContainer.getText() != null && nodeInformation.getText() != null
-                && !propertiesContainer.getText().equals(nodeInformation.getText().toString())) {
+        String nodeText = nodeInformation.getText() != null ? nodeInformation.getText().toString() : null;
+        if (propertiesContainer.getText() != null && !propertiesContainer.getText().equals(nodeText)) {
             return false;
         }
 

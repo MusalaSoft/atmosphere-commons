@@ -59,13 +59,15 @@ public class UiElementSelectorMatcher implements UiElementMatcher<UiElementSelec
             return false;
         }
 
-        if (selectorDescription != null && nodeInformation.getContentDescription() != null
-                && !selectorDescription.equals(nodeInformation.getContentDescription().toString())) {
+        String nodeContentDescription = nodeInformation.getContentDescription() != null ? nodeInformation.getContentDescription()
+                                                                                                         .toString()
+                : null;
+        if (selectorDescription != null && !selectorDescription.equals(nodeContentDescription)) {
             return false;
         }
 
-        if (selectorText != null && nodeInformation.getText() != null
-                && !selectorText.equals(nodeInformation.getText().toString())) {
+        String nodeText = nodeInformation.getText() != null ? nodeInformation.getText().toString() : null;
+        if (selectorText != null && !selectorText.equals(nodeText)) {
             return false;
         }
 
