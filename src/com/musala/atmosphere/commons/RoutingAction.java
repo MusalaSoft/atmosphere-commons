@@ -20,9 +20,9 @@ import com.musala.atmosphere.commons.util.Pair;
 
 /**
  * Enumerates all actions that can be invoked on a device wrapper instance in the agent component.
- * 
+ *
  * @author georgi.gaydarov
- * 
+ *
  */
 public enum RoutingAction implements Serializable {
     /**
@@ -320,13 +320,19 @@ public enum RoutingAction implements Serializable {
      * The last argument determines whether only visible elements in the UI hierarchy are traversed, if
      * <code>false</code> all elements are traversed.
      */
-    GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class));
+    GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class)),
+
+    /**
+     * Checks whether the given {@link AccessibilityElement} is present on the screen. Set the second argument to
+     * <code>true</code> if only visible nodes should be traversed, <code>false</code> otherwise.
+     */
+    CHECK_ELEMENT_PRESENCE(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(Boolean.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
     /**
      * Validates if the passed arguments are valid for the current command.
-     * 
+     *
      * @param args
      *        - the command arguments.
      */
