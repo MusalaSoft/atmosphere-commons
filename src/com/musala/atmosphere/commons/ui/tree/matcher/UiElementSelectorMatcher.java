@@ -19,6 +19,7 @@ public class UiElementSelectorMatcher implements UiElementMatcher<UiElementSelec
 
     @Override
     public boolean match(UiElementSelector selector, AccessibilityNodeInfo nodeInformation) {
+        // TODO Improve the logic for matching components
         Bounds selectorBounds = selector.getBoundsValue(CssAttribute.BOUNDS);
         String selectorClass = selector.getStringValue(CssAttribute.CLASS_NAME);
         String selectorPackage = selector.getStringValue(CssAttribute.PACKAGE_NAME);

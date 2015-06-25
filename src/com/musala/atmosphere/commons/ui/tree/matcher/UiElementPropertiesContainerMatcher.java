@@ -19,6 +19,7 @@ public class UiElementPropertiesContainerMatcher implements UiElementMatcher<UiE
 
     @Override
     public boolean match(UiElementPropertiesContainer propertiesContainer, AccessibilityNodeInfo nodeInformation) {
+        // TODO Improve the logic for matching components
         Rect accessibilityNodeBounds = new Rect();
         nodeInformation.getBoundsInScreen(accessibilityNodeBounds);
         Bounds propertiesContainerBounds = propertiesContainer.getBounds();
