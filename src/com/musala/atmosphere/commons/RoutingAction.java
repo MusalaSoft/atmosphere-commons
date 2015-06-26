@@ -10,6 +10,7 @@ import com.musala.atmosphere.commons.beans.DeviceProximity;
 import com.musala.atmosphere.commons.beans.MobileDataState;
 import com.musala.atmosphere.commons.beans.PhoneNumber;
 import com.musala.atmosphere.commons.beans.SwipeDirection;
+import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.gesture.Gesture;
 import com.musala.atmosphere.commons.ui.UiElementDescriptor;
 import com.musala.atmosphere.commons.util.AtmosphereIntent;
@@ -315,7 +316,11 @@ public enum RoutingAction implements Serializable {
     /**
      * Used to check the GPS location state of the device.
      */
-    IS_GPS_LOCATION_ENABLED;
+    IS_GPS_LOCATION_ENABLED,
+    /**
+     * Used to show the tap locations on the current device screen.
+     */
+    SHOW_TAP_LOCATION(new RoutingActionArgumentValidator(Point.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
