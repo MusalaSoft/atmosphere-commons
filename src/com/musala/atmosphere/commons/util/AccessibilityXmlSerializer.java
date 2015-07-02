@@ -1,5 +1,7 @@
 package com.musala.atmosphere.commons.util;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import com.musala.atmosphere.commons.geometry.Bounds;
 import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
@@ -94,10 +96,11 @@ public class AccessibilityXmlSerializer {
         xmlBuilder.startTag("node");
 
         xmlBuilder.addAttribute("index", Integer.toString(element.getIndex()));
-        xmlBuilder.addAttribute("text", safeCharSeqToString(element.getText()));
-        xmlBuilder.addAttribute("class", safeCharSeqToString(element.getClassName()));
-        xmlBuilder.addAttribute("package", safeCharSeqToString(element.getPackageName()));
-        xmlBuilder.addAttribute("content-desc", safeCharSeqToString(element.getContentDescriptor()));
+        xmlBuilder.addAttribute("text", StringEscapeUtils.escapeXml10(safeCharSeqToString(element.getText())));
+        xmlBuilder.addAttribute("class", StringEscapeUtils.escapeXml10(safeCharSeqToString(element.getClassName())));
+        xmlBuilder.addAttribute("package", StringEscapeUtils.escapeXml10(safeCharSeqToString(element.getPackageName())));
+        xmlBuilder.addAttribute("content-desc",
+                                StringEscapeUtils.escapeXml10(safeCharSeqToString(element.getContentDescriptor())));
         xmlBuilder.addAttribute("checkable", Boolean.toString(element.isCheckable()));
         xmlBuilder.addAttribute("checked", Boolean.toString(element.isChecked()));
         xmlBuilder.addAttribute("clickable", Boolean.toString(element.isClickable()));

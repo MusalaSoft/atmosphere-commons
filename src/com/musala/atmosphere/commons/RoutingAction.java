@@ -13,15 +13,17 @@ import com.musala.atmosphere.commons.beans.SwipeDirection;
 import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.gesture.Gesture;
 import com.musala.atmosphere.commons.ui.UiElementDescriptor;
+import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
+import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
 import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
 
 /**
  * Enumerates all actions that can be invoked on a device wrapper instance in the agent component.
- * 
+ *
  * @author georgi.gaydarov
- * 
+ *
  */
 public enum RoutingAction implements Serializable {
     /**
@@ -302,6 +304,10 @@ public enum RoutingAction implements Serializable {
      */
     GET_UI_TREE(new RoutingActionArgumentValidator(Boolean.class)),
     /**
+     * Gets all UI elements matching the given element selector.
+     */
+    GET_UI_ELEMENTS(new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class)),
+    /**
      * Starts recording actions executed on the device.
      */
     START_RECORDING,
@@ -320,13 +326,25 @@ public enum RoutingAction implements Serializable {
     /**
      * Used to show the tap locations on the current device screen.
      */
-    SHOW_TAP_LOCATION(new RoutingActionArgumentValidator(Point.class));
+    SHOW_TAP_LOCATION(new RoutingActionArgumentValidator(Point.class)),
+    /**
+     * Checks whether the given {@link AccessibilityElement} is present on the screen. Set the second argument to
+     * <code>true</code> if only visible nodes should be traversed, <code>false</code> otherwise.
+     */
+    CHECK_ELEMENT_PRESENCE(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(Boolean.class)),
+    /**
+     * Gets children of the given {@link AccessibilityElement} that are matching the given {@link UiElementSelector} if
+     * the third argument is
+     * <code>true<code> then only the direct children are returned otherwise all will be considered. Set the fourth argument to
+     * <code>true</code> if only visible nodes should be traversed, <code>false</code> otherwise.
+     */
+    GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
     /**
      * Validates if the passed arguments are valid for the current command.
-     * 
+     *
      * @param args
      *        - the command arguments.
      */

@@ -33,7 +33,7 @@ public interface UiElementPropertiesContainer extends Serializable {
 
     String getPackageName();
 
-    public String getContentDescriptor();
+    String getContentDescriptor();
 
     boolean isCheckable();
 
@@ -45,4 +45,5 @@ public interface UiElementPropertiesContainer extends Serializable {
 
     boolean isEnabled();
 
+    String getResourceId();
 }
