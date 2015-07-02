@@ -320,7 +320,11 @@ public enum RoutingAction implements Serializable {
     /**
      * Used to show the tap locations on the current device screen.
      */
-    SHOW_TAP_LOCATION(new RoutingActionArgumentValidator(Point.class));
+    SHOW_TAP_LOCATION(new RoutingActionArgumentValidator(Point.class)),
+    /**
+     * Clears the saved data of a given application.
+     */
+    CLEAR_APP_DATA(new RoutingActionArgumentValidator(String.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
