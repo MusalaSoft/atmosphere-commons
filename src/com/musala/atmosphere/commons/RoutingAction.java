@@ -338,7 +338,11 @@ public enum RoutingAction implements Serializable {
      * <code>true<code> then only the direct children are returned otherwise all will be considered. Set the fourth argument to
      * <code>true</code> if only visible nodes should be traversed, <code>false</code> otherwise.
      */
-    GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class));
+    GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class)),
+    /**
+     * Clears the saved data of a given application.
+     */
+    CLEAR_APP_DATA(new RoutingActionArgumentValidator(String.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
