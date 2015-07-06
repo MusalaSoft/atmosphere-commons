@@ -320,6 +320,10 @@ public enum RoutingAction implements Serializable {
      */
     OPEN_LOCATION_SETTINGS,
     /**
+     * Checks if there is an audio currently playing on the device.
+     */
+    IS_AUDIO_PLAYING,
+    /**
      * Used to check the GPS location state of the device.
      */
     IS_GPS_LOCATION_ENABLED,
