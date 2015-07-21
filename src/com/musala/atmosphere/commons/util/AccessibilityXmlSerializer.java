@@ -38,10 +38,12 @@ public class AccessibilityXmlSerializer {
     public static String serialize(Tree<AccessibilityElement> hierarchy) {
         AccessibilityXmlSerializer serializer = new AccessibilityXmlSerializer();
         serializer.startTag("hierarchy");
+
         // if the hierarchy starts to contain information about the rotation this should be changed
         serializer.addAttribute("rotation", "0");
         serialize(hierarchy.getRoot(), serializer);
         serializer.endTag("hierarchy");
+
         return serializer.xmlBuilder.toString();
     }
 
@@ -98,6 +100,8 @@ public class AccessibilityXmlSerializer {
         xmlBuilder.addAttribute("index", Integer.toString(element.getIndex()));
         xmlBuilder.addAttribute("text", StringEscapeUtils.escapeXml10(safeCharSeqToString(element.getText())));
         xmlBuilder.addAttribute("class", StringEscapeUtils.escapeXml10(safeCharSeqToString(element.getClassName())));
+        xmlBuilder.addAttribute("resource-id",
+                                StringEscapeUtils.escapeXml10(safeCharSeqToString(element.getResourceId())));
         xmlBuilder.addAttribute("package", StringEscapeUtils.escapeXml10(safeCharSeqToString(element.getPackageName())));
         xmlBuilder.addAttribute("content-desc",
                                 StringEscapeUtils.escapeXml10(safeCharSeqToString(element.getContentDescriptor())));

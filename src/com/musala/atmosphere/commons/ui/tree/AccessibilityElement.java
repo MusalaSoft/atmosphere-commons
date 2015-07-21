@@ -59,6 +59,10 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
         return index;
     }
 
+    public void setResourceId(String resourceId) {
+        this.resourceId = resourceId;
+    }
+
     public void setIndex(int index) {
         this.index = index;
     }

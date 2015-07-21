@@ -42,6 +42,16 @@ public class UiElementDescriptor implements Serializable {
 
     private Integer index;
 
+    private String resourceId;
+
+    public String getResourceId() {
+        return resourceId;
+    }
+
+    public void setResourceId(String resourceId) {
+        this.resourceId = resourceId;
+    }
+
     public Boolean isSelected() {
         return selected;
     }

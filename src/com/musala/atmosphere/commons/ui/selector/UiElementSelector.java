@@ -43,6 +43,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
      */
     public UiElementSelector(Map<String, String> nodeAttributeMap) throws IllegalArgumentException {
         this();
+
         for (Entry<String, String> nodeAttributeEntry : nodeAttributeMap.entrySet()) {
             boolean attributeFound = false;
             for (CssAttribute cssAttribute : CssAttribute.values()) {
