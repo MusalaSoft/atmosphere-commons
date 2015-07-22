@@ -18,9 +18,9 @@ import com.musala.atmosphere.commons.util.Pair;
 
 /**
  * Enumerates all actions that can be invoked on a device wrapper instance in the agent component.
- * 
+ *
  * @author georgi.gaydarov
- * 
+ *
  */
 public enum RoutingAction implements Serializable {
     /**
@@ -315,13 +315,17 @@ public enum RoutingAction implements Serializable {
     /**
      * Used to check the GPS location state of the device.
      */
-    IS_GPS_LOCATION_ENABLED;
+    IS_GPS_LOCATION_ENABLED,
+    /**
+     * Used to obtain the text of the last detected toast message.
+     */
+    GET_LAST_TOAST;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
     /**
      * Validates if the passed arguments are valid for the current command.
-     * 
+     *
      * @param args
      *        - the command arguments.
      */
