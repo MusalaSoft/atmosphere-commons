@@ -328,9 +328,13 @@ public enum RoutingAction implements Serializable {
      */
     IS_GPS_LOCATION_ENABLED,
     /**
+     * Used to obtain the text of the last detected toast message.
+     */
+    GET_LAST_TOAST,
+    /**
      * Used to show the tap locations on the current device screen.
      */
-    SHOW_TAP_LOCATION(new RoutingActionArgumentValidator(Point.class)),
+    SHOW_TAP_LOCATION(new RoutingActionArgumentValidator(Point.class))    
     /**
      * Checks whether the given {@link AccessibilityElement} is present on the screen. Set the second argument to
      * <code>true</code> if only visible nodes should be traversed, <code>false</code> otherwise.
