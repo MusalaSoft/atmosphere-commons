@@ -10,6 +10,7 @@ import com.musala.atmosphere.commons.beans.DeviceProximity;
 import com.musala.atmosphere.commons.beans.MobileDataState;
 import com.musala.atmosphere.commons.beans.PhoneNumber;
 import com.musala.atmosphere.commons.beans.SwipeDirection;
+import com.musala.atmosphere.commons.connectivity.WifiConnectionProperties;
 import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.gesture.Gesture;
 import com.musala.atmosphere.commons.ui.UiElementDescriptor;
@@ -350,7 +351,15 @@ public enum RoutingAction implements Serializable {
     /**
      * Clears the saved data of a given application.
      */
-    CLEAR_APP_DATA(new RoutingActionArgumentValidator(String.class));
+    CLEAR_APP_DATA(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Sends {@link WifiConnectionProperties data} for modifying WiFi connection properties.
+     */
+    SHAPE_DEVICE(new RoutingActionArgumentValidator(WifiConnectionProperties.class)),
+    /**
+     * Restores WiFi connection properties for the device.
+     */
+    UNSHAPE_DEVICE;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
