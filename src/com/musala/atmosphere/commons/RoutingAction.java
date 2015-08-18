@@ -3,6 +3,8 @@ package com.musala.atmosphere.commons;
 import java.io.Serializable;
 import java.util.List;
 
+import android.webkit.WebView;
+
 import com.musala.atmosphere.commons.beans.DeviceAcceleration;
 import com.musala.atmosphere.commons.beans.DeviceMagneticField;
 import com.musala.atmosphere.commons.beans.DeviceOrientation;
@@ -347,6 +349,11 @@ public enum RoutingAction implements Serializable {
      * <code>true</code> if only visible nodes should be traversed, <code>false</code> otherwise.
      */
     GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class)),
+    /**
+     * Gets the {@link WebView} present on the active screen. The string represent the package of the application that
+     * is currently tested.
+     */
+    GET_WEB_VIEW(new RoutingActionArgumentValidator(String.class)),
     /**
      * Clears the saved data of a given application.
      */
