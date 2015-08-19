@@ -21,6 +21,7 @@ import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
 import com.musala.atmosphere.commons.webelement.actions.WebElementActions;
+import com.musala.atmosphere.commons.webelement.selection.WebElementSelectionCriterion;
 
 /**
  * Enumerates all actions that can be invoked on a device wrapper instance in the agent component.
@@ -362,7 +363,17 @@ public enum RoutingAction implements Serializable {
     /**
      * Performs an action on a web element.
      */
-    WEB_ELEMENT_ACTION(new RoutingActionArgumentValidator(WebElementActions.class));
+    WEB_ELEMENT_ACTION(new RoutingActionArgumentValidator(WebElementActions.class)),
+    /**
+     * Finds a web element by the given {@link WebElementSelectionCriterion selection criterion} and the value provided
+     * for this criterion as a second argument.
+     */
+    FIND_WEB_ELEMENT(new RoutingActionArgumentValidator(WebElementSelectionCriterion.class), new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Finds a list of web elements by the given {@link WebElementSelectionCriterion selection criterion} and the value
+     * provided for this criterion as a second argument.
+     */
+    FIND_WEB_ELEMENTS(new RoutingActionArgumentValidator(WebElementSelectionCriterion.class), new RoutingActionArgumentValidator(String.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 

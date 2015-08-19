@@ -1,4 +1,4 @@
-package com.musala.atmosphere.commons.ui.selector;
+package com.musala.atmosphere.commons.webelement.selection;
 
 /**
  * Enum containing the attributes by which a {@link WebElement} can be selected.
