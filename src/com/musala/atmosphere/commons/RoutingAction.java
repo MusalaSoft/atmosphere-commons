@@ -20,6 +20,7 @@ import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
 import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
+import com.musala.atmosphere.commons.webelement.actions.WebElementActions;
 
 /**
  * Enumerates all actions that can be invoked on a device wrapper instance in the agent component.
@@ -357,7 +358,11 @@ public enum RoutingAction implements Serializable {
     /**
      * Clears the saved data of a given application.
      */
-    CLEAR_APP_DATA(new RoutingActionArgumentValidator(String.class));
+    CLEAR_APP_DATA(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Performs an action on a web element.
+     */
+    WEB_ELEMENT_ACTION(new RoutingActionArgumentValidator(WebElementActions.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
