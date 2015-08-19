@@ -21,22 +21,24 @@ public class WifiConfigurationPropertiesBuilder {
     public WifiConfigurationPropertiesBuilder() {
         this.upLink = new WifiConfiguration();
         this.downLink = new WifiConfiguration();
+        this.downLink.setRate(1);
     }
 
     /**
-     * Set the upper bound of the bandwidth in Kbps.
+     * Sets the connection rate from predefined connection types {@link WifiConnectionQuality}.
      *
-     * @param rate
-     *        - represents the bandwidth in Kbps
+     * @param connectionQuality
+     *        - enum for the predefined connection properties
      * @return this instance
      */
-    public WifiConfigurationPropertiesBuilder rateMax(int rate) {
-        this.upLink.setRate(rate);
+    public WifiConfigurationPropertiesBuilder quality(WifiConnectionQuality connectionQuality) {
+        this.downLink.setRate(connectionQuality.getLowerRate());
+        this.upLink.setRate(connectionQuality.getUpperRate());
         return this;
     }
 
     /**
-     * Sets the lower bound of the bandwidth in Kbps.
+     * Set the lower bound of the bandwidth in kbps.
      *
      * @param rate
      *        - represents the bandwidth in Kbps
@@ -48,29 +50,14 @@ public class WifiConfigurationPropertiesBuilder {
     }
 
     /**
-     * Sets the range of the bandwidth in Kbps.
+     * Set the upper bound of the bandwidth in Kbps.
      *
-     * @param upperRate
-     *        - upper bound of the bandwidth in Kbps
-     * @param lowerRate
-     *        - lower bound of the bandwidth in Kbps
+     * @param rate
+     *        - represents the bandwidth in Kbps
      * @return this instance
      */
-    public WifiConfigurationPropertiesBuilder rate(int upperRate, int lowerRate) {
-        this.upLink.setRate(upperRate);
-        this.downLink.setRate(lowerRate);
-        return this;
-    }
-
-    /**
-     * Sets the upper bound of the latency in ms.
-     *
-     * @param latency
-     *        - upper bound of the latency in ms
-     * @return this instance
-     */
-    public WifiConfigurationPropertiesBuilder latencyMax(int latency) {
-        this.upLink.setLatency(latency);
+    public WifiConfigurationPropertiesBuilder rateMax(int rate) {
+        this.upLink.setRate(rate);
         return this;
     }
 
@@ -87,17 +74,26 @@ public class WifiConfigurationPropertiesBuilder {
     }
 
     /**
-     * Sets the range for the latency.
+     * Sets the upper bound of the latency in ms.
      *
-     * @param upperLatency
+     * @param latency
      *        - upper bound of the latency in ms
-     * @param lowerLatency
-     *        - lower bound of the latency in ms
      * @return this instance
      */
-    public WifiConfigurationPropertiesBuilder latency(int upperLatency, int lowerLatency) {
-        this.upLink.setLatency(upperLatency);
-        this.downLink.setLatency(lowerLatency);
+    public WifiConfigurationPropertiesBuilder latencyMax(int latency) {
+        this.upLink.setLatency(latency);
+        return this;
+    }
+
+    /**
+     * Sets the lower bound for package loss.
+     *
+     * @param loss
+     *        - lower bound for package loss in percents.
+     * @return this instance
+     */
+    public WifiConfigurationPropertiesBuilder lossMin(int loss) {
+        this.downLink.setLoss(loss);
         return this;
     }
 
@@ -110,33 +106,6 @@ public class WifiConfigurationPropertiesBuilder {
      */
     public WifiConfigurationPropertiesBuilder lossMax(int loss) {
         this.upLink.setLoss(loss);
-        return this;
-    }
-
-    /**
-     * Sets the lower bound for package loss.
-     *
-     * @param loss
-     *        - lower bound for package loss in percents
-     * @return this instance
-     */
-    public WifiConfigurationPropertiesBuilder lossMin(int loss) {
-        this.downLink.setLoss(loss);
-        return this;
-    }
-
-    /**
-     * Sets the range for package loss.
-     *
-     * @param upperLoss
-     *        - upper bound for package loss in percents.
-     * @param lowerLoss
-     *        - lower bound for package loss in percents
-     * @return this instance
-     */
-    public WifiConfigurationPropertiesBuilder loss(int upperLoss, int lowerLoss) {
-        this.upLink.setLoss(upperLoss);
-        this.downLink.setLoss(lowerLoss);
         return this;
     }
 
