@@ -6,7 +6,7 @@ package com.musala.atmosphere.commons.webelement.actions;
  * @author yavor.stankov
  *
  */
-public enum WebElementActions {
+public enum WebElementAction {
     /** Performs a tap action on a web element selected by given criteria. */
     TAP,
     /** Gets the position of a web element selected by given criteria. */
@@ -14,5 +14,11 @@ public enum WebElementActions {
     /** Gets the size of a web element selected by given criteria. */
     GET_SIZE,
     /** Gets the values of the attributes of a web element. */
-    GET_ATTRIBUTES;
+    GET_ATTRIBUTES,
+    /** Checks if the current {@link UiWebElement} is selected. */
+    IS_SELECTED,
+    /** Checks if the current {@link UiWebElement} is displayed. */
+    IS_DISPLAYED,
+    /** Gets the value of the given CSS property of the current {@link UiWebElement}. */
+    GET_CSS_PROPERTY;
 }
