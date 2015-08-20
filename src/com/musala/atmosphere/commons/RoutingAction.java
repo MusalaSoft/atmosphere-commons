@@ -373,7 +373,11 @@ public enum RoutingAction implements Serializable {
      * Finds a list of web elements by the given {@link WebElementSelectionCriterion selection criterion} and the value
      * provided for this criterion as a second argument.
      */
-    FIND_WEB_ELEMENTS(new RoutingActionArgumentValidator(WebElementSelectionCriterion.class), new RoutingActionArgumentValidator(String.class));
+    FIND_WEB_ELEMENTS(new RoutingActionArgumentValidator(WebElementSelectionCriterion.class), new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Closes the instance of the Chrome driver that is currently in use.
+     */
+    CLOSE_CHROME_DRIVER;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
