@@ -20,5 +20,9 @@ public enum WebElementAction {
     /** Checks if the current {@link UiWebElement} is displayed. */
     IS_DISPLAYED,
     /** Gets the value of the given CSS property of the current {@link UiWebElement}. */
-    GET_CSS_PROPERTY;
+    GET_CSS_PROPERTY,
+    /** Gets the tag name of the current {@link UiWebElement}. */
+    GET_TAG_NAME,
+    /** Gets the text value of the current {@link UiWebElement}. */
+    GET_TEXT;
 }

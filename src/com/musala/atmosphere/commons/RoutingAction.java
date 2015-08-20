@@ -3,8 +3,6 @@ package com.musala.atmosphere.commons;
 import java.io.Serializable;
 import java.util.List;
 
-import android.webkit.WebView;
-
 import com.musala.atmosphere.commons.beans.DeviceAcceleration;
 import com.musala.atmosphere.commons.beans.DeviceMagneticField;
 import com.musala.atmosphere.commons.beans.DeviceOrientation;
@@ -20,7 +18,7 @@ import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
 import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
-import com.musala.atmosphere.commons.webelement.actions.WebElementActions;
+import com.musala.atmosphere.commons.webelement.actions.WebElementAction;
 import com.musala.atmosphere.commons.webelement.selection.WebElementSelectionCriterion;
 
 /**
@@ -352,8 +350,8 @@ public enum RoutingAction implements Serializable {
      */
     GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class)),
     /**
-     * Gets the {@link WebView} present on the active screen. The string represent the package of the application that
-     * is currently tested.
+     * Gets the WebView present on the active screen. The string represent the package of the application that is
+     * currently tested.
      */
     GET_WEB_VIEW(new RoutingActionArgumentValidator(String.class)),
     /**
@@ -363,7 +361,7 @@ public enum RoutingAction implements Serializable {
     /**
      * Performs an action on a web element.
      */
-    WEB_ELEMENT_ACTION(new RoutingActionArgumentValidator(WebElementActions.class)),
+    WEB_ELEMENT_ACTION(new RoutingActionArgumentValidator(WebElementAction.class), new RoutingActionArgumentValidator(WebElementSelectionCriterion.class), new RoutingActionArgumentValidator(String.class)),
     /**
      * Finds a web element by the given {@link WebElementSelectionCriterion selection criterion} and the value provided
      * for this criterion as a second argument.
