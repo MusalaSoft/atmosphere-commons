@@ -24,5 +24,7 @@ public enum WebElementAction {
     /** Gets the tag name of the current {@link UiWebElement}. */
     GET_TAG_NAME,
     /** Gets the text value of the current {@link UiWebElement}. */
-    GET_TEXT;
+    GET_TEXT,
+    /** Focuses a web element selected by given criteria. */
+    FOCUS;
 }
