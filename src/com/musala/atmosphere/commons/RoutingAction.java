@@ -18,7 +18,8 @@ import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
 import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
-import com.musala.atmosphere.commons.webelement.actions.WebElementAction;
+import com.musala.atmosphere.commons.webelement.action.WebElementAction;
+import com.musala.atmosphere.commons.webelement.action.WebElementWaitCondition;
 import com.musala.atmosphere.commons.webelement.selection.WebElementSelectionCriterion;
 
 /**
@@ -379,7 +380,11 @@ public enum RoutingAction implements Serializable {
     /**
      * Gets the value of a given CSS property.
      */
-    GET_CSS_VALUE(new RoutingActionArgumentValidator(WebElementSelectionCriterion.class), new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class));
+    GET_CSS_VALUE(new RoutingActionArgumentValidator(WebElementSelectionCriterion.class), new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Waits for web element to meet a given condition.
+     */
+    WAIT_FOR_WEB_ELEMENT(new RoutingActionArgumentValidator(WebElementSelectionCriterion.class), new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(WebElementWaitCondition.class), new RoutingActionArgumentValidator(Integer.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 

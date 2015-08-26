@@ -1,4 +1,4 @@
-package com.musala.atmosphere.commons.webelement.actions;
+package com.musala.atmosphere.commons.webelement.action;
 
 /**
  * Enum containing the actions that can be executed on a {@link WebElement}.
