@@ -26,5 +26,8 @@ public enum WebElementAction {
     /** Gets the text value of the current {@link UiWebElement}. */
     GET_TEXT,
     /** Focuses a web element selected by given criteria. */
-    FOCUS;
+    FOCUS,
+    /** Submits the selected form. */
+    SUBMIT_FORM;
+
 }
