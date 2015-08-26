@@ -375,7 +375,11 @@ public enum RoutingAction implements Serializable {
     /**
      * Closes the instance of the Chrome driver that is currently in use.
      */
-    CLOSE_CHROME_DRIVER;
+    CLOSE_CHROME_DRIVER,
+    /**
+     * Gets the value of a given CSS property.
+     */
+    GET_CSS_VALUE(new RoutingActionArgumentValidator(WebElementSelectionCriterion.class), new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
