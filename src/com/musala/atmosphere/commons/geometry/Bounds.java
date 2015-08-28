@@ -9,9 +9,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Class representing bounds as a upper left corner point, width and height.
- * 
+ *
  * @author yordan.petrov
- * 
+ *
  */
 public class Bounds implements Serializable {
     private static final long serialVersionUID = 2767880624236204841L;
@@ -24,7 +24,7 @@ public class Bounds implements Serializable {
 
     /**
      * Creates new Bounds instance given upper left corner, width and height.
-     * 
+     *
      * @param upperLeftCorner
      *        - the upper left corner of the bounds
      * @param width
@@ -40,7 +40,7 @@ public class Bounds implements Serializable {
 
     /**
      * Creates new Bounds instance given upper left and lower right corners.
-     * 
+     *
      * @param upperLeftCorner
      *        - the upper left corner of the bounds
      * @param lowerRightCorner
@@ -57,7 +57,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets upper left corner.
-     * 
+     *
      * @return the upper left corner of the bounds
      */
     public Point getUpperLeftCorner() {
@@ -66,7 +66,7 @@ public class Bounds implements Serializable {
 
     /**
      * Sets upper left corner.
-     * 
+     *
      * @param upperLeftCorner
      *        - the upper left corner of the bounds
      */
@@ -76,7 +76,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets upper right corner.
-     * 
+     *
      * @return the upper right corner of the bounds
      */
     public Point getUpperRightCorner() {
@@ -88,7 +88,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets lower left corner.
-     * 
+     *
      * @return the lower left corner of the bounds
      */
     public Point getLowerLeftCorner() {
@@ -100,7 +100,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets lower right corner.
-     * 
+     *
      * @return the lower right corner of the bounds
      */
     public Point getLowerRightCorner() {
@@ -112,7 +112,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets bounds width.
-     * 
+     *
      * @return the width of the bounds
      */
     public int getWidth() {
@@ -121,7 +121,7 @@ public class Bounds implements Serializable {
 
     /**
      * Sets bounds width.
-     * 
+     *
      * @param width
      *        - the width of the bounds
      */
@@ -131,7 +131,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets bounds height.
-     * 
+     *
      * @return the height of the bounds
      */
     public int getHeight() {
@@ -140,7 +140,7 @@ public class Bounds implements Serializable {
 
     /**
      * Sets bounds height.
-     * 
+     *
      * @param height
      *        - the height of the bounds
      */
@@ -150,7 +150,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets bounds center.
-     * 
+     *
      * @return the center point of the bounds
      */
     public Point getCenter() {
@@ -162,7 +162,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets bounds diagonal length.
-     * 
+     *
      * @return the diagonal length of the bounds
      */
     public double getDiagonalLength() {
@@ -173,7 +173,7 @@ public class Bounds implements Serializable {
 
     /**
      * Check if a {@link Point} is inside the bounds.
-     * 
+     *
      * @param point
      *        - a {@link Point} that needs to be contained in the bounds
      * @return true if the bounds contain the point, false otherwise
@@ -188,7 +188,7 @@ public class Bounds implements Serializable {
 
     /**
      * Check if certain {@link Bounds} parameter is inside the bounds.
-     * 
+     *
      * @param bounds
      *        - a {@link Bounds} parameter that needs to be contained in the bounds
      * @return true if the bounds contain the bounds parameter, false otherwise
@@ -206,7 +206,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets the given point equivalent relative to the bounds upper left corner.
-     * 
+     *
      * @param point
      *        - a {@link Point} for which to get the point equivalent relative to the bounds upper left corner
      * @return the point equivalent relative to the bounds upper left corner
@@ -221,7 +221,7 @@ public class Bounds implements Serializable {
 
     /**
      * Gets the given bounds equivalent relative to the bounds upper left corner;
-     * 
+     *
      * @param bounds
      *        - {@link Bounds} for which to get the relative bounds to the bounds upper left corner
      * @return the bounds equivalent relative to the bounds upper left corner

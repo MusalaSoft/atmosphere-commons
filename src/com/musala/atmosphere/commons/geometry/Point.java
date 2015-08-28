@@ -7,9 +7,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Represent the coordinates of a point in a 2D space.
- * 
+ *
  * @author yordan.petrov
- * 
+ *
  */
 public class Point implements Serializable {
     private static final long serialVersionUID = 1745863697892220078L;
@@ -34,7 +34,7 @@ public class Point implements Serializable {
 
     /**
      * Create point by specified X and Y coordinates.
-     * 
+     *
      * @param x
      *        - value of the X coordinate.
      * @param y
@@ -47,7 +47,7 @@ public class Point implements Serializable {
 
     /**
      * Creates Point object by given Point object. Sets the X and Y values to be equal to the parameter's.
-     * 
+     *
      * @param point
      *        - a {@link Point} needed for the constructor
      */
@@ -57,7 +57,7 @@ public class Point implements Serializable {
 
     /**
      * Gets the X coordinate of the point.
-     * 
+     *
      * @return - the X coordinate of the point.
      */
     public int getX() {
@@ -66,7 +66,7 @@ public class Point implements Serializable {
 
     /**
      * Sets the X coordinate of the point.
-     * 
+     *
      * @param x
      *        - new value for the X coordinate.
      */
@@ -76,7 +76,7 @@ public class Point implements Serializable {
 
     /**
      * Gets the value of the Y coordinate.
-     * 
+     *
      * @return - the value of the Y coordinate.
      */
     public int getY() {
@@ -85,7 +85,7 @@ public class Point implements Serializable {
 
     /**
      * Sets the Y coordinate of the point.
-     * 
+     *
      * @param y
      *        - new value for the Y coordinate.
      */
@@ -95,7 +95,7 @@ public class Point implements Serializable {
 
     /**
      * Sets the location of the X and Y coordinates.
-     * 
+     *
      * @param x
      *        - value of the X coordinate.
      * @param y
@@ -108,7 +108,7 @@ public class Point implements Serializable {
 
     /**
      * Sets the location of the Point object.
-     * 
+     *
      * @param point
      *        - new location for the point.
      */
@@ -118,7 +118,7 @@ public class Point implements Serializable {
 
     /**
      * Returns the 2D distance to a set of given coordinates x and y.
-     * 
+     *
      * @param toX
      *        - value of the X coordinate to which we find the distance
      * @param toY
@@ -134,7 +134,7 @@ public class Point implements Serializable {
 
     /**
      * Returns the 2D distance to another point.
-     * 
+     *
      * @param toPoint
      *        - point to calculate distance to.
      * @return the 2D distance to another point.
@@ -145,7 +145,7 @@ public class Point implements Serializable {
 
     /**
      * Calculates the coordinates of a vector with start point A and end point B.
-     * 
+     *
      * @param pointA
      *        - start point of the vector.
      * @param pointB
@@ -161,7 +161,7 @@ public class Point implements Serializable {
 
     /**
      * Checks if the Point represents a zero vector.
-     * 
+     *
      * @return true if the Point represents a zero vector, false otherwise
      */
     public boolean isZeroVector() {
@@ -170,7 +170,7 @@ public class Point implements Serializable {
 
     /**
      * Adds the given vector to the current one.
-     * 
+     *
      * @param aVector
      *        - vector added to the current one.
      */
@@ -181,7 +181,7 @@ public class Point implements Serializable {
 
     /**
      * Subtracts the given vector from the current one.
-     * 
+     *
      * @param aVector
      *        - vector subtracted from the current one.
      */
