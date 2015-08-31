@@ -1,5 +1,6 @@
-package com.musala.atmosphere.commons.webelement.selection;
+package com.musala.atmosphere.commons.webelement.exception;
 
+import com.musala.atmosphere.commons.webelement.selection.WebElementSelectionCriterion;
 
 /**
  * Thrown when a web element can not be found for a given {@link WebElementSelectionCriterion selection criterion}.
