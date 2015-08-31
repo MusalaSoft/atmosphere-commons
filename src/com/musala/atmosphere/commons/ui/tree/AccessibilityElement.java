@@ -8,15 +8,21 @@ import com.musala.atmosphere.commons.ui.UiElementPropertiesContainer;
 import com.musala.atmosphere.commons.ui.selector.CssAttribute;
 
 /**
- * Serializable wrapper around the <a
- * href="http://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html"
- * >AccessibilityNodeInfo</a>'s UI attributes.
- * 
+ * Serializable wrapper around the
+ * <a href="http://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html" >
+ * AccessibilityNodeInfo</a>'s UI attributes.
+ *
  * @author yordan.petrov
- * 
+ *
  */
 public class AccessibilityElement implements UiElementPropertiesContainer {
     private static final long serialVersionUID = -3060768747010930125L;
+
+    /**
+     * The separator used to separate the indexes in the element path obtained by {@link AccessibilityElement#getPath()}
+     * .
+     */
+    public static final String PATH_SEPARATOR = ", ";
 
     private int index;
 
@@ -212,7 +218,7 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
 
     /**
      * Sets the string representation of the path to this element.
-     * 
+     *
      * @param path
      *        - string representation of the path to this element
      */
@@ -227,7 +233,7 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
 
     /**
      * Gets string representation of the path to this element.
-     * 
+     *
      * @return string representation of the path to this element
      */
     public String getPath() {
@@ -236,7 +242,8 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append(CssAttribute.INDEX.toString(),
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                                                                        .append(CssAttribute.INDEX.toString(),
                                                                                 getIndex())
                                                                         .append(CssAttribute.TEXT.toString(), getText())
                                                                         .append(CssAttribute.CLASS_NAME.toString(),
