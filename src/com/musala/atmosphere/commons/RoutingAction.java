@@ -19,6 +19,8 @@ import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
 import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
+import com.musala.atmosphere.commons.webelement.action.WebElementAction;
+import com.musala.atmosphere.commons.webelement.action.WebElementWaitCondition;
 
 /**
  * Enumerates all actions that can be invoked on a device wrapper instance in the agent component.
@@ -46,7 +48,8 @@ public enum RoutingAction implements Serializable {
      * Invokes the method behind waiting for a window update event to occur for a given package. Requires a
      * <code>String</code> package name and a <code>int</code> timeout value.
      */
-    WAIT_FOR_WINDOW_UPDATE(new RoutingActionArgumentValidator(String.class, true), new RoutingActionArgumentValidator(Integer.class)),
+    WAIT_FOR_WINDOW_UPDATE(new RoutingActionArgumentValidator(String.class,
+                                                              true), new RoutingActionArgumentValidator(Integer.class)),
     /**
      * Invokes the device free RAM amount getting method, which returns a {@link Long} instance (memory in Mb).
      */
@@ -163,7 +166,7 @@ public enum RoutingAction implements Serializable {
     /**
      * Invokes the method that gets the device acceleration. The acceleration sensor on the device must be active.
      * Returns a {@link DeviceAcceleration} data container instance.
-     * */
+     */
     GET_DEVICE_ACCELERATION,
     /**
      * Invokes the method that gets the device proximity. The proximity sensor on the device must be active. Returns a
@@ -349,9 +352,38 @@ public enum RoutingAction implements Serializable {
      */
     GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class)),
     /**
+     * Gets the WebView present on the active screen. The string represent the package of the application that is
+     * currently tested.
+     */
+    GET_WEB_VIEW(new RoutingActionArgumentValidator(String.class)),
+    /**
      * Clears the saved data of a given application.
      */
     CLEAR_APP_DATA(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Performs an action on a web element.
+     */
+    WEB_ELEMENT_ACTION(new RoutingActionArgumentValidator(WebElementAction.class), new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Finds a web element by the xpath query given as an argument.
+     */
+    FIND_WEB_ELEMENT(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Finds a list of web elements by the xpath query given as an argument..
+     */
+    FIND_WEB_ELEMENTS(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Closes the instance of the Chrome driver that is currently in use.
+     */
+    CLOSE_CHROME_DRIVER,
+    /**
+     * Gets the value of a given CSS property.
+     */
+    GET_CSS_VALUE(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Waits for web element to meet a given condition.
+     */
+    WAIT_FOR_WEB_ELEMENT(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(WebElementWaitCondition.class), new RoutingActionArgumentValidator(Integer.class)),
     /**
      * Sends {@link WifiConnectionProperties data} for modifying WiFi connection properties.
      */
