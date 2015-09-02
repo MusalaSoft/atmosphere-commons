@@ -1,19 +1,19 @@
 package com.musala.atmosphere.commons.ui.tree.matcher;
 
-import android.view.accessibility.AccessibilityNodeInfo;
-
 import com.musala.atmosphere.commons.ui.selector.CssAttribute;
 import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
 
+import android.view.accessibility.AccessibilityNodeInfo;
+
 /**
- * Extends {@link UiElementSelectorMatcher} match function by adding ResourceId field to the matching dependencies, that
- * is added after Android API Level 18.
- * 
+ * Concrete {@link UiElementMatcher matcher} that extends {@link UiElementSelectorMatcherCompat} match function by
+ * adding ResourceId field to the matching dependencies, that is added after <b>Android API Level 18</b>.<br/>
+ * For API 17 use {@link UiElementSelectorMatcherCompat}.
+ *
  * @author denis.bialev
  *
  */
-public class UiElementSelectorCompatMatcher extends UiElementSelectorMatcher {
-
+public class UiElementSelectorMatcherImpl extends UiElementSelectorMatcherCompat {
     @Override
     public boolean match(UiElementSelector selector, AccessibilityNodeInfo nodeInformation) {
         String selectorResourceId = selector.getStringValue(CssAttribute.RESOURCE_ID);

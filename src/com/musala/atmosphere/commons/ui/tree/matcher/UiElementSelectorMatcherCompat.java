@@ -1,22 +1,23 @@
 package com.musala.atmosphere.commons.ui.tree.matcher;
 
-import android.graphics.Rect;
-import android.view.accessibility.AccessibilityNodeInfo;
-
 import com.musala.atmosphere.commons.geometry.Bounds;
 import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.ui.selector.CssAttribute;
 import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
 
+import android.graphics.Rect;
+import android.view.accessibility.AccessibilityNodeInfo;
+
 /**
  * Concrete {@link UiElementMatcher matcher} that determines whether a match between {@link AccessibilityNodeInfo
- * accessibility node information} and {@link UiElementSelector UI element selector} exists.
- * 
+ * accessibility node information} and {@link UiElementSelector UI element selector} exists.</br>
+ * <b>Note:</b> This implementation is intended <b>only for API 17</b>. For API 18 and above use
+ * {@link UiElementSelectorMatcherImpl}.
+ *
  * @author filareta.yordanova
- * 
+ *
  */
-public class UiElementSelectorMatcher implements UiElementMatcher<UiElementSelector> {
-
+public class UiElementSelectorMatcherCompat implements UiElementMatcher<UiElementSelector> {
     @Override
     public boolean match(UiElementSelector selector, AccessibilityNodeInfo nodeInformation) {
         // TODO Improve the logic for matching components
@@ -42,8 +43,7 @@ public class UiElementSelectorMatcher implements UiElementMatcher<UiElementSelec
         if (selectorBounds != null) {
             Point selectorBoundsUpperCorner = selectorBounds.getUpperLeftCorner();
 
-            if ((nodeBounds.height() != selectorBounds.getHeight())
-                    || (nodeBounds.width() != selectorBounds.getWidth())
+            if ((nodeBounds.height() != selectorBounds.getHeight()) || (nodeBounds.width() != selectorBounds.getWidth())
                     || (selectorBoundsUpperCorner.getX() != nodeBounds.left)
                     || (selectorBoundsUpperCorner.getY() != nodeBounds.top)) {
                 return false;
@@ -60,9 +60,8 @@ public class UiElementSelectorMatcher implements UiElementMatcher<UiElementSelec
             return false;
         }
 
-        String nodeContentDescription = nodeInformation.getContentDescription() != null ? nodeInformation.getContentDescription()
-                                                                                                         .toString()
-                : null;
+        String nodeContentDescription = nodeInformation.getContentDescription() != null
+                ? nodeInformation.getContentDescription().toString() : null;
         if (selectorDescription != null && !selectorDescription.equals(nodeContentDescription)) {
             return false;
         }

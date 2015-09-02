@@ -1,22 +1,22 @@
 package com.musala.atmosphere.commons.ui.tree.matcher;
 
-import android.graphics.Rect;
-import android.view.accessibility.AccessibilityNodeInfo;
-
 import com.musala.atmosphere.commons.geometry.Bounds;
 import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.ui.UiElementPropertiesContainer;
 
+import android.graphics.Rect;
+import android.view.accessibility.AccessibilityNodeInfo;
+
 /**
  * Concrete {@link UiElementMatcher matcher} that determines whether a match between {@link AccessibilityNodeInfo
  * accessibility node information} and element from type {@link UiElementPropertiesContainer
- * UiElementPropertiesContainer} exists.
- * 
+ * UiElementPropertiesContainer} exists.<br/>
+ * <b>Note:</b> intended <b>only for API 17</b>. For API 18 use {@link UiElementPropertiesContainerMatcherImpl}.
+ *
  * @author filareta.yordanova
  *
  */
-public class UiElementPropertiesContainerMatcher implements UiElementMatcher<UiElementPropertiesContainer> {
-
+public class UiElementPropertiesContainerMatcherCompat implements UiElementMatcher<UiElementPropertiesContainer> {
     @Override
     public boolean match(UiElementPropertiesContainer propertiesContainer, AccessibilityNodeInfo nodeInformation) {
         // TODO Improve the logic for matching components
@@ -45,9 +45,8 @@ public class UiElementPropertiesContainerMatcher implements UiElementMatcher<UiE
             return false;
         }
 
-        String nodeContentDescription = nodeInformation.getContentDescription() != null ? nodeInformation.getContentDescription()
-                                                                                                         .toString()
-                : null;
+        String nodeContentDescription = nodeInformation.getContentDescription() != null
+                ? nodeInformation.getContentDescription().toString() : null;
         if (propertiesContainer.getContentDescriptor() != null
                 && !propertiesContainer.getContentDescriptor().equals(nodeContentDescription)) {
             return false;
