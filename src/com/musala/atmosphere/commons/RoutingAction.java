@@ -46,7 +46,8 @@ public enum RoutingAction implements Serializable {
      * Invokes the method behind waiting for a window update event to occur for a given package. Requires a
      * <code>String</code> package name and a <code>int</code> timeout value.
      */
-    WAIT_FOR_WINDOW_UPDATE(new RoutingActionArgumentValidator(String.class, true), new RoutingActionArgumentValidator(Integer.class)),
+    WAIT_FOR_WINDOW_UPDATE(new RoutingActionArgumentValidator(String.class,
+                                                              true), new RoutingActionArgumentValidator(Integer.class)),
     /**
      * Invokes the device free RAM amount getting method, which returns a {@link Long} instance (memory in Mb).
      */
@@ -163,7 +164,7 @@ public enum RoutingAction implements Serializable {
     /**
      * Invokes the method that gets the device acceleration. The acceleration sensor on the device must be active.
      * Returns a {@link DeviceAcceleration} data container instance.
-     * */
+     */
     GET_DEVICE_ACCELERATION,
     /**
      * Invokes the method that gets the device proximity. The proximity sensor on the device must be active. Returns a
@@ -359,7 +360,13 @@ public enum RoutingAction implements Serializable {
     /**
      * Restores WiFi connection properties for the device.
      */
-    UNSHAPE_DEVICE;
+    UNSHAPE_DEVICE,
+    /**
+     * Sends request for executing XPath queries when searching elements on the screen. The first argument is the XPath
+     * query to be executed. The second argument denotes whether only visible nodes should be matched and the last one
+     * is an optional {@link AccessibilityElement local root} from the screen hierarchy.
+     */
+    EXECUTE_XPATH_QUERY(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(AccessibilityElement.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
