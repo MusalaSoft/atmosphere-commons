@@ -391,7 +391,11 @@ public enum RoutingAction implements Serializable {
     /**
      * Restores WiFi connection properties for the device.
      */
-    UNSHAPE_DEVICE;
+    UNSHAPE_DEVICE,
+    /**
+     * Shows the available disk space for the device.
+     */
+    SHOW_AVAILABLE_DISK_SPACE;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
