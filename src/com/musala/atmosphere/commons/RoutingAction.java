@@ -393,9 +393,9 @@ public enum RoutingAction implements Serializable {
      */
     UNSHAPE_DEVICE,
     /**
-     * Shows the available disk space for the device.
+     * Gets the available disk space for the device.
      */
-    SHOW_AVAILABLE_DISK_SPACE;
+    GET_AVAILABLE_DISK_SPACE;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
