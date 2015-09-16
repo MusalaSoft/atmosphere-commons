@@ -363,10 +363,16 @@ public enum RoutingAction implements Serializable {
     UNSHAPE_DEVICE,
     /**
      * Sends request for executing XPath queries when searching elements on the screen. The first argument is the XPath
-     * query to be executed. The second argument denotes whether only visible nodes should be matched and the last one
-     * is an optional {@link AccessibilityElement local root} from the screen hierarchy.
+     * query to be executed. The second argument denotes whether only visible nodes should be matched from the screen
+     * hierarchy.
      */
-    EXECUTE_XPATH_QUERY(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(AccessibilityElement.class));
+    EXECUTE_XPATH_QUERY(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(Boolean.class)),
+    /**
+     * Sends request for executing XPath queries when searching elements on the screen. The first argument is the XPath
+     * query to be executed. The second argument denotes whether only visible nodes should be matched and the last one
+     * is {@link AccessibilityElement local root} from the screen hierarchy.
+     */
+    EXECUTE_XPATH_QUERY_ON_LOCAL_ROOT(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(AccessibilityElement.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
