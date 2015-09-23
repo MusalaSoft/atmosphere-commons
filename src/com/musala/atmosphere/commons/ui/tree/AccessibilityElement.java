@@ -24,7 +24,7 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
      */
     public static final String PATH_SEPARATOR = ", ";
 
-    private int index;
+    private Integer index;
 
     private String className;
 
@@ -34,25 +34,25 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
 
     private String text;
 
-    private boolean checkable;
+    private Boolean checkable;
 
-    private boolean checked;
+    private Boolean checked;
 
-    private boolean focusable;
+    private Boolean focusable;
 
-    private boolean focused;
+    private Boolean focused;
 
-    private boolean enabled;
+    private Boolean enabled;
 
-    private boolean clickable;
+    private Boolean clickable;
 
-    private boolean scrollable;
+    private Boolean scrollable;
 
-    private boolean longClickable;
+    private Boolean longClickable;
 
-    private boolean selected;
+    private Boolean selected;
 
-    private boolean password;
+    private Boolean password;
 
     private Bounds bounds;
 
@@ -61,7 +61,7 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
     private String path;
 
     @Override
-    public int getIndex() {
+    public Integer getIndex() {
         return index;
     }
 
@@ -69,7 +69,7 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
         this.resourceId = resourceId;
     }
 
-    public void setIndex(int index) {
+    public void setIndex(Integer index) {
         this.index = index;
     }
 
@@ -83,47 +83,47 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
     }
 
     @Override
-    public boolean isClickable() {
+    public Boolean isClickable() {
         return clickable;
     }
 
-    public void setClickable(boolean clickable) {
+    public void setClickable(Boolean clickable) {
         this.clickable = clickable;
     }
 
     @Override
-    public boolean isScrollable() {
+    public Boolean isScrollable() {
         return scrollable;
     }
 
-    public void setScrollable(boolean scrollable) {
+    public void setScrollable(Boolean scrollable) {
         this.scrollable = scrollable;
     }
 
     @Override
-    public boolean isLongClickable() {
+    public Boolean isLongClickable() {
         return longClickable;
     }
 
-    public void setLongClickable(boolean longClickable) {
+    public void setLongClickable(Boolean longClickable) {
         this.longClickable = longClickable;
     }
 
     @Override
-    public boolean isSelected() {
+    public Boolean isSelected() {
         return selected;
     }
 
-    public void setSelected(boolean selected) {
+    public void setSelected(Boolean selected) {
         this.selected = selected;
     }
 
     @Override
-    public boolean isPassword() {
+    public Boolean isPassword() {
         return password;
     }
 
-    public void setPassword(boolean password) {
+    public void setPassword(Boolean password) {
         this.password = password;
     }
 
@@ -136,11 +136,11 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
         this.bounds = bounds;
     }
 
-    public void setCheckable(boolean checkable) {
+    public void setCheckable(Boolean checkable) {
         this.checkable = checkable;
     }
 
-    public void setChecked(boolean checked) {
+    public void setChecked(Boolean checked) {
         this.checked = checked;
     }
 
@@ -172,47 +172,47 @@ public class AccessibilityElement implements UiElementPropertiesContainer {
     }
 
     @Override
-    public boolean isCheckable() {
+    public Boolean isCheckable() {
         return checkable;
     }
 
-    public void setChechkable(boolean checkable) {
+    public void setChechkable(Boolean checkable) {
         this.checkable = checkable;
     }
 
     @Override
-    public boolean isChecked() {
+    public Boolean isChecked() {
         return checked;
     }
 
-    public void setChechked(boolean checked) {
+    public void setChechked(Boolean checked) {
         this.checked = checked;
     }
 
     @Override
-    public boolean isFocusable() {
+    public Boolean isFocusable() {
         return focusable;
     }
 
-    public void setFocusable(boolean focusable) {
+    public void setFocusable(Boolean focusable) {
         this.focusable = focusable;
     }
 
     @Override
-    public boolean isFocused() {
+    public Boolean isFocused() {
         return focused;
     }
 
-    public void setFocused(boolean focused) {
+    public void setFocused(Boolean focused) {
         this.focused = focused;
     }
 
     @Override
-    public boolean isEnabled() {
+    public Boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 

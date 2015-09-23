@@ -14,6 +14,7 @@ import com.musala.atmosphere.commons.connectivity.WifiConnectionProperties;
 import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.gesture.Gesture;
 import com.musala.atmosphere.commons.ui.UiElementDescriptor;
+import com.musala.atmosphere.commons.ui.UiElementPropertiesContainer;
 import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
 import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
 import com.musala.atmosphere.commons.util.AtmosphereIntent;
@@ -28,20 +29,20 @@ import com.musala.atmosphere.commons.util.Pair;
  */
 public enum RoutingAction implements Serializable {
     /**
-     * Invokes the method behind UI element field clearing. Requires a {@link UiElementDescriptor} instance (the element
-     * descriptor for the element that should be cleared) as a parameter.
+     * Invokes the method behind UI element field clearing. Requires a {@link UiElementPropertiesContainer} instance
+     * (the element properties container for the element that should be cleared) as a parameter.
      */
-    CLEAR_FIELD(new RoutingActionArgumentValidator(UiElementDescriptor.class)),
+    CLEAR_FIELD(new RoutingActionArgumentValidator(UiElementPropertiesContainer.class)),
     /**
-     * Invokes the method behind UI element wait for existence. Requires a {@link UiElementDescriptor} instance (the
-     * element descriptor for the element that should exist after given time) as a parameter.
+     * Invokes the method behind UI element wait for existence. Requires a {@link UiElementPropertiesContainer} instance
+     * (the properties for the element that should exist after given time) as a parameter.
      */
-    WAIT_FOR_EXISTS(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Integer.class)),
+    WAIT_FOR_EXISTS(new RoutingActionArgumentValidator(UiElementPropertiesContainer.class), new RoutingActionArgumentValidator(Integer.class)),
     /**
-     * Invokes the method behind UI element wait until gone. Requires a {@link UiElementDescriptor} instance (the
-     * element descriptor for the element that should exist after given time) as a parameter.
+     * Invokes the method behind UI element wait until gone. Requires a {@link UiElementPropertiesContainer} instance
+     * (the element properties for the element that should exist after given time) as a parameter.
      */
-    WAIT_UNTIL_GONE(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Integer.class)),
+    WAIT_UNTIL_GONE(new RoutingActionArgumentValidator(UiElementPropertiesContainer.class), new RoutingActionArgumentValidator(Integer.class)),
     /**
      * Invokes the method behind waiting for a window update event to occur for a given package. Requires a
      * <code>String</code> package name and a <code>int</code> timeout value.
@@ -233,11 +234,11 @@ public enum RoutingAction implements Serializable {
      */
     STOP_BACKGROUND_PROCESS(new RoutingActionArgumentValidator(String.class)),
     /**
-     * Routes scrolling in some direction to the ATMOSPHERE Service. Requires {@link UiElementDescriptor} instance (the
-     * UI element that would be scrolled), maximum swipes and steps to execute and a boolean to determine whether the
-     * view is with vertical orientation or not.
+     * Routes scrolling in some direction to the ATMOSPHERE Service. Requires {@link UiElementPropertiesContainer}
+     * instance (the UI element that would be scrolled), maximum swipes and steps to execute and a boolean to determine
+     * whether the view is with vertical orientation or not.
      */
-    SCROLL_TO_DIRECTION(new RoutingActionArgumentValidator(ScrollDirection.class), new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Boolean.class)),
+    SCROLL_TO_DIRECTION(new RoutingActionArgumentValidator(ScrollDirection.class), new RoutingActionArgumentValidator(UiElementPropertiesContainer.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Boolean.class)),
     /**
      * Invokes the method behind UI device open notification bar.
      */

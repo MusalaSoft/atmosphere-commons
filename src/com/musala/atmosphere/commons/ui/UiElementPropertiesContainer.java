@@ -5,27 +5,27 @@ import java.io.Serializable;
 import com.musala.atmosphere.commons.geometry.Bounds;
 
 /**
- * Defines {@link Serializable} wrapper around the <a
- * href="http://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html"
- * >AccessibilityNodeInfo</a>'s UI attributes.
+ * Defines {@link Serializable} wrapper around the
+ * <a href="http://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html" >
+ * AccessibilityNodeInfo</a>'s UI attributes.
  * 
  * @author vassil.angelov
  *
  */
 public interface UiElementPropertiesContainer extends Serializable {
-    int getIndex();
+    Integer getIndex();
 
     String getText();
 
-    boolean isClickable();
+    Boolean isClickable();
 
-    boolean isScrollable();
+    Boolean isScrollable();
 
-    boolean isLongClickable();
+    Boolean isLongClickable();
 
-    boolean isSelected();
+    Boolean isSelected();
 
-    boolean isPassword();
+    Boolean isPassword();
 
     Bounds getBounds();
 
@@ -35,15 +35,15 @@ public interface UiElementPropertiesContainer extends Serializable {
 
     String getContentDescriptor();
 
-    boolean isCheckable();
+    Boolean isCheckable();
 
-    boolean isChecked();
+    Boolean isChecked();
 
-    boolean isFocusable();
+    Boolean isFocusable();
 
-    boolean isFocused();
+    Boolean isFocused();
 
-    boolean isEnabled();
+    Boolean isEnabled();
 
     String getResourceId();
 }
