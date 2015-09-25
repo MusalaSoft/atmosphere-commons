@@ -97,6 +97,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
             LOGGER.error(message);
             throw new IllegalArgumentException(message);
         }
+
         if (!shouldSkipAttribute(attribute, value)) {
             attributeProjectionMap.put(attribute, new Pair<Object, UiElementSelectionOption>(value, selectionOption));
         }
@@ -198,7 +199,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
 
     private boolean shouldSkipAttribute(CssAttribute attribute, Object value) {
         // Apparently empty strings cause crashes
-        return attribute.getAttributeType().equals(String.class) && ((String) value).isEmpty();
+        return attribute.getAttributeType().equals(String.class) && (value != null) && ((String) value).isEmpty();
     }
 
     private Object getGenericValue(CssAttribute attribute, Class<?> clazz) {
@@ -251,7 +252,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     }
 
     @Override
-    public int getIndex() {
+    public Integer getIndex() {
         return getIntegerValue(CssAttribute.INDEX);
     }
 
@@ -261,27 +262,27 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     }
 
     @Override
-    public boolean isClickable() {
+    public Boolean isClickable() {
         return getBooleanValue(CssAttribute.CLICKABLE);
     }
 
     @Override
-    public boolean isScrollable() {
+    public Boolean isScrollable() {
         return getBooleanValue(CssAttribute.SCROLLABLE);
     }
 
     @Override
-    public boolean isLongClickable() {
+    public Boolean isLongClickable() {
         return getBooleanValue(CssAttribute.LONG_CLICKABLE);
     }
 
     @Override
-    public boolean isSelected() {
+    public Boolean isSelected() {
         return getBooleanValue(CssAttribute.SELECTED);
     }
 
     @Override
-    public boolean isPassword() {
+    public Boolean isPassword() {
         return getBooleanValue(CssAttribute.PASSWORD);
     }
 
@@ -306,27 +307,27 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     }
 
     @Override
-    public boolean isCheckable() {
+    public Boolean isCheckable() {
         return getBooleanValue(CssAttribute.CHECKABLE);
     }
 
     @Override
-    public boolean isChecked() {
+    public Boolean isChecked() {
         return getBooleanValue(CssAttribute.CHECKED);
     }
 
     @Override
-    public boolean isFocusable() {
+    public Boolean isFocusable() {
         return getBooleanValue(CssAttribute.FOCUSED);
     }
 
     @Override
-    public boolean isFocused() {
+    public Boolean isFocused() {
         return getBooleanValue(CssAttribute.FOCUSED);
     }
 
     @Override
-    public boolean isEnabled() {
+    public Boolean isEnabled() {
         return getBooleanValue(CssAttribute.ENABLED);
     }
 
@@ -337,7 +338,8 @@ public class UiElementSelector implements UiElementPropertiesContainer {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append(CssAttribute.INDEX.toString(),
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                                                                        .append(CssAttribute.INDEX.toString(),
                                                                                 getIntegerValue(CssAttribute.INDEX))
                                                                         .append(CssAttribute.TEXT.toString(),
                                                                                 getStringValue(CssAttribute.TEXT))
