@@ -13,7 +13,6 @@ import com.musala.atmosphere.commons.beans.SwipeDirection;
 import com.musala.atmosphere.commons.connectivity.WifiConnectionProperties;
 import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.gesture.Gesture;
-import com.musala.atmosphere.commons.ui.UiElementDescriptor;
 import com.musala.atmosphere.commons.ui.UiElementPropertiesContainer;
 import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
 import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
@@ -209,7 +208,7 @@ public enum RoutingAction implements Serializable {
      * descriptor for the element that should be swiped) and {@link SwipeDirection} enum member (the swipe direction) as
      * parameters.
      */
-    ELEMENT_SWIPE(new RoutingActionArgumentValidator(UiElementDescriptor.class), new RoutingActionArgumentValidator(SwipeDirection.class)),
+    ELEMENT_SWIPE(new RoutingActionArgumentValidator(UiElementPropertiesContainer.class), new RoutingActionArgumentValidator(SwipeDirection.class)),
     /**
      * Invokes the method that starts an application in the service. Requires a {@link String} package name as a
      * parameter. Returns a <code>boolean</code> indicator of the operation success.
