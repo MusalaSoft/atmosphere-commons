@@ -407,7 +407,11 @@ public enum RoutingAction implements Serializable {
     /**
      * Gets the available disk space for the device.
      */
-    GET_AVAILABLE_DISK_SPACE;
+    GET_AVAILABLE_DISK_SPACE,
+    /**
+     * Gives access to the device logcat.
+     */
+    GET_DEVICE_LOGCAT;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
