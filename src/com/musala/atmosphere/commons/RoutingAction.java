@@ -409,9 +409,9 @@ public enum RoutingAction implements Serializable {
      */
     GET_AVAILABLE_DISK_SPACE,
     /**
-     * Gives access to the device logcat.
+     * Gives access to the device LogCat. Accepts filter, applied when retrieving the log, as an argument.
      */
-    GET_DEVICE_LOGCAT;
+    GET_DEVICE_LOGCAT(new RoutingActionArgumentValidator(String.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
