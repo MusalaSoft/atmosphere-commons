@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+version = '0.0.1'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Atmosphere Commons',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    compile 'log4j:log4j:1.2.17'
+    compile 'commons-cli:commons-cli:1.2'
+    compile 'org.apache.commons:commons-lang3:3.3.2'
+    compile 'android:android:4.4.2_r4'
+
+    testCompile 'junit:junit:4.12'
+}
+
+sourceSets {
+    main.java.srcDir 'src'
+    test.java.srcDir 'test'
+}
+
+
+publishing {
+    publications {
+        atmosphereCommons(MavenPublication) {
+            groupId 'com.musala.atmosphere'
+            artifactId 'atmosphere-commons'
+            version version
+
+            from components.java
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.bootClasspath = bootClasspath
+}
+
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Test.class"
+}
