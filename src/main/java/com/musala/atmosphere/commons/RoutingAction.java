@@ -349,6 +349,10 @@ public enum RoutingAction implements Serializable {
      */
     GET_LAST_TOAST,
     /**
+     * Used to press a device hardware button with the specified ID.
+     */
+    PRESS_HARDWARE_BUTTON(new RoutingActionArgumentValidator(Integer.class)),
+    /**
      * Used to show the tap locations on the current device screen.
      */
     SHOW_TAP_LOCATION(new RoutingActionArgumentValidator(Point.class)),
