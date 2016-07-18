@@ -492,7 +492,37 @@ public enum RoutingAction implements Serializable {
     /**
      * Used to paste the text currently in the clipboard into a TextView.
      */
-    IME_PASTE_TEXT;
+    IME_PASTE_TEXT,
+    /**
+     * Invokes the method that executes a tap on the coordinates provided as a {@link Point}.
+     */
+    GESTURE_TAP(new RoutingActionArgumentValidator(Point.class)),
+    /**
+     * Invokes the method that executes a long press on the coordinates provided as a {@link Point}
+     * for the specified interval in milliseconds.
+     */
+    GESTURE_LONG_PRESS(new RoutingActionArgumentValidator(Point.class), new RoutingActionArgumentValidator(Integer.class)),
+    /**
+     * Invokes the method that executes a double tap on the coordinates provided as a {@link Point}.
+     */
+    GESTURE_DOUBLE_TAP(new RoutingActionArgumentValidator(Point.class)),
+    /**
+     * Invokes the method that executes a pinch in on the coordinates provided as {@link Point Points}.
+     */
+    GESTURE_PINCH_IN(new RoutingActionArgumentValidator(Point.class), new RoutingActionArgumentValidator(Point.class)),
+    /**
+     * Invokes the method that executes a pinch out on the coordinates provided as {@link Point Points}.
+     */
+    GESTURE_PINCH_OUT(new RoutingActionArgumentValidator(Point.class), new RoutingActionArgumentValidator(Point.class)),
+    /**
+     * Invokes the method that executes a swipe on the coordinates provided as a {@link Point}
+     * in the specified direction.
+     */
+    GESTURE_SWIPE(new RoutingActionArgumentValidator(Point.class), new RoutingActionArgumentValidator(SwipeDirection.class)),
+    /**
+     * Invokes the method that executes a drag between the coordinates provided as {@link Point Points}.
+     */
+    GESTURE_DRAG(new RoutingActionArgumentValidator(Point.class), new RoutingActionArgumentValidator(Point.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
