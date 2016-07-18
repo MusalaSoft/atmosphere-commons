@@ -468,7 +468,31 @@ public enum RoutingAction implements Serializable {
     /**
      * Gets all web view window handlers that present on the current screen.
      */
-    GET_WEB_VIEWS;
+    GET_WEB_VIEWS,
+    /**
+     * Sends the text that needs to be input and the interval in which it should be input.
+     */
+    IME_INPUT_TEXT(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(Long.class)),
+    /**
+     * Used to clear the text from a TextView.
+     */
+    IME_CLEAR_TEXT,
+    /**
+     * Used to select the whole text in a TextView.
+     */
+    IME_SELECT_ALL_TEXT,
+    /**
+     * Used to copy the text from a TextView.
+     */
+    IME_COPY_TEXT,
+    /**
+     * Used to cut the text from a TextView.
+     */
+    IME_CUT_TEXT,
+    /**
+     * Used to paste the text currently in the clipboard into a TextView.
+     */
+    IME_PASTE_TEXT;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
