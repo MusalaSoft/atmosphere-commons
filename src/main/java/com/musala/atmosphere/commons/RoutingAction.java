@@ -522,7 +522,39 @@ public enum RoutingAction implements Serializable {
     /**
      * Invokes the method that executes a drag between the coordinates provided as {@link Point Points}.
      */
-    GESTURE_DRAG(new RoutingActionArgumentValidator(Point.class), new RoutingActionArgumentValidator(Point.class));
+    GESTURE_DRAG(new RoutingActionArgumentValidator(Point.class), new RoutingActionArgumentValidator(Point.class)),
+    /**
+     * Gets a {@link ScreenOrientation} instance that contains information about the orientation of the screen.
+     */
+    GET_SCREEN_ORIENTATION,
+    /**
+     * Sets a new screen orientation for this device.
+     */
+    SET_SCREEN_ORIENTATION(new RoutingActionArgumentValidator(ScreenOrientation.class)),
+    /**
+     * Gets the auto rotation state of the device.
+     */
+    IS_AUTO_ROTATION_ON,
+    /**
+     * Sets the auto rotation state of the device.
+     */
+    SET_SCREEN_AUTO_ROTATION(new RoutingActionArgumentValidator(Boolean.class)),
+    /**
+     * Gets the airplane mode state of the device.
+     */
+    GET_AIRPLANE_MODE,
+    /**
+     * Sets the airplane mode state of the device.
+     */
+    SET_AIRPLANE_MODE(new RoutingActionArgumentValidator(Boolean.class)),
+    /**
+     * Gets the timeout in the system settings, after which the screen is turned off.
+     */
+    GET_SCREEN_OFF_TIMEOUT,
+    /**
+     * Sets the timeout in the system settings, after which the screen is turned off.
+     */
+    SET_SCREEN_OFF_TIMEOUT(new RoutingActionArgumentValidator(Long.class));
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
