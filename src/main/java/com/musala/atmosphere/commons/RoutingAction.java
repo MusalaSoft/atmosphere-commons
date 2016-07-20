@@ -345,6 +345,14 @@ public enum RoutingAction implements Serializable {
      */
     IS_GPS_LOCATION_ENABLED,
     /**
+     * Used to enable the GPS Location of the device.
+     */
+    ENABLE_GPS_LOCATION,
+    /**
+     * Used to disable the GPS Location of the device.
+     */
+    DISABLE_GPS_LOCATION,
+    /**
      * Used to obtain the text of the last detected toast message.
      */
     GET_LAST_TOAST,
