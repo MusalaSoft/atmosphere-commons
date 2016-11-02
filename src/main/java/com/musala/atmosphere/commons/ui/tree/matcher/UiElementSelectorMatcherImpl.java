@@ -7,7 +7,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 
 /**
  * Concrete {@link UiElementMatcher matcher} that extends {@link UiElementSelectorMatcherCompat} match function by
- * adding ResourceId field to the matching dependencies, that is added after <b>Android API Level 18</b>.<br/>
+ * adding ResourceId field to the matching dependencies, that is added after <b>Android API Level 18</b>.<br>
  * For API 17 use {@link UiElementSelectorMatcherCompat}.
  *
  * @author denis.bialev

@@ -60,8 +60,8 @@ public enum RoutingAction implements Serializable {
      */
     EXECUTE_SHELL_COMMAND(new RoutingActionArgumentValidator(String.class)),
     /**
-     * Invokes the method behind sequential shell command execution (passed as a {@link List<String>}, which returns a
-     * {@link List<String> instance (command execution results).
+     * Invokes the method behind sequential shell command execution (passed as a {@link List}, which returns a
+     * {@link List} instance (command execution results).
      */
     EXECUTE_SHELL_COMMAND_SEQUENCE(new RoutingActionArgumentValidator(List.class)),
     /**
@@ -140,7 +140,7 @@ public enum RoutingAction implements Serializable {
      */
     SET_ORIENTATION(new RoutingActionArgumentValidator(DeviceOrientation.class)),
     /**
-     * Invokes the method that sets the device maximum upload/download speed. Requires a {@link Pair<Integer, Integer>}
+     * Invokes the method that sets the device maximum upload/download speed. Requires a {@link Pair}
      * instance (the new upload/download speeds) as a parameter.
      */
     SET_NETWORK_SPEED(new RoutingActionArgumentValidator(Pair.class)),
@@ -204,7 +204,7 @@ public enum RoutingAction implements Serializable {
      */
     SMS_RECEIVE(new RoutingActionArgumentValidator(SmsMessage.class)),
     /**
-     * Invokes the method behind UI element swiping. Requires a {@link UiElementDescriptor} instance (the element
+     * Invokes the method behind UI element swiping. Requires a {@link UiElementPropertiesContainer} instance (the element
      * descriptor for the element that should be swiped) and {@link SwipeDirection} enum member (the swipe direction) as
      * parameters.
      */
@@ -347,7 +347,7 @@ public enum RoutingAction implements Serializable {
     /**
      * Gets children of the given {@link AccessibilityElement} that are matching the given {@link UiElementSelector} if
      * the third argument is
-     * <code>true<code> then only the direct children are returned otherwise all will be considered. Set the fourth argument to
+     * <code>true</code> then only the direct children are returned otherwise all will be considered. Set the fourth argument to
      * <code>true</code> if only visible nodes should be traversed, <code>false</code> otherwise.
      */
     GET_CHILDREN(new RoutingActionArgumentValidator(AccessibilityElement.class), new RoutingActionArgumentValidator(UiElementSelector.class), new RoutingActionArgumentValidator(Boolean.class), new RoutingActionArgumentValidator(Boolean.class)),

@@ -1,8 +1,8 @@
 package com.musala.atmosphere.commons.exceptions;
 
 /**
- * Thrown when a method that attempts to fetch a {@link UiElement UiElement} does not succeed for some reason like the
- * wanted {@link UiElement UiElement} does not exist on the current screen, the given xPath or Css are invalid.
+ * Thrown when a method that attempts to fetch a UiElement does not succeed for some reason,
+ * for example it does not exist on the current screen or the given xPath or Css are invalid.
  * 
  * @author georgi.gaydarov
  * 

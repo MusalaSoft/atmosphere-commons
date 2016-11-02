@@ -10,7 +10,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 
 /**
  * Concrete {@link UiElementMatcher matcher} that determines whether a match between {@link AccessibilityNodeInfo
- * accessibility node information} and {@link UiElementSelector UI element selector} exists.</br>
+ * accessibility node information} and {@link UiElementSelector UI element selector} exists.<br>
  * <b>Note:</b> This implementation is intended <b>only for API 17</b>. For API 18 and above use
  * {@link UiElementSelectorMatcherImpl}.
  *

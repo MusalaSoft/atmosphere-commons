@@ -11,7 +11,7 @@ import com.musala.atmosphere.commons.util.telephony.SimState;
 
 /**
  * Provides access to information about the telephony services on the device. Applications can use the methods in this
- * class to determine telephony services and states, as well as to access some types of subscriber information.<br />
+ * class to determine telephony services and states, as well as to access some types of subscriber information.<br>
  * <i>This class is basically a wrapper of the Android's TelephonyManager class.</i>
  * 
  * @author yordan.petrov
@@ -77,9 +77,10 @@ public class TelephonyInformation implements Serializable {
     }
 
     /**
-     * 
+     * Sets the type of activity on a data connection (cellular).
      * 
      * @param dataActivity
+     *        - the {@link DataActivity} to be set.
      */
     public void setDataActivity(DataActivity dataActivity) {
         this.dataActivity = dataActivity;

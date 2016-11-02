@@ -57,7 +57,7 @@ public class PowerProperties implements Serializable {
      * <i>On real devices, the battery state will only remain the set value for limited time, until Android
      * BatteryManager updates the battery information.</i>
      * 
-     * @param batteryState
+     * @param state
      *        - new {@link BatteryState} to be set (or {@link PowerProperties#LEAVE_BATTERY_STATE_UNCHANGED}).
      * @return this instance.
      */
@@ -82,7 +82,7 @@ public class PowerProperties implements Serializable {
      * <i>On real devices, the battery level will only remain the set value for limited time, until Android
      * BatteryManager updates the battery information.</i>
      * 
-     * @param batteryLevel
+     * @param level
      *        - new battery level in percent to be set (or {@link PowerProperties#LEAVE_BATTERY_LEVEL_UNCHANGED}).
      * @return this instance.
      */

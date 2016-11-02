@@ -49,7 +49,7 @@ public class PathBuilder<T extends Hierarchical> {
     private Representer<T> representer;
 
     /**
-     * Creates a new {@link PathBuilder} with a default {@link Presenter presenter} (using {@link Object#toString()} )
+     * Creates a new {@link PathBuilder} with a default {@link Representer representer} (using {@link Object#toString()} )
      * {@link #DEFAULT_DELIMITER default delimiter}
      */
     public PathBuilder() {
@@ -57,7 +57,7 @@ public class PathBuilder<T extends Hierarchical> {
     }
 
     /**
-     * Creates a new {@link PathBuilder} with the given {@link Presenter presenter} and a {@link #DEFAULT_DELIMITER
+     * Creates a new {@link PathBuilder} with the given {@link Representer representer} and a {@link #DEFAULT_DELIMITER
      * default delimiter}
      * 
      * @param representer
@@ -69,7 +69,7 @@ public class PathBuilder<T extends Hierarchical> {
     }
 
     /**
-     * Creates a new {@link PathBuilder} with the given {@link Presenter presenter} and delimiter. If some of the
+     * Creates a new {@link PathBuilder} with the given {@link Representer representer} and delimiter. If some of the
      * arguments are null, the corresponding default value is used.
      * 
      * @param representer

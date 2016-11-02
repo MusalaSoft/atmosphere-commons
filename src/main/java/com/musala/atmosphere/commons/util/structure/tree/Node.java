@@ -115,7 +115,7 @@ public class Node<T extends Serializable> implements Serializable, Hierarchical 
     }
 
     /**
-     * Removes the child {@link Node node} with the given index.</br> <b>NOTE:</b> The indexes of the next {@link Node
+     * Removes the child {@link Node node} with the given index.<br> <b>NOTE:</b> The indexes of the next {@link Node
      * nodes} will be shifted left.
      * 
      * @param index

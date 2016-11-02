@@ -64,7 +64,7 @@ public class CommandLineArgument {
      * Gets the default value of this {@link CommandLineArgument Command Line Argument}.
      * 
      * @return the default value of this {@link CommandLineArgument Command Line Argument}.
-     * @throws NoDefaultValuePresentException
+     * @throws NoDefaultValuePresentException if there is no default value.
      */
     public Object getDefaultValue() throws NoDefaultValuePresentException {
         if (hasDefaultValue()) {

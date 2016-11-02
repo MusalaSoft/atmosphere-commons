@@ -28,7 +28,7 @@ public abstract class AbstractCliOptionsBuilder {
      * 
      * @param iOption
      *        - {@link IOption} object that will be used to build the {@link Option CLI Option}
-     * @return a {@link Option CLI Option} built from the passed {@link AgentOption}
+     * @return a {@link Option CLI Option} built from the passed AgentOption
      */
     @SuppressWarnings("static-access")
     protected Option buildOption(IOption iOption) {

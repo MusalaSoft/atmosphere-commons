@@ -11,7 +11,9 @@ import java.util.Collection;
 public interface Hierarchical {
     /**
      * Retrieve the {@link Hierarchical} parent element of this {@link Hierarchical} element.
-     * 
+     *
+     * @param <T>
+     *        - the element to retrieve the parent element of
      * @return - the parent {@link Hierarchical} element
      */
     <T extends Hierarchical> T getParent();
@@ -19,6 +21,8 @@ public interface Hierarchical {
     /**
      * Retrieve the {@link Hierarchical} child elements of this {@link Hierarchical} element.
      * 
+     * @param <T>
+     *        - the element to retrieve the child elements of
      * @return - the list of the {@link Hierarchical} child elements
      */
     <T extends Hierarchical> Collection<T> getChildren();

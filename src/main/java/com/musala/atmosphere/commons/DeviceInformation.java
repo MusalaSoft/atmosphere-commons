@@ -205,8 +205,8 @@ public class DeviceInformation implements Serializable {
     /**
      * Sets device's Android API level in this DeviceInformation.
      * 
-     * @param os
-     *        - operating system to set.
+     * @param apiLevel
+     *        - the API level of the operating system to set.
      */
     public void setApiLevel(int apiLevel) {
         this.apiLevel = apiLevel;

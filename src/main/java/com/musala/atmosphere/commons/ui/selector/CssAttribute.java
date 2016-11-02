@@ -59,6 +59,11 @@ public enum CssAttribute {
 
     /**
      * Checks if the given value is appropriate for the given ui attribute value.
+     *
+     * @param object
+     *        - the object to be checked
+     *
+     * @return <code>true</code> if the value is appropriate, <code>false</code> otherwise
      */
     public boolean isObjectOfAppropriateType(Object object) {
         return object == null || attributeType.isInstance(object);

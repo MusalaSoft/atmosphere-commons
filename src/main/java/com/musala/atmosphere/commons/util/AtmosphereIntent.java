@@ -62,7 +62,6 @@ public class AtmosphereIntent implements Serializable {
      * 
      * @param category
      *        - the category to add
-     * @return the same AtmosphereIntent, for chaining multiple calls
      * @see Intent#addCategory(String)
      */
     public void addCategory(String category) {

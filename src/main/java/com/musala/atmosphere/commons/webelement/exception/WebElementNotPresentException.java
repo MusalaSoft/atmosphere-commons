@@ -34,7 +34,7 @@ public class WebElementNotPresentException extends RuntimeException {
      * 
      * @param message
      *        - message representing the error that occurred
-     * @param throwable
+     * @param cause
      *        - the cause for the exception
      */
     public WebElementNotPresentException(String message, Throwable cause) {

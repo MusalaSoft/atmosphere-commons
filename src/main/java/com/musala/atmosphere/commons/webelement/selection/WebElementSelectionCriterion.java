@@ -1,7 +1,7 @@
 package com.musala.atmosphere.commons.webelement.selection;
 
 /**
- * Enum containing the attributes by which a {@link WebElement} can be selected.
+ * Enum containing the attributes by which a WebElement can be selected.
  * 
  * @author denis.bialev
  *

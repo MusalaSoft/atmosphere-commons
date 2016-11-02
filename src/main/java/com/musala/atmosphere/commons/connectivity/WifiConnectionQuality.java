@@ -1,10 +1,10 @@
 package com.musala.atmosphere.commons.connectivity;
 
 /**
- * Holds different connection qualities. {@link WifiConnectionQuality.POOR} will set the rate in the range 100-140 kbps,
- * {@link WifiConnectionQuality.MODERATE} will set the rate in the range 320-360 kbps,
- * {@link WifiConnectionQuality.GOOD} will set the rate in the range 1000-1040 kbps,
- * {@link WifiConnectionQuality.EXCELLENT} will set the rate in the range 2200-2240 kbps.
+ * Holds different connection qualities. {@link WifiConnectionQuality#POOR} will set the rate in the range 100-140 kbps,
+ * {@link WifiConnectionQuality#MODERATE} will set the rate in the range 320-360 kbps,
+ * {@link WifiConnectionQuality#GOOD} will set the rate in the range 1000-1040 kbps,
+ * {@link WifiConnectionQuality#EXCELLENT} will set the rate in the range 2200-2240 kbps.
  * 
  * @author konstantin.ivanov
  *

@@ -32,7 +32,7 @@ public class AtmosphereConfigurationException extends AtmosphereRuntimeException
      *
      * @param message
      *        - message representing the error that occurred
-     * @param throwable
+     * @param cause
      *        - the cause for the exception
      */
     public AtmosphereConfigurationException(String message, Throwable cause) {
