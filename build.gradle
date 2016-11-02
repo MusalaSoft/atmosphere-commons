@@ -12,15 +12,16 @@ jar {
 }
 
 repositories {
-    mavenCentral()
     mavenLocal()
+    jcenter()
+    mavenCentral()
 }
 
 dependencies {
     compile 'log4j:log4j:1.2.17'
     compile 'commons-cli:commons-cli:1.2'
     compile 'org.apache.commons:commons-lang3:3.3.2'
-    compile 'android:android:4.4.2_r4'
+    compile 'com.musala.atmosphere:framework-api19:0.0.1'
 
     testCompile 'junit:junit:4.12'
 }
