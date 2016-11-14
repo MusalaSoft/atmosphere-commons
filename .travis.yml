@@ -1,0 +1,15 @@
+language: java
+jdk: oraclejdk7
+os: linux
+
+cache:
+    directories:
+        - $HOME/.gradle
+
+before_script:
+    - git fetch
+    - chmod +x gradlew
+
+script:
+    - ./gradlew build publishToMavenLocal
+
