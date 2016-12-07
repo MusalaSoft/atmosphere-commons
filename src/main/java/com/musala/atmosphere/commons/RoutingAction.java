@@ -21,6 +21,7 @@ import com.musala.atmosphere.commons.util.GeoLocation;
 import com.musala.atmosphere.commons.util.Pair;
 import com.musala.atmosphere.commons.webelement.action.WebElementAction;
 import com.musala.atmosphere.commons.webelement.action.WebElementWaitCondition;
+import com.musala.atmosphere.commons.webview.selection.WebViewSelectionCriterion;
 
 /**
  * Enumerates all actions that can be invoked on a device wrapper instance in the agent component.
@@ -356,6 +357,7 @@ public enum RoutingAction implements Serializable {
      * currently tested.
      */
     GET_WEB_VIEW(new RoutingActionArgumentValidator(String.class)),
+
     /**
      * Clears the saved data of a given application.
      */
@@ -411,7 +413,32 @@ public enum RoutingAction implements Serializable {
     /**
      * Gives access to the device LogCat. Accepts filter, applied when retrieving the log, as an argument.
      */
-    GET_DEVICE_LOGCAT(new RoutingActionArgumentValidator(String.class));
+    GET_DEVICE_LOGCAT(new RoutingActionArgumentValidator(String.class)),
+
+    /**
+     * Switches to another web view by the xPath query given as an argument.
+     */
+    SWITCH_TO_WEBVIEW_BY_CHILD(new RoutingActionArgumentValidator(String.class)),
+
+    /**
+     * Switches to another web view by the xPath {@link WebViewSelectionCriterion criterion} given as an argument.
+     */
+    SWITCH_TO_WEBVIEW(new RoutingActionArgumentValidator(WebViewSelectionCriterion.class), new RoutingActionArgumentValidator(String.class)),
+
+    /**
+     * Gets the title of the current web view.
+     */
+    GET_WEBVIEW_TITLE,
+
+    /**
+     * Gets the url of the current web view.
+     */
+    GET_WEBVIEW_URL,
+
+    /**
+     * Gets all web view window handlers that present on the current screen.
+     */
+    GET_WEB_VIEWS;
 
     private RoutingActionArgumentValidator[] argumentValidators;
 
