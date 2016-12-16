@@ -414,27 +414,38 @@ public enum RoutingAction implements Serializable {
      * Gives access to the device LogCat. Accepts filter, applied when retrieving the log, as an argument.
      */
     GET_DEVICE_LOGCAT(new RoutingActionArgumentValidator(String.class)),
-
+    /**
+     * Clears the logcat from the device.
+     */
+    CLEAR_LOGCAT,
+    /**
+     * Start a logcat command for a specific device.
+     */
+    START_DEVICE_LOGCAT(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Gets the logcat buffer for a specific device.
+     */
+    GET_LOGCAT_BUFFER(new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Stops buffering a logcat for a specific device.
+     */
+    STOP_LOGCAT(new RoutingActionArgumentValidator(String.class)),
     /**
      * Switches to another web view by the xPath query given as an argument.
      */
     SWITCH_TO_WEBVIEW_BY_CHILD(new RoutingActionArgumentValidator(String.class)),
-
     /**
      * Switches to another web view by the xPath {@link WebViewSelectionCriterion criterion} given as an argument.
      */
     SWITCH_TO_WEBVIEW(new RoutingActionArgumentValidator(WebViewSelectionCriterion.class), new RoutingActionArgumentValidator(String.class)),
-
     /**
      * Gets the title of the current web view.
      */
     GET_WEBVIEW_TITLE,
-
     /**
      * Gets the url of the current web view.
      */
     GET_WEBVIEW_URL,
-
     /**
      * Gets all web view window handlers that present on the current screen.
      */
