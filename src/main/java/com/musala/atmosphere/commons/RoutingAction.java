@@ -319,7 +319,7 @@ public enum RoutingAction implements Serializable {
     /**
      * Stops recording actions executed on the device.
      */
-    STOP_RECORDING,
+    STOP_RECORDING(new RoutingActionArgumentValidator(String.class)),
     /**
      * Used to open the location settings activity of the device.
      */
