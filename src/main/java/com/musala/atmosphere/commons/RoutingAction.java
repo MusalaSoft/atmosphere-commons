@@ -315,7 +315,7 @@ public enum RoutingAction implements Serializable {
     /**
      * Starts recording actions executed on the device, with given maximum recording duration.
      */
-    START_RECORDING(new RoutingActionArgumentValidator(Integer.class)),
+    START_RECORDING(new RoutingActionArgumentValidator(Integer.class), new RoutingActionArgumentValidator(Boolean.class)),
     /**
      * Stops recording actions executed on the device.
      */
