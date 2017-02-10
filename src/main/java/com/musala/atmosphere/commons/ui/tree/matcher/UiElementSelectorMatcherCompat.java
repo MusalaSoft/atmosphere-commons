@@ -3,7 +3,9 @@ package com.musala.atmosphere.commons.ui.tree.matcher;
 import com.musala.atmosphere.commons.geometry.Bounds;
 import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.ui.selector.CssAttribute;
+import com.musala.atmosphere.commons.ui.selector.UiElementSelectionOption;
 import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
+import com.musala.atmosphere.commons.util.Pair;
 
 import android.graphics.Rect;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -22,10 +24,10 @@ public class UiElementSelectorMatcherCompat implements UiElementMatcher<UiElemen
     public boolean match(UiElementSelector selector, AccessibilityNodeInfo nodeInformation) {
         // TODO Improve the logic for matching components
         Bounds selectorBounds = selector.getBoundsValue(CssAttribute.BOUNDS);
-        String selectorClass = selector.getStringValue(CssAttribute.CLASS_NAME);
-        String selectorPackage = selector.getStringValue(CssAttribute.PACKAGE_NAME);
-        String selectorText = selector.getStringValue(CssAttribute.TEXT);
-        String selectorDescription = selector.getStringValue(CssAttribute.CONTENT_DESCRIPTION);
+        Pair<String, UiElementSelectionOption> selectorClass = selector.getStringValueWithSelectionOption(CssAttribute.CLASS_NAME);
+        Pair<String, UiElementSelectionOption> selectorPackage = selector.getStringValueWithSelectionOption(CssAttribute.PACKAGE_NAME);
+        Pair<String, UiElementSelectionOption> selectorText = selector.getStringValueWithSelectionOption(CssAttribute.TEXT);
+        Pair<String, UiElementSelectionOption> selectorDescription = selector.getStringValueWithSelectionOption(CssAttribute.CONTENT_DESCRIPTION);
         Boolean isClickable = selector.getBooleanValue(CssAttribute.CLICKABLE);
         Boolean isCheckable = selector.getBooleanValue(CssAttribute.CHECKABLE);
         Boolean isChecked = selector.getBooleanValue(CssAttribute.CHECKED);
@@ -50,24 +52,27 @@ public class UiElementSelectorMatcherCompat implements UiElementMatcher<UiElemen
             }
         }
 
-        if (selectorClass != null && nodeInformation.getClassName() != null
-                && !selectorClass.equals(nodeInformation.getClassName().toString())) {
+        String nodeClassName = nodeInformation.getClassName() != null
+                ? nodeInformation.getClassName().toString() : null;
+        if (selectorClass != null && nodeClassName != null && !isMatch(selectorClass, nodeClassName)) {
             return false;
         }
 
-        if (selectorPackage != null && nodeInformation.getPackageName() != null
-                && !selectorPackage.equals(nodeInformation.getPackageName().toString())) {
+        String nodePackageName = nodeInformation.getPackageName() != null
+                ? nodeInformation.getPackageName().toString() : null;
+        if (selectorPackage != null && nodePackageName != null && !isMatch(selectorPackage, nodePackageName)) {
             return false;
         }
 
         String nodeContentDescription = nodeInformation.getContentDescription() != null
                 ? nodeInformation.getContentDescription().toString() : null;
-        if (selectorDescription != null && !selectorDescription.equals(nodeContentDescription)) {
+        if (selectorDescription != null && !isMatch(selectorDescription, nodeContentDescription)) {
             return false;
         }
 
+
         String nodeText = nodeInformation.getText() != null ? nodeInformation.getText().toString() : null;
-        if (selectorText != null && !selectorText.equals(nodeText)) {
+        if (selectorText != null && !isMatch(selectorText, nodeText)) {
             return false;
         }
 
@@ -112,5 +117,21 @@ public class UiElementSelectorMatcherCompat implements UiElementMatcher<UiElemen
         }
 
         return true;
+    }
+
+    private boolean isMatch(Pair<String, UiElementSelectionOption> selectorPair, String nodeValue) {
+        if (nodeValue == null) {
+            return false;
+        }
+        switch (selectorPair.getValue()) {
+            case CONTAINS:
+                return nodeValue.contains(selectorPair.getKey());
+            case EQUALS:
+                return nodeValue.equals(selectorPair.getKey());
+            case WORD_MATCH:
+                return nodeValue.matches(selectorPair.getKey());
+            default:
+                return nodeValue.equals(selectorPair.getKey());
+        }
     }
 }

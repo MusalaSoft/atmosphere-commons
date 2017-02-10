@@ -16,9 +16,9 @@ import com.musala.atmosphere.commons.util.Pair;
 
 /**
  * Selector class for screen UI elements, used to search for a specific element with given attributes.
- * 
+ *
  * @author georgi.gaydarov
- * 
+ *
  */
 public class UiElementSelector implements UiElementPropertiesContainer {
     private static final Logger LOGGER = Logger.getLogger(UiElementSelector.class);
@@ -31,10 +31,10 @@ public class UiElementSelector implements UiElementPropertiesContainer {
 
     /**
      * Constructs ui element selector out of node attribute map.
-     * 
+     *
      * This is auxiliary constructor needed for some parts of the system. PLease prefer to use
      * {@link #UiElementSelector()}.
-     * 
+     *
      * @param nodeAttributeMap
      *        a map between the html attribute names and their corresponding values
      * @throws IllegalArgumentException
@@ -76,7 +76,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
      * <code>
      * uiElementSelector.addSelectionAttribute(SupportedCssAttribute.CHECKABLE, UiElementSelectionOption.EQUALS, true);
      * </code>
-     * 
+     *
      * @param attribute
      *        The attribute for which to add selection expression. If selection expression already existed for the
      *        attribute it will be replaced.
@@ -112,7 +112,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
      * <code>
      * uiElementSelector.addSelectionAttribute(SupportedCssAttribute.CHECKABLE, true);
      * </code>
-     * 
+     *
      * @param attribute
      *        The attribute for which to add selection expression. If selection expression already existed for the
      *        attribute it will be replaced.
@@ -127,7 +127,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
 
     /**
      * Use the method to get the value of boolean attribute selection argument
-     * 
+     *
      * @param attribute
      *        The attribute for which to get the selection argument
      * @return The boolean value or null if no selection was specified.
@@ -140,7 +140,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
 
     /**
      * Use the method to get the value of string attribute selection argument
-     * 
+     *
      * @param attribute
      *        The attribute for which to get the selection argument
      * @return The string value or null if no selection was specified.
@@ -152,8 +152,29 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     }
 
     /**
+     * Returns a {@link Pair} of the value of a string {@link CssAttribute} and its {@link UiElementSelectionOption} option.
+     *
+     * @param attribute
+     *        - the string attribute to get the value of
+     * @return a {@link Pair} of the attribute's value and its selection option, or <code>null</code>
+     *         if the value or the selection option is <code>null</code>
+     * @throws IllegalArgumentException
+     *         if the provided attribute is not a string attribute
+     */
+    public Pair<String, UiElementSelectionOption> getStringValueWithSelectionOption(CssAttribute attribute) {
+        String stringValue = getStringValue(attribute);
+        UiElementSelectionOption selectionOption = getUiElementSelectionOption(attribute);
+
+        if (stringValue == null || selectionOption == null) {
+            return null;
+        }
+
+        return new Pair<String, UiElementSelectionOption>(stringValue, selectionOption);
+    }
+
+    /**
      * Use the method to get the value of integer attribute selection argument
-     * 
+     *
      * @param attribute
      *        The attribute for which to get the selection argument
      * @return The integer value or null if no selection was specified.
@@ -166,7 +187,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
 
     /**
      * Use the method to get the value of {@link Bounds} attribute selection argument
-     * 
+     *
      * @param attribute
      *        The attribute for which to get the selection argument
      * @return The {@link Bounds} value or null if no selection was specified.
@@ -179,7 +200,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
 
     /**
      * Builds a CSS select element query based on the contents of this selector.
-     * 
+     *
      * @return the built CSS query.
      */
     public String buildCssQuery() {
@@ -211,6 +232,14 @@ public class UiElementSelector implements UiElementPropertiesContainer {
         } else {
             throw new IllegalArgumentException("Trying to get boolean value of non-boolean attribute " + attribute);
         }
+    }
+
+    private UiElementSelectionOption getUiElementSelectionOption(CssAttribute attribute) {
+        if (!attributeProjectionMap.containsKey(attribute)) {
+            return null;
+        }
+
+        return attributeProjectionMap.get(attribute).getValue();
     }
 
     private Object determineAttributeValue(CssAttribute cssAttribute, String value) {
