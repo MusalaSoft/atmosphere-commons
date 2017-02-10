@@ -21,6 +21,8 @@ import com.musala.atmosphere.commons.util.Pair;
  *
  */
 public class UiElementSelector implements UiElementPropertiesContainer {
+    private static final long serialVersionUID = 8818379696986115875L;
+
     private static final Logger LOGGER = Logger.getLogger(UiElementSelector.class);
 
     private Map<CssAttribute, Pair<Object, UiElementSelectionOption>> attributeProjectionMap;
@@ -32,7 +34,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     /**
      * Constructs ui element selector out of node attribute map.
      *
-     * This is auxiliary constructor needed for some parts of the system. PLease prefer to use
+     * This is auxiliary constructor needed for some parts of the system. Please prefer to use
      * {@link #UiElementSelector()}.
      *
      * @param nodeAttributeMap
@@ -69,23 +71,23 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     }
 
     /**
-     * Adds new selection argument for this ui element selector
+     * Adds a new selection attribute for this UI element selector.
+     * If a value is already set for the provided attribute, it will be replaced.
+     * If the provided value is an empty string, the selection attribute will be ignored.
      * <p>
      * Example usage would be:
      * <p>
      * <code>
-     * uiElementSelector.addSelectionAttribute(SupportedCssAttribute.CHECKABLE, UiElementSelectionOption.EQUALS, true);
+     * uiElementSelector.addSelectionAttribute(CssAttribute.CHECKABLE, UiElementSelectionOption.EQUALS, true);
      * </code>
      *
      * @param attribute
-     *        The attribute for which to add selection expression. If selection expression already existed for the
-     *        attribute it will be replaced.
+     *        - the attribute to add a selection expression for
      * @param selectionOption
-     *        The selection option. One of the {@link UiElementSelectionOption}.
+     *        - the selection option. One of the {@link UiElementSelectionOption}.
      * @param value
-     *        The value to be used in the selection expression. Empty strings will not be added as expressions.
-     * @throws IllegalArgumentException
-     *         In case the supplied value does not match the type of the specified attribute.
+     *        - the value to be used in the selection expression
+     * @throws IllegalArgumentException if the provided value does not match the type of the specified attribute
      */
     public void addSelectionAttribute(CssAttribute attribute, UiElementSelectionOption selectionOption, Object value)
         throws IllegalArgumentException {
@@ -104,48 +106,45 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     }
 
     /**
-     * Adds new selection argument for this ui element selector with selection option that is
-     * {@link UiElementSelectionOption#EQUALS}.
+     * Adds a new selection attribute for this UI element selector with the {@link UiElementSelectionOption#EQUALS}
+     * selection option. If a value is already set for the provided attribute, it will be replaced.
+     * If the provided value is an empty string, the selection attribute will be ignored.
      * <p>
      * Example usage would be:
      * <p>
      * <code>
-     * uiElementSelector.addSelectionAttribute(SupportedCssAttribute.CHECKABLE, true);
+     * uiElementSelector.addSelectionAttribute(CssAttribute.CHECKABLE, true);
      * </code>
      *
      * @param attribute
-     *        The attribute for which to add selection expression. If selection expression already existed for the
-     *        attribute it will be replaced.
+     *        - the attribute to add a selection expression for
      * @param value
-     *        The value to be used in the selection expression. Empty strings will not be added as expressions.
-     * @throws IllegalArgumentException
-     *         In case the supplied value does not match the type of the specified attribute.
+     *        - the value to be used in the selection expression
+     * @throws IllegalArgumentException if the provided value does not match the type of the specified attribute
      */
     public void addSelectionAttribute(CssAttribute attribute, Object value) {
         addSelectionAttribute(attribute, UiElementSelectionOption.EQUALS, value);
     }
 
     /**
-     * Use the method to get the value of boolean attribute selection argument
+     * Returns the value of a boolean {@link CssAttribute}.
      *
      * @param attribute
-     *        The attribute for which to get the selection argument
-     * @return The boolean value or null if no selection was specified.
-     * @throws IllegalArgumentException
-     *         If the attribute selection requested is not for boolean attribute.
+     *        - the boolean attribute to get the value of
+     * @return the boolean attribute's value or <code>null</code> if no value is set for this attribute
+     * @throws IllegalArgumentException if the provided attribute is not a boolean attribute
      */
     public Boolean getBooleanValue(CssAttribute attribute) {
         return (Boolean) getGenericValue(attribute, Boolean.class);
     }
 
     /**
-     * Use the method to get the value of string attribute selection argument
+     * Returns the value of a string {@link CssAttribute}.
      *
      * @param attribute
-     *        The attribute for which to get the selection argument
-     * @return The string value or null if no selection was specified.
-     * @throws IllegalArgumentException
-     *         If the attribute selection requested is not for string attribute.
+     *        - the string attribute to get the value of
+     * @return the string attribute's value or <code>null</code> if no value is set for this attribute
+     * @throws IllegalArgumentException if the provided attribute is not a string attribute
      */
     public String getStringValue(CssAttribute attribute) {
         return (String) getGenericValue(attribute, String.class);
@@ -158,8 +157,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
      *        - the string attribute to get the value of
      * @return a {@link Pair} of the attribute's value and its selection option, or <code>null</code>
      *         if the value or the selection option is <code>null</code>
-     * @throws IllegalArgumentException
-     *         if the provided attribute is not a string attribute
+     * @throws IllegalArgumentException if the provided attribute is not a string attribute
      */
     public Pair<String, UiElementSelectionOption> getStringValueWithSelectionOption(CssAttribute attribute) {
         String stringValue = getStringValue(attribute);
@@ -173,26 +171,24 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     }
 
     /**
-     * Use the method to get the value of integer attribute selection argument
+     * Returns the value of an integer {@link CssAttribute}.
      *
      * @param attribute
-     *        The attribute for which to get the selection argument
-     * @return The integer value or null if no selection was specified.
-     * @throws IllegalArgumentException
-     *         If the attribute selection requested is not for integer attribute.
+     *        - the integer attribute to get the value of
+     * @return the integer attribute's value or <code>null</code> if no value is set for this attribute
+     * @throws IllegalArgumentException if the provided attribute is not an integer attribute
      */
     public Integer getIntegerValue(CssAttribute attribute) {
         return (Integer) getGenericValue(attribute, Integer.class);
     }
 
     /**
-     * Use the method to get the value of {@link Bounds} attribute selection argument
+     * Returns the value of a {@link Bounds} {@link CssAttribute}.
      *
      * @param attribute
-     *        The attribute for which to get the selection argument
-     * @return The {@link Bounds} value or null if no selection was specified.
-     * @throws IllegalArgumentException
-     *         If the attribute selection requested is not for {@link Bounds} attribute.
+     *        - the {@link CssAttribute#BOUNDS} attribute to get the value of
+     * @return the {@link Bounds} attribute's value or <code>null</code> if no value is set for this attribute
+     * @throws IllegalArgumentException if the provided attribute is not of type {@link CssAttribute#BOUNDS}
      */
     public Bounds getBoundsValue(CssAttribute attribute) {
         return (Bounds) getGenericValue(attribute, Bounds.class);
@@ -201,7 +197,7 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     /**
      * Builds a CSS select element query based on the contents of this selector.
      *
-     * @return the built CSS query.
+     * @return the built CSS query
      */
     public String buildCssQuery() {
         StringBuilder builder = new StringBuilder();
