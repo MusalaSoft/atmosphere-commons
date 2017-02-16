@@ -3,7 +3,7 @@ apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
-version = '0.0.1'
+version = '0.0.2'
 jar {
     manifest {
         attributes 'Implementation-Title': 'Atmosphere Commons',
@@ -21,7 +21,7 @@ dependencies {
     compile 'log4j:log4j:1.2.17'
     compile 'commons-cli:commons-cli:1.2'
     compile 'org.apache.commons:commons-lang3:3.3.2'
-    compile 'com.musala.atmosphere:framework-api19:0.0.1'
+    compile 'com.musala.atmosphere:framework-api19:0.+'
 
     testCompile 'junit:junit:4.12'
 }
@@ -53,4 +53,14 @@ tasks.withType(JavaCompile) {
 tasks.withType(Test) {
     scanForTestClasses = false
     include "**/*Test.class"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
