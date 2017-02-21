@@ -263,6 +263,18 @@ public enum RoutingAction implements Serializable {
      */
     UNINSTALL_APP(new RoutingActionArgumentValidator(String.class)),
     /**
+     * Grants the specified permission to an application. Requires a {@link String} package name and a {@link String}
+     * permission parameters.
+     * @see <a href="https://developer.android.com/reference/android/Manifest.permission.html" target="_top">Android Manifest permissions</a>
+     */
+    GRANT_APP_PERMISSION(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class)),
+    /**
+     * Revokes the specified permission from an application. Requires a {@link String} package name and a {@link String}
+     * permission parameters.
+     * @see <a href="https://developer.android.com/reference/android/Manifest.permission.html" target="_top">Android Manifest permissions</a>
+     */
+    REVOKE_APP_PERMISSION(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(String.class)),
+    /**
      * Mocks the current location of the device. Requires a {@link GeoLocation} object representing the location to be
      * mocked.
      */
