@@ -369,7 +369,10 @@ public enum RoutingAction implements Serializable {
      * currently tested.
      */
     GET_WEB_VIEW(new RoutingActionArgumentValidator(String.class)),
-
+    /**
+     * Sets an implicit wait timeout for the web view
+     */
+    SET_WEB_VIEW_IMPLICIT_WAIT(new RoutingActionArgumentValidator(Integer.class)),
     /**
      * Clears the saved data of a given application.
      */
