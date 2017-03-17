@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import com.musala.atmosphere.commons.geometry.Bounds;
 import com.musala.atmosphere.commons.ui.UiElementPropertiesContainer;
+import com.musala.atmosphere.commons.ui.selector.attribute.SelectionAttribute;
 import com.musala.atmosphere.commons.util.Pair;
 
 /**
@@ -32,10 +33,53 @@ public class UiElementSelector implements UiElementPropertiesContainer {
     }
 
     /**
+     * Initializes a UiElementSelector with the specified selection attribute.
+     *
+     * @param attribute
+     *        - the attribute to add a selection expression for
+     * @param attributeValue
+     *        - the value to be used in the selection expression
+     */
+    public UiElementSelector(CssAttribute attribute, Object attributeValue) {
+        this();
+        addSelectionAttribute(attribute, attributeValue);
+    }
+
+    /**
+     * Initializes a UiElementSelector with the specified selection attribute.
+     *
+     * @param attribute
+     *        - the attribute to add a selection expression for
+     * @param selectionOption
+     *        - the selection option. One of the {@link UiElementSelectionOption}.
+     * @param attributeValue
+     *        - the value to be used in the selection expression
+     */
+    public UiElementSelector(CssAttribute attribute, UiElementSelectionOption selectionOption, Object attributeValue) {
+        this();
+        addSelectionAttribute(attribute, selectionOption, attributeValue);
+    }
+
+    /**
+     * Initializes a UiElementSelector with the specified selection attributes.
+     *
+     * @param selectionAttributes
+     *        - the selection attributes which should be added to the UiElementSelector
+     */
+    public UiElementSelector(SelectionAttribute... selectionAttributes) {
+        this();
+        for (SelectionAttribute selectionAttribute : selectionAttributes) {
+            addSelectionAttribute(selectionAttribute.getCssAttribute(),
+                                  selectionAttribute.getSelectionOption(),
+                                  selectionAttribute.getAttributeValue());
+        }
+    }
+
+    /**
      * Constructs ui element selector out of node attribute map.
      *
      * This is auxiliary constructor needed for some parts of the system. Please prefer to use
-     * {@link #UiElementSelector()}.
+     * other constructors.
      *
      * @param nodeAttributeMap
      *        a map between the html attribute names and their corresponding values
@@ -124,6 +168,61 @@ public class UiElementSelector implements UiElementPropertiesContainer {
      */
     public void addSelectionAttribute(CssAttribute attribute, Object value) {
         addSelectionAttribute(attribute, UiElementSelectionOption.EQUALS, value);
+    }
+
+    /**
+     * Returns a new UiElementSelector instance with the provided resource id value.
+     *
+     * @param resourceId
+     *        - the resource id value for the attribute
+     * @return the new UiElementSelector instance
+     */
+    public static UiElementSelector getSelectorByResourceID(String resourceId) {
+        return new UiElementSelector(CssAttribute.RESOURCE_ID, resourceId);
+    }
+
+    /**
+     * Returns a new UiElementSelector instance with the provided class name value.
+     *
+     * @param className
+     *        - the class name value for the attribute
+     * @return the new UiElementSelector instance
+     */
+    public static UiElementSelector getSelectorByClass(String className) {
+        return new UiElementSelector(CssAttribute.CLASS_NAME, className);
+    }
+
+    /**
+     * Returns a new UiElementSelector instance with the provide package name value.
+     *
+     * @param packageName
+     *        - the package name value for the attribute
+     * @return the new UiElementSelector instance
+     */
+    public static UiElementSelector getSelectorByPackageName(String packageName) {
+        return new UiElementSelector(CssAttribute.PACKAGE_NAME, packageName);
+    }
+
+    /**
+     * Returns a new UiElementSelector instance with the provided text value.
+     *
+     * @param text
+     *        - the text value for the attribute
+     * @return the new UiElementSelector instance
+     */
+    public static UiElementSelector getSelectorByText(String text) {
+        return new UiElementSelector(CssAttribute.TEXT, text);
+    }
+
+    /**
+     * Returns a new UiElementSelector instance with the provided content description value.
+     *
+     * @param contentDescription
+     *        - the content description value for the attribute
+     * @return the new UiElementSelector instance
+     */
+    public static UiElementSelector getSelectorByContentDescription(String contentDescription) {
+        return new UiElementSelector(CssAttribute.CONTENT_DESCRIPTION, contentDescription);
     }
 
     /**
