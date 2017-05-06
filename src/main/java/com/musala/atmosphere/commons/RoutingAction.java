@@ -86,7 +86,7 @@ public enum RoutingAction implements Serializable {
      * Invokes the method behind appending bytes to the .apk file that is currently being built. Requires a byte array
      * (the actual data) and an integer (the byte array length) as parameters.
      */
-    APK_APPEND_DATA(new RoutingActionArgumentValidator(byte[].class), new RoutingActionArgumentValidator(Integer.class)),
+    APK_APPEND_DATA(new RoutingActionArgumentValidator(String.class), new RoutingActionArgumentValidator(Integer.class)),
     /**
      * Invokes the method behind building, uploading and installing the transfered .apk file on the current device.
      * Requires a boolean (to force install or not) as parameter.
