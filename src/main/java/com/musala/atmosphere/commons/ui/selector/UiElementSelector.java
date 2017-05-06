@@ -257,6 +257,10 @@ public class UiElementSelector implements UiElementPropertiesContainer {
         throw new IllegalArgumentException(message);
     }
 
+    public boolean isEmpty() {
+        return attributeProjectionMap.isEmpty();
+    }
+
     @Override
     public boolean equals(Object object) {
         if (object == null) {
