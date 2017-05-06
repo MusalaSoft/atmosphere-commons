@@ -19,7 +19,7 @@ public class Node<T extends Serializable> implements Serializable, Hierarchical 
 
     protected T data;
 
-    protected Node<T> parent;
+    protected transient Node<T> parent;
 
     protected List<Node<T>> children;
 
