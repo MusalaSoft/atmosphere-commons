@@ -50,7 +50,7 @@ public class Pack implements Serializable, Iterable<Object> {
         };
     }
 
-    private enum ValueType {
+    public enum ValueType {
         BOOLEAN,
         BYTE,
         CHARACTER,
@@ -293,7 +293,7 @@ public class Pack implements Serializable, Iterable<Object> {
      *        - a Serializable value
      */
     public void putSerializable(String key, Serializable value) {
-        put(ValueType.SERIALIZABLE, key, value);
+        put(ValueType.SERIALIZABLE, key, new Pair<String, Serializable>(value.getClass().getName(), value));
     }
 
     /**
@@ -322,7 +322,6 @@ public class Pack implements Serializable, Iterable<Object> {
      */
     public byte getByte(String key, byte defaultValue) {
         return (Byte) getValue(ValueType.BYTE, key, defaultValue);
-
     }
 
     /**
@@ -429,8 +428,11 @@ public class Pack implements Serializable, Iterable<Object> {
      *        - a String key
      * @return the associated value or null
      */
+    @SuppressWarnings("unchecked")
     public Serializable getSerializable(String key) {
-        return (Serializable) getValue(ValueType.SERIALIZABLE, key, null);
+        Pair<String, Serializable> pair = (Pair<String, Serializable>) getValue(ValueType.SERIALIZABLE, key, null);
+        
+        return (Serializable) pair.getValue();
     }
 
     private Object getValue(ValueType type, String key, Object defaultValue) {
@@ -447,6 +449,10 @@ public class Pack implements Serializable, Iterable<Object> {
         Pair<String, ValueType> internalKey = new Pair<String, Pack.ValueType>(key, type);
 
         contents.put(internalKey, value);
+    }
+    
+    public boolean isEmpty() {
+        return contents.isEmpty();
     }
 
 }
