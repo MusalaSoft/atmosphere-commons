@@ -4,80 +4,57 @@ import com.musala.atmosphere.commons.RoutingAction;
 
 /**
  * Represents a common class for all WebSocket response actions.
- * 
+ *
  * @author dimcho.nedev
  *
  */
 public class ResponseMessage extends Message {
-    private String typeName;
-
     private Object data;
 
     private Exception exception;
 
-    private String excpetionTypeName;
+    public ResponseMessage() {
+    }
 
     public ResponseMessage(MessageAction messageAction, RoutingAction routingAction, Object data) {
         super(messageAction, routingAction);
         this.data = data;
-        if (data != null) {
-            this.typeName = data.getClass().getName();
-        }
     }
 
     /**
      * Gets the response data.
-     * 
-     * @return response {@link Object data}
+     *
+     * @return response {@link Object response data}
      */
     public Object getData() {
         return data;
     }
 
     /**
-     * Sets the response data
-     * 
-     * @param {@link
-     *        - Object response data}
+     * Sets the response data to the {@link ResponseMessage response message}.
+     *
+     * @param data
+     *        - {@link Object response data}
      */
     public void setData(Object data) {
         this.data = data;
     }
 
     /**
-     * Gets the response data.
-     * 
-     * @return the type of the response data as a String
-     */
-    public String getTypeName() {
-        return this.typeName;
-    }
-
-    /**
-     * Gets the name of the exception type.
-     * 
-     * @return String name of the exception type
-     */
-    public String getExceptionTypeName() {
-        return this.excpetionTypeName;
-    }
-
-    /**
-     * Sets an exception to the response.
-     * 
+     * Sets an exception to the {@link ResponseMessage response message}. Used when an exception occurs when trying to
+     * execute a request.
+     *
      * @param exception
+     *        - an exception occurred during the request execution
      */
     public void setException(Exception exception) {
         this.exception = exception;
-        if (excpetionTypeName == null) {
-            this.excpetionTypeName = exception.getClass().getName();
-        }
     }
 
     /**
      * Gets the exception from the response message.
-     * 
-     * @return {@link Exception exception}
+     *
+     * @return {@link Exception exception} occurred during the request execution
      */
     public Exception getException() {
         return this.exception;

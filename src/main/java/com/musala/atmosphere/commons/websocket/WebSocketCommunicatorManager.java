@@ -5,6 +5,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
 
+/**
+ * Manages the {@link ResponseMessage response messages}
+ *
+ */
 public class WebSocketCommunicatorManager {
     private static WebSocketCommunicatorManager instance = null;
 
@@ -29,6 +33,13 @@ public class WebSocketCommunicatorManager {
         return instance;
     }
 
+    /**
+     * Gets a {@link Object synchronization object} by a session identifier.
+     *
+     * @param sessionId
+     *        - session identifier
+     * @return {@link Object synchronization object}
+     */
     public Object getSynchronizationObject(String sessionId) {
         if (lockObjectMap.containsKey(sessionId)) {
             return lockObjectMap.get(sessionId);
@@ -39,21 +50,30 @@ public class WebSocketCommunicatorManager {
         return syncObj;
     }
 
-    public ResponseMessage getServerResponse(String sessionId) {
-        if (!responseMap.containsKey(sessionId)) {
-            return null;
-        }
-        ResponseMessage response = responseMap.get(sessionId);
-        responseMap.remove(sessionId);
+    /**
+     * Gets a {@link ResponseMessage response message} by a session identifier.
+     *
+     * @param sessionId
+     *        - session identifier
+     * @return {@link ResponseMessage response message}
+     */
+    public ResponseMessage getResponse(String sessionId) {
+        ResponseMessage response = responseMap.remove(sessionId);
 
         return response;
     }
 
-    public void setServerResponse(ResponseMessage response) {
+    /**
+     * Sets a {@link ResponseMessage response message} to the {@link WebSocketCommunicatorManager}
+     *
+     * @param response
+     *        - {@link ResponseMessage response message}
+     */
+    public void setResponse(ResponseMessage response) {
         String sessionId = response.getSessionId();
         responseMap.put(sessionId, response);
         Object lockObject = lockObjectMap.get(sessionId);
-        synchronized(lockObject) {
+        synchronized (lockObject) {
             lockObject.notify();
         }
     }

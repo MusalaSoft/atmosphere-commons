@@ -1,7 +1,9 @@
-package com.musala.atmosphere.commons.websocket.util;
+package com.musala.atmosphere.commons.websocket.util.deserializer;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
+
+import org.apache.log4j.Logger;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
@@ -10,6 +12,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.musala.atmosphere.commons.util.Pack;
+import com.musala.atmosphere.commons.websocket.util.JsonConst;
 
 /**
  * Deserializer for the {@link Pack} object.
@@ -18,16 +21,14 @@ import com.musala.atmosphere.commons.util.Pack;
  *
  */
 public class PackDeserializer implements JsonDeserializer<Pack> {
-    public static final String KEY = "mKey";
-
-    public static final String VALUE = "mValue";
+    private final static Logger LOGGER = Logger.getLogger(RequestMessageDeserializer.class);
 
     @Override
     public Pack deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
         Pack pack = new Pack();
 
         JsonObject jsonObject = json.getAsJsonObject();
-        JsonElement contents = jsonObject.get("contents");
+        JsonElement contents = jsonObject.get(JsonConst.CONTENTS);
 
         if (contents.equals(new JsonObject())) {
             // empty contents map: {}
@@ -41,8 +42,8 @@ public class PackDeserializer implements JsonDeserializer<Pack> {
 
             JsonElement elementKey = elementAsJsonArray.get(0);
             JsonElement elementValue = elementAsJsonArray.get(1);
-            JsonElement mKey = elementKey.getAsJsonObject().get(KEY);
-            JsonElement mValue = elementKey.getAsJsonObject().get(VALUE);
+            JsonElement mKey = elementKey.getAsJsonObject().get(JsonConst.KEY);
+            JsonElement mValue = elementKey.getAsJsonObject().get(JsonConst.VALUE);
 
             String key = mKey.getAsString();
             String valueTypeName = mValue.getAsString();
@@ -77,15 +78,15 @@ public class PackDeserializer implements JsonDeserializer<Pack> {
                     pack.putByte(key, elementValue.getAsByte());
                     break;
                 case SERIALIZABLE:
-                    String typeName = elementValue.getAsJsonObject().get(KEY).getAsString();
+                    String className = elementValue.getAsJsonObject().get(JsonConst.KEY).getAsString();
                     try {
-                        Class<?> objectClass = Class.forName(typeName);
-                        JsonElement objectValue = elementValue.getAsJsonObject().get(VALUE);
+                        Class<?> objectClass = Class.forName(className);
+                        JsonElement objectValue = elementValue.getAsJsonObject().get(JsonConst.VALUE);
                         Serializable serializableObject = context.deserialize(objectValue, objectClass);
 
                         pack.putSerializable(key, serializableObject);
                     } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
+                        LOGGER.error(String.format(JsonConst.FAILED_TO_FIND_CLASS, className), e);
                     }
                     break;
                 default:

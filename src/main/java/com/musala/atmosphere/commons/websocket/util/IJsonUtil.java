@@ -45,12 +45,15 @@ public interface IJsonUtil {
     public RequestMessage deserializeRequest(String jsonMessage);
 
     /**
-     * Add a javadoc
+     * Gets the value of a specified property from a JSON string.
      *
      * @param jsonMessage
+     *        - JSON message
      * @param propertyName
+     *        - name of a property
      * @param type
-     * @return
+     *        - the {@Class class} of the property
+     * @return the value of the property as a {@link Java object}
      */
     public Object getProperty(String jsonMessage, String propertyName, Class<?> type);
 }

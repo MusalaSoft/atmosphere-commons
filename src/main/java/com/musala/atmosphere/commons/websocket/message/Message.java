@@ -9,26 +9,25 @@ import com.musala.atmosphere.commons.RoutingAction;
  *
  */
 public abstract class Message {
-    protected MessageAction messageAction;
+    private MessageAction messageAction;
 
-    protected RoutingAction routingAction;
+    private RoutingAction routingAction;
 
-    protected String sessionId;
+    private String sessionId;
 
-    protected String agentId;
+    private String agentId;
 
-    public Message(String sessionId, MessageAction messageAction, RoutingAction routingAction) {
+    protected Message() {
+    }
+
+    protected Message(MessageAction messageAction, RoutingAction routingAction, String sessionId) {
         this.sessionId = sessionId;
         this.messageAction = messageAction;
         this.routingAction = routingAction;
     }
 
-    public Message(MessageAction messageAction, RoutingAction routingAction) {
-        this(null, messageAction, routingAction);
-    }
-
-    public Message(MessageAction messageAction) {
-        this(null, messageAction, null);
+    protected Message(MessageAction messageAction, RoutingAction routingAction) {
+        this(messageAction, routingAction, null);
     }
 
     /**
@@ -38,6 +37,16 @@ public abstract class Message {
      */
     public MessageAction getMessageAction() {
         return messageAction;
+    }
+
+    /**
+     * Sets a {@link MessageAction message action}.
+     *
+     * @param messageAction
+     *        - message action
+     */
+    public void setMessageAction(MessageAction messageAction) {
+        this.messageAction = messageAction;
     }
 
     /**
@@ -51,7 +60,7 @@ public abstract class Message {
 
     /**
      * Sets an identifier of the Session
-     * 
+     *
      * @param sessionId
      *        - identifier of the Session
      */
@@ -90,7 +99,7 @@ public abstract class Message {
 
     /**
      * Gets an identifier of the agent
-     * 
+     *
      * @return agent identifier
      */
     public String getAgentId() {
