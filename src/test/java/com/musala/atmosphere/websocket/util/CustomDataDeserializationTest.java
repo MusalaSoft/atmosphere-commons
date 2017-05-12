@@ -17,7 +17,7 @@ import com.musala.atmosphere.commons.websocket.message.RequestMessage;
 import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
 
 /**
- * Tests the deserialization of the {@link ResponseMessage} response data
+ * Tests the deserialization of the {@link ResponseMessage} custom response data
  *
  * @author dimcho.nedev
  *
@@ -144,6 +144,25 @@ public class CustomDataDeserializationTest extends BaseDataSerialization {
         Assert.assertEquals(STRING_DATA, actualStringData);
         Assert.assertEquals(INTEGER_RESPONSE_DATA, actualIntegerData);
         Assert.assertTrue(actualBooleanData);
+    }
+
+    @Test
+    public void responseWithEmptyArgumentDeserializationTest() {
+        String jsonMessage = "{\"arguments\":[{},{\"mKey\":\"java.lang.Integer\",\"mValue\":10000}],"
+                + "\"messageAction\":\"ROUTING_ACTION\",\"routingAction\":\"WAIT_FOR_WINDOW_UPDATE\","
+                + "\"deviceId\":\"deviceId\",\"sessionId\":\"sessionId\"}";
+
+        RequestMessage message = jsonUtil.deserializeRequest(jsonMessage);
+
+        Object[] argsuments = message.getArguments();
+
+        Assert.assertEquals(MessageAction.ROUTING_ACTION, message.getMessageAction());
+        Assert.assertEquals(RoutingAction.WAIT_FOR_WINDOW_UPDATE, message.getRoutingAction());
+        Assert.assertNull(argsuments[0]);
+        Assert.assertEquals(10000, argsuments[1]);
+        Assert.assertNull(message.getAgentId());
+        Assert.assertEquals("deviceId", message.getDeviceId());
+        Assert.assertEquals("sessionId", message.getSessionId());
     }
 
 }

@@ -12,7 +12,7 @@ import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
 import com.musala.atmosphere.commons.websocket.message.RequestMessage;
 
 /**
- * TODO: Add a javadoc
+ * Tests the deserialization of the {@link UiElementSelector} data.
  *
  * @author dimcho.nedev
  *
@@ -20,13 +20,11 @@ import com.musala.atmosphere.commons.websocket.message.RequestMessage;
 public class UiElementSelectorDeserializationTest extends CustomDataDeserializationTest {
     @Test
     public void uiElementSelectorDeserializatinTest() {
-        String jsonMessage = "{\"arguments\":[{\"attributeProjectionMap\":"
-                + "{\"INDEX\":{\"mKey\":1,\"mValue\":\"EQUALS\"},"
-                + "\"CLASS_NAME\":{\"mKey\":\"android.widget.NumberPicker\",\"mValue\":\"EQUALS\"}}},true],"
-                + "\"typeNames\":[\"com.musala.atmosphere.commons.ui.selector.UiElementSelector\",\"java.lang.Boolean\"],"
-                + "\"deviceId\":\"59A57D012B068B4B0D227342EEA9262E_01d04ee91317a4d6\","
+        String jsonMessage = "{\"arguments\":[{\"mKey\":\"com.musala.atmosphere.commons.ui.selector.UiElementSelector\","
+                + "\"mValue\":{\"attributeProjectionMap\":{\"CLASS_NAME\":{\"mKey\":\"android.widget.NumberPicker\","
+                + "\"mValue\":\"EQUALS\"},\"INDEX\":{\"mKey\":1,\"mValue\":\"EQUALS\"}}}},{\"mKey\":\"java.lang.Boolean\",\"mValue\":true}],"
                 + "\"messageAction\":\"ROUTING_ACTION\",\"routingAction\":\"GET_UI_ELEMENTS\","
-                + "\"sessionId\":\"63f4e71a-3005-4796-8d68-fe54a5ee7c33\"}";
+                + "\"deviceId\":\"59A57D012B068B4B0D227342EEA9262E_01d04ee91317a4d6\",\"sessionId\":\"726363d4-23b0-4125-b5cf-f411c3d89139\"}";
 
         RequestMessage requestMessage = jsonUtil.deserializeRequest(jsonMessage);
 
@@ -34,8 +32,12 @@ public class UiElementSelectorDeserializationTest extends CustomDataDeserializat
 
         Assert.assertEquals(uiElementSelector.getClassName(), "android.widget.NumberPicker");
         Assert.assertEquals(uiElementSelector.getStringValue(CssAttribute.CLASS_NAME), "android.widget.NumberPicker");
-        Assert.assertEquals(uiElementSelector.getStringValueWithSelectionOption(CssAttribute.CLASS_NAME).getKey(), "android.widget.NumberPicker");
-        Assert.assertEquals(uiElementSelector.getStringValueWithSelectionOption(CssAttribute.CLASS_NAME).getValue().name(),"EQUALS");
+        Assert.assertEquals(uiElementSelector.getStringValueWithSelectionOption(CssAttribute.CLASS_NAME).getKey(),
+                            "android.widget.NumberPicker");
+        Assert.assertEquals(uiElementSelector.getStringValueWithSelectionOption(CssAttribute.CLASS_NAME)
+                                             .getValue()
+                                             .name(),
+                            "EQUALS");
         Assert.assertEquals(uiElementSelector.getIndex(), new Integer(1));
     }
 
@@ -48,7 +50,9 @@ public class UiElementSelectorDeserializationTest extends CustomDataDeserializat
         // Strings
         selector.addSelectionAttribute(CssAttribute.CLASS_NAME, "class_name");
         selector.addSelectionAttribute(CssAttribute.TEXT, UiElementSelectionOption.WORD_MATCH, "[a-z]");
-        selector.addSelectionAttribute(CssAttribute.CONTENT_DESCRIPTION, UiElementSelectionOption.CONTAINS, "description");
+        selector.addSelectionAttribute(CssAttribute.CONTENT_DESCRIPTION,
+                                       UiElementSelectionOption.CONTAINS,
+                                       "description");
         selector.addSelectionAttribute(CssAttribute.PACKAGE_NAME, "package_name");
         selector.addSelectionAttribute(CssAttribute.RESOURCE_ID, "resource_id");
         // Booleans
@@ -103,18 +107,17 @@ public class UiElementSelectorDeserializationTest extends CustomDataDeserializat
 
     @Test
     public void emptyUiElementSelectorAttributeDeserializationTest() {
-        String jsonRequest = "{\"arguments\":[{\"attributeProjectionMap\":"
-                + "{\"TEXT\":{\"mValue\":\"EQUALS\"}}},true],\"typeNames\":"
-                + "[\"com.musala.atmosphere.commons.ui.selector.UiElementSelector\","
-                + "\"java.lang.Boolean\"],\"deviceId\":\"test_device_id\","
-                + "\"messageAction\":\"ROUTING_ACTION\",\"routingAction\":"
-                + "\"GET_UI_ELEMENTS\",\"sessionId\":\"test_session\"}";
+        String jsonRequest = "{\"arguments\":[{\"mKey\":\"com.musala.atmosphere.commons.ui.selector.UiElementSelector\","
+                + "\"mValue\":{\"attributeProjectionMap\":{\"TEXT\":{\"mValue\":\"EQUALS\"}}}},{\"mKey\":\"java.lang.Boolean\","
+                + "\"mValue\":true}],\"messageAction\":\"ROUTING_ACTION\",\"routingAction\":\"GET_UI_ELEMENTS\","
+                + "\"deviceId\":\"59A57D012B068B4B0D227342EEA9262E_01d04ee91317a4d6\","
+                + "\"sessionId\":\"b132e1f7-a24a-4991-bcab-a29f37485147\"}";
 
         RequestMessage requestMessage = jsonUtil.deserializeRequest(jsonRequest);
 
         UiElementSelector selector = (UiElementSelector) requestMessage.getArguments()[0];
 
         Assert.assertNull(selector.getText());
-        Assert.assertTrue((Boolean)requestMessage.getArguments()[1]);
+        Assert.assertTrue((Boolean) requestMessage.getArguments()[1]);
     }
 }

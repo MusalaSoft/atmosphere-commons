@@ -18,13 +18,14 @@ import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
 import com.musala.atmosphere.commons.util.Pair;
 
 /**
- * TODO: Add a javadoc
+ * Tests the deserialized response collection data after a serialization.
  *
  * @author dimcho.nedev
  *
  */
+@SuppressWarnings("unchecked")
 public class CollectionsDeserialziationTest extends BaseDataSerialization {
-    @SuppressWarnings("unchecked")
+
     @Test
     public void stringListResponseDataDeserializationTest() {
         List<String> commands = new ArrayList<String>();
@@ -39,7 +40,6 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
         Assert.assertEquals("second", deserializedResponseData.get(1));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public void stringSetDataDeserializerTest() {
         Set<String> set = new HashSet<String>(Arrays.asList("one", "two", "three"));
@@ -51,7 +51,6 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
     }
 
     // Check whether Map<String, Object> is used only as Map<String, String>
-    @SuppressWarnings("unchecked")
     @Test
     public void listOfMapDataDeserializerTest() {
         List<Map<String, Object>> listOfMaps = new ArrayList<Map<String, Object>>();
@@ -73,7 +72,6 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
     }
 
     // Check whether Map<String, Object> is used only as Map<String, String>
-    @SuppressWarnings("unchecked")
     @Test
     public void mapDataDeserializerTest() {
         Map<String, Object> map = new HashMap<String, Object>();
@@ -89,7 +87,6 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
         Assert.assertEquals("third_value", (deserializedResponseData.get("third")));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public void listOfAccessibilityElementsDeserializerTest() {
         AccessibilityElement firstElement = new AccessibilityElement();
@@ -116,7 +113,6 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
         Assert.assertEquals(2, actualThirdElement.getBounds().getCenter().getY());
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public void listOfPairsDeserializerTest() {
         Pair<Integer, String> firstPair = new Pair<Integer, String>(1, "first_value");

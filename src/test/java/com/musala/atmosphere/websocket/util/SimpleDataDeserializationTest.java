@@ -6,7 +6,7 @@ import org.junit.Test;
 import com.musala.atmosphere.commons.RoutingAction;
 
 /**
- * TODO: Add a javadoc
+ * Tests the deserialization of simple data after a serialization.
  *
  * @author dimcho.nedev
  *

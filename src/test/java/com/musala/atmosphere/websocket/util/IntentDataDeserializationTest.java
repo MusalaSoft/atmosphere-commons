@@ -13,7 +13,7 @@ import com.musala.atmosphere.commons.util.Pack;
 import com.musala.atmosphere.commons.websocket.message.RequestMessage;
 
 /**
- * TODO: Add a javadoc
+ * Tests the deserialization of the {@link Intent intent data}.
  *
  * @author dimcho.nedev
  *
@@ -48,11 +48,12 @@ public class IntentDataDeserializationTest extends CustomDataDeserializationTest
 
     @Test
     public void atmosphereIntentDataDeserializationRealDataTest() throws JsonSyntaxException, ClassNotFoundException {
-        String jsonMessage = "{\"arguments\":[{\"extras\":{\"contents\":[[{\"mKey\":\"text\",\"mValue\":\"STRING\"},\"Letters\"],"
-                + "[{\"mKey\":\"input_speed\",\"mValue\":\"LONG\"},0]]},\"flags\":[],\"action\":\"atmosphere.intent.ime.action.INPUT\","
-                + "\"categories\":[]}],\"typeNames\":[\"com.musala.atmosphere.commons.util.AtmosphereIntent\"],"
-                + "\"deviceId\":\"59A57D012B068B4B0D227342EEA9262E_01d04ee91317a4d6\",\"messageAction\":\"ROUTING_ACTION\","
-                + "\"routingAction\":\"SEND_BROADCAST\",\"sessionId\":\"777e6e47-f9d8-4dee-8a50-d7d3d0fc8916\"}";
+        String jsonMessage = "{\"arguments\":[{\"mKey\":\"com.musala.atmosphere.commons.util.AtmosphereIntent\","
+                + "\"mValue\":{\"extras\":{\"contents\":[[{\"mKey\":\"input_speed\",\"mValue\":\"LONG\"},0],"
+                + "[{\"mKey\":\"text\",\"mValue\":\"STRING\"},\"Letters\"]]},\"flags\":[],\"action\":\"atmosphere.intent.ime.action.INPUT\","
+                + "\"categories\":[]}}],\"messageAction\":\"ROUTING_ACTION\","
+                + "\"routingAction\":\"SEND_BROADCAST\",\"deviceId\":\"59A57D012B068B4B0D227342EEA9262E_01d04ee91317a4d6\","
+                + "\"sessionId\":\"f0ca4ed0-36a0-4899-a781-5cd1d216dff6\"}";
 
         RequestMessage response = jsonUtil.deserializeRequest(jsonMessage);
         AtmosphereIntent intent = (AtmosphereIntent) response.getArguments()[0];

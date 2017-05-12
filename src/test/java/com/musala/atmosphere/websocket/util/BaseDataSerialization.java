@@ -8,7 +8,7 @@ import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
 import com.musala.atmosphere.commons.websocket.util.GsonUtil;
 
 /**
- * TODO: Add a javadoc
+ * A base class for the serialization/deserialization tests with commonly used actions and fields.
  *
  * @author dimcho.nedev
  *
