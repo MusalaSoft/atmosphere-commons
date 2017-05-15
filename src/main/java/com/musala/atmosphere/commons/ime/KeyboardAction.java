@@ -1,4 +1,4 @@
-package com.musala.atmosphere.commons.ime;
+om.musala.atmosphere.commons.ime;
 
 /**
  * Keyboard action enumeration. This enumeration contains custom keyboard intent actions and identifiers.
