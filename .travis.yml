@@ -1,11 +1,6 @@
 language: java
 jdk: oraclejdk7
 os: linux
-
-notifications:
-  email:
-    recipients:
-        - atmosphere@musala.com
     
 cache:
     directories:
