@@ -12,13 +12,15 @@ import com.musala.atmosphere.commons.util.AtmosphereIntent;
 import com.musala.atmosphere.commons.util.Pack;
 import com.musala.atmosphere.commons.websocket.message.RequestMessage;
 
+import android.content.Intent;
+
 /**
  * Tests the deserialization of the {@link Intent intent data}.
  *
  * @author dimcho.nedev
  *
  */
-public class IntentDataDeserializationTest extends CustomDataDeserializationTest {
+public class IntentDataDeserializationTest extends DataSerializationTestBase {
 
     @Test
     public void atmosphereIntentDataDeserializationTest() {
@@ -36,10 +38,6 @@ public class IntentDataDeserializationTest extends CustomDataDeserializationTest
         Set<Integer> actualFlags = deserializedResponseData.getFlags();
         Set<String> actialCategory = deserializedResponseData.getCategory();
 
-        Assert.assertTrue(deserializedResponseData.getCategory().contains("cat_1"));
-        Assert.assertTrue(deserializedResponseData.getCategory().contains("cat_2"));
-        Assert.assertTrue(deserializedResponseData.getFlags().contains(1));
-        Assert.assertTrue(deserializedResponseData.getFlags().contains(2));
         Assert.assertEquals(TestConst.STRING_DATA, deserializedResponseData.getAction());
         Assert.assertEquals(true, deserializedResponseData.getBooleanExtra("key", false));
         Assert.assertEquals(expectedFlags, actualFlags);
@@ -48,12 +46,7 @@ public class IntentDataDeserializationTest extends CustomDataDeserializationTest
 
     @Test
     public void atmosphereIntentDataDeserializationRealDataTest() throws JsonSyntaxException, ClassNotFoundException {
-        String jsonMessage = "{\"arguments\":[{\"mKey\":\"com.musala.atmosphere.commons.util.AtmosphereIntent\","
-                + "\"mValue\":{\"extras\":{\"contents\":[[{\"mKey\":\"input_speed\",\"mValue\":\"LONG\"},0],"
-                + "[{\"mKey\":\"text\",\"mValue\":\"STRING\"},\"Letters\"]]},\"flags\":[],\"action\":\"atmosphere.intent.ime.action.INPUT\","
-                + "\"categories\":[]}}],\"messageAction\":\"ROUTING_ACTION\","
-                + "\"routingAction\":\"SEND_BROADCAST\",\"deviceId\":\"59A57D012B068B4B0D227342EEA9262E_01d04ee91317a4d6\","
-                + "\"sessionId\":\"f0ca4ed0-36a0-4899-a781-5cd1d216dff6\"}";
+        String jsonMessage = readFile(jsonPath + "atmosphereIntentDataDeserializationRealDataTest.txt");
 
         RequestMessage response = jsonUtil.deserializeRequest(jsonMessage);
         AtmosphereIntent intent = (AtmosphereIntent) response.getArguments()[0];
@@ -114,7 +107,7 @@ public class IntentDataDeserializationTest extends CustomDataDeserializationTest
         Assert.assertTrue(((Character) '1').equals(pack.getChar("char", '0')));
         Assert.assertEquals(shortInt, pack.getShort("short", (short) 123));
         Assert.assertEquals((byte) 16, pack.getByte("byte", (byte) 0));
-        Assert.assertTrue(person.equals(packObj.getSerializable("person")));
+        Assert.assertEquals(person, packObj.getSerializable("person"));
     }
 
     @Test

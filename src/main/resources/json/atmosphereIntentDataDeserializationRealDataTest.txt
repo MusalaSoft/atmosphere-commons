@@ -1,0 +1,34 @@
+{
+    "arguments": [
+        {
+            "mKey": "com.musala.atmosphere.commons.util.AtmosphereIntent",
+            "mValue": {
+                "extras": {
+                    "contents": [
+                        [
+                            {
+                                "mKey": "input_speed",
+                                "mValue": "LONG"
+                            },
+                            0
+                        ],
+                        [
+                            {
+                                "mKey": "text",
+                                "mValue": "STRING"
+                            },
+                            "Letters"
+                        ]
+                    ]
+                },
+                "flags": [],
+                "action": "atmosphere.intent.ime.action.INPUT",
+                "categories": []
+            }
+        }
+    ],
+    "messageAction": "ROUTING_ACTION",
+    "routingAction": "SEND_BROADCAST",
+    "deviceId": "59A57D012B068B4B0D227342EEA9262E_01d04ee91317a4d6",
+    "sessionId": "f0ca4ed0-36a0-4899-a781-5cd1d216dff6"
+}

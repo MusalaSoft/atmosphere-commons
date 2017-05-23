@@ -1,5 +1,9 @@
 package com.musala.atmosphere.websocket.util;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import com.musala.atmosphere.commons.DeviceInformation;
 import com.musala.atmosphere.commons.RoutingAction;
 import com.musala.atmosphere.commons.util.Pair;
@@ -13,9 +17,11 @@ import com.musala.atmosphere.commons.websocket.util.GsonUtil;
  * @author dimcho.nedev
  *
  */
-public class BaseDataSerialization {
-    protected static GsonUtil jsonUtil = new GsonUtil();
-
+public class DataSerializationTestBase {
+    protected static final GsonUtil jsonUtil = new GsonUtil();
+    
+    protected static final String jsonPath = "./src/main/resources/json/";
+    
     protected Object getExpectedResponseData(RoutingAction action, Object data) {
         ResponseMessage responseMessage = new ResponseMessage(MessageAction.ROUTING_ACTION, action, data);
         String jsonResponse = jsonUtil.serialize(responseMessage);
@@ -29,5 +35,16 @@ public class BaseDataSerialization {
         deviceInformation.setResolution(new Pair<Integer, Integer>(TestConst.RESOLUTION_X, TestConst.RESOLUTION_Y));
 
         return deviceInformation;
+    }
+
+    protected String readFile(String path) {
+        String text = null;
+        try {
+            text = new String(Files.readAllBytes(Paths.get(path)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return text;
     }
 }

@@ -1,5 +1,7 @@
 package com.musala.atmosphere.commons.websocket.util.serializer;
 
+import static com.musala.atmosphere.commons.websocket.util.JsonConst.*;
+
 import java.lang.reflect.Type;
 
 import com.google.gson.JsonArray;
@@ -38,35 +40,35 @@ public class RequestMessageSerializer implements JsonSerializer<RequestMessage> 
             JsonObject pair = new JsonObject();
 
             if (arg != null) {
-                pair.addProperty(JsonConst.KEY, arg.getClass().getName());
-                pair.add(JsonConst.VALUE, context.serialize(arg));
+                pair.addProperty(KEY, arg.getClass().getName());
+                pair.add(VALUE, context.serialize(arg));
             }
 
             jsonArray.add(pair);
         }
 
-        requestJson.add(JsonConst.ARGUMENTS, jsonArray);
+        requestJson.add(ARGUMENTS, jsonArray);
 
         if (messageAction != null) {
-            requestJson.addProperty(JsonConst.MESSAGE_ACTION, messageAction.toString());
+            requestJson.addProperty(MESSAGE_ACTION, messageAction.toString());
         }
         if (routingAction != null) {
-            requestJson.addProperty(JsonConst.ROUTING_ACTION, routingAction.toString());
+            requestJson.addProperty(ROUTING_ACTION, routingAction.toString());
         }
         if (passkey != null) {
-            requestJson.addProperty(JsonConst.DEVICE_PASSKEY, passkey);
+            requestJson.addProperty(DEVICE_PASSKEY, passkey);
         }
         if (agentId != null) {
-            requestJson.addProperty(JsonConst.AGENT_ID, agentId);
+            requestJson.addProperty(AGENT_ID, agentId);
         }
         if (deviceId != null) {
-            requestJson.addProperty(JsonConst.DEVICE_ID, deviceId);
+            requestJson.addProperty(DEVICE_ID, deviceId);
         }
         if (sessionId != null) {
-            requestJson.addProperty(JsonConst.SESSION_ID, sessionId);
+            requestJson.addProperty(SESSION_ID, sessionId);
         }
-        if(async) {
-            requestJson.addProperty(JsonConst.ASYNC, async);
+        if (async) {
+            requestJson.addProperty(ASYNC, async);
         }
 
         return requestJson;

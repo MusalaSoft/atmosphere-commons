@@ -11,7 +11,7 @@ import com.musala.atmosphere.commons.RoutingAction;
  * @author dimcho.nedev
  *
  */
-public class SimpleDataDeserializationTest extends BaseDataSerialization {
+public class SimpleDataDeserializationTest extends DataSerializationTestBase {
 
     @Test
     public void longClassResponseDataDeserializtionTest() {
@@ -35,7 +35,6 @@ public class SimpleDataDeserializationTest extends BaseDataSerialization {
 
         byte[] deserializedResponseData = (byte[]) getExpectedResponseData(RoutingAction.GET_SCREENSHOT, byteArray);
 
-        Assert.assertEquals(8, deserializedResponseData.length);
         Assert.assertArrayEquals(byteArray, deserializedResponseData);
     }
 

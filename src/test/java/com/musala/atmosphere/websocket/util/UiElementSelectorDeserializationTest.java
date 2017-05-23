@@ -17,15 +17,11 @@ import com.musala.atmosphere.commons.websocket.message.RequestMessage;
  * @author dimcho.nedev
  *
  */
-public class UiElementSelectorDeserializationTest extends CustomDataDeserializationTest {
+public class UiElementSelectorDeserializationTest extends DataSerializationTestBase {
 
     @Test
     public void uiElementSelectorDeserializatinTest() {
-        String jsonMessage = "{\"arguments\":[{\"mKey\":\"com.musala.atmosphere.commons.ui.selector.UiElementSelector\","
-                + "\"mValue\":{\"attributeProjectionMap\":{\"CLASS_NAME\":{\"mKey\":\"android.widget.NumberPicker\","
-                + "\"mValue\":\"EQUALS\"},\"INDEX\":{\"mKey\":1,\"mValue\":\"EQUALS\"}}}},{\"mKey\":\"java.lang.Boolean\",\"mValue\":true}],"
-                + "\"messageAction\":\"ROUTING_ACTION\",\"routingAction\":\"GET_UI_ELEMENTS\","
-                + "\"deviceId\":\"59A57D012B068B4B0D227342EEA9262E_01d04ee91317a4d6\",\"sessionId\":\"726363d4-23b0-4125-b5cf-f411c3d89139\"}";
+        String jsonMessage = readFile(jsonPath + "uiElementSelectorDeserializatinTest.txt");
 
         RequestMessage requestMessage = jsonUtil.deserializeRequest(jsonMessage);
 
@@ -108,11 +104,7 @@ public class UiElementSelectorDeserializationTest extends CustomDataDeserializat
 
     @Test
     public void emptyUiElementSelectorAttributeDeserializationTest() {
-        String jsonRequest = "{\"arguments\":[{\"mKey\":\"com.musala.atmosphere.commons.ui.selector.UiElementSelector\","
-                + "\"mValue\":{\"attributeProjectionMap\":{\"TEXT\":{\"mValue\":\"EQUALS\"}}}},{\"mKey\":\"java.lang.Boolean\","
-                + "\"mValue\":true}],\"messageAction\":\"ROUTING_ACTION\",\"routingAction\":\"GET_UI_ELEMENTS\","
-                + "\"deviceId\":\"59A57D012B068B4B0D227342EEA9262E_01d04ee91317a4d6\","
-                + "\"sessionId\":\"b132e1f7-a24a-4991-bcab-a29f37485147\"}";
+        String jsonRequest = readFile(jsonPath + "emptyUiElementSelectorAttributeDeserializationTest.txt");
 
         RequestMessage requestMessage = jsonUtil.deserializeRequest(jsonRequest);
 
