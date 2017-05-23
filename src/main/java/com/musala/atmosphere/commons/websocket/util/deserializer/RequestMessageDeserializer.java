@@ -1,5 +1,7 @@
 package com.musala.atmosphere.commons.websocket.util.deserializer;
 
+import static com.musala.atmosphere.commons.websocket.util.JsonConst.*;
+
 import java.lang.reflect.Type;
 
 import org.apache.log4j.Logger;
@@ -13,7 +15,6 @@ import com.google.gson.JsonParseException;
 import com.musala.atmosphere.commons.RoutingAction;
 import com.musala.atmosphere.commons.websocket.message.MessageAction;
 import com.musala.atmosphere.commons.websocket.message.RequestMessage;
-import com.musala.atmosphere.commons.websocket.util.JsonConst;
 
 /**
  * Deserializer for the {@link RequestMessage} object.
@@ -30,40 +31,33 @@ public class RequestMessageDeserializer implements JsonDeserializer<RequestMessa
         RequestMessage requestMessage = new RequestMessage();
 
         JsonObject jsonObject = json.getAsJsonObject();
-        JsonElement agentIdElement = jsonObject.get(JsonConst.AGENT_ID);
-        JsonElement deviceIdElement = jsonObject.get(JsonConst.DEVICE_ID);
-        JsonElement sessionIdElement = jsonObject.get(JsonConst.SESSION_ID);
-        JsonElement passkeyElement = jsonObject.get(JsonConst.DEVICE_PASSKEY);
-        JsonElement asyncElement = jsonObject.get(JsonConst.ASYNC);
+        JsonElement passkeyElement = jsonObject.get(DEVICE_PASSKEY);
+        JsonElement asyncElement = jsonObject.get(ASYNC);
 
-        MessageAction messageAction = context.deserialize(jsonObject.get(JsonConst.MESSAGE_ACTION),
-                                                          MessageAction.class);
-        RoutingAction routingAction = context.deserialize(jsonObject.get(JsonConst.ROUTING_ACTION),
-                                                          RoutingAction.class);
-        String agentId = agentIdElement != null ? agentIdElement.getAsString() : null;
-        String deviceId = deviceIdElement != null ? deviceIdElement.getAsString() : null;
-        String sessionId = sessionIdElement != null ? sessionIdElement.getAsString() : null;
+        MessageAction messageAction = context.deserialize(jsonObject.get(MESSAGE_ACTION), MessageAction.class);
+        RoutingAction routingAction = context.deserialize(jsonObject.get(ROUTING_ACTION), RoutingAction.class);
+        String agentId = getPropertyString(AGENT_ID, jsonObject);
+        String deviceId = getPropertyString(DEVICE_ID, jsonObject);
+        String sessionId = getPropertyString(SESSION_ID, jsonObject);
         Long passkey = passkeyElement != null ? passkeyElement.getAsLong() : null;
         boolean isAsync = asyncElement != null ? true : false;
 
-        JsonArray jsonArguments = jsonObject.get(JsonConst.ARGUMENTS).getAsJsonArray();
+        JsonArray jsonArguments = jsonObject.get(ARGUMENTS).getAsJsonArray();
         Object[] arguments = new Object[jsonArguments.size()];
 
         for (int i = 0; i < jsonArguments.size(); i++) {
-
             if (!jsonArguments.get(i).equals(new JsonObject())) {
-                String className = jsonArguments.get(i).getAsJsonObject().get(JsonConst.KEY).getAsString();
-                JsonElement jsonValue = jsonArguments.get(i).getAsJsonObject().get(JsonConst.VALUE);
+                String className = jsonArguments.get(i).getAsJsonObject().get(KEY).getAsString();
+                JsonElement jsonValue = jsonArguments.get(i).getAsJsonObject().get(VALUE);
                 try {
                     Object value = context.deserialize(jsonValue, Class.forName(className));
                     arguments[i] = value;
                 } catch (ClassNotFoundException e) {
-                    LOGGER.error(String.format(JsonConst.FAILED_TO_FIND_CLASS, className), e);
+                    LOGGER.error(String.format(FAILED_TO_FIND_CLASS, className), e);
                 }
             } else {
                 arguments[i] = null;
             }
-
         }
 
         requestMessage.setMessageAction(messageAction);
@@ -76,6 +70,11 @@ public class RequestMessageDeserializer implements JsonDeserializer<RequestMessa
         requestMessage.setAsync(isAsync);
 
         return requestMessage;
+    }
+
+    private String getPropertyString(String property, JsonObject jsonRequest) {
+        JsonElement element = jsonRequest.get(property);
+        return element != null ? element.getAsString() : null;
     }
 
 }

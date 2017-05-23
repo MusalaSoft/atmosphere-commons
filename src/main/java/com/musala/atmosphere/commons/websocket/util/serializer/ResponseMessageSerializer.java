@@ -1,5 +1,7 @@
 package com.musala.atmosphere.commons.websocket.util.serializer;
 
+import static com.musala.atmosphere.commons.websocket.util.JsonConst.*;
+
 import java.lang.reflect.Type;
 
 import com.google.gson.JsonElement;
@@ -9,7 +11,6 @@ import com.google.gson.JsonSerializer;
 import com.musala.atmosphere.commons.RoutingAction;
 import com.musala.atmosphere.commons.websocket.message.MessageAction;
 import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
-import com.musala.atmosphere.commons.websocket.util.JsonConst;
 
 /**
  * Serializer for the {@link ResponseMessage} object.
@@ -17,7 +18,7 @@ import com.musala.atmosphere.commons.websocket.util.JsonConst;
  * @author dimcho.nedev
  *
  */
-public class ResponseMessageSeriazlizer implements JsonSerializer<ResponseMessage> {
+public class ResponseMessageSerializer implements JsonSerializer<ResponseMessage> {
 
     @Override
     public JsonElement serialize(ResponseMessage response, Type type, JsonSerializationContext context) {
@@ -32,34 +33,34 @@ public class ResponseMessageSeriazlizer implements JsonSerializer<ResponseMessag
         JsonObject jsonResponse = new JsonObject();
 
         // add a message action
-        jsonResponse.add(JsonConst.MESSAGE_ACTION, context.serialize(messageAction));
+        jsonResponse.add(MESSAGE_ACTION, context.serialize(messageAction));
 
         // Add a routing action
-        jsonResponse.add(JsonConst.ROUTING_ACTION, context.serialize(routingAction));
+        jsonResponse.add(ROUTING_ACTION, context.serialize(routingAction));
 
         // Add a data
         if (data != null) {
             JsonObject dataJson = new JsonObject();
-            dataJson.addProperty(JsonConst.KEY, data.getClass().getName());
-            dataJson.add(JsonConst.VALUE, context.serialize(data));
-            jsonResponse.add(JsonConst.DATA, dataJson);
+            dataJson.addProperty(KEY, data.getClass().getName());
+            dataJson.add(VALUE, context.serialize(data));
+            jsonResponse.add(DATA, dataJson);
         }
 
         // Add an agent ID
-        jsonResponse.addProperty(JsonConst.AGENT_ID, agentId);
+        jsonResponse.addProperty(AGENT_ID, agentId);
 
         // Add a session ID
-        jsonResponse.addProperty(JsonConst.SESSION_ID, sessionId);
+        jsonResponse.addProperty(SESSION_ID, sessionId);
 
         // Add a device ID
-        jsonResponse.addProperty(JsonConst.DEVICE_ID, deviceId);
+        jsonResponse.addProperty(DEVICE_ID, deviceId);
 
         // Add an exception
         if (exception != null) {
             JsonObject exceptionJson = new JsonObject();
-            exceptionJson.addProperty(JsonConst.KEY, exception.getClass().getName());
-            exceptionJson.add(JsonConst.VALUE, context.serialize(exception));
-            jsonResponse.add(JsonConst.EXCEPTION, exceptionJson);
+            exceptionJson.addProperty(KEY, exception.getClass().getName());
+            exceptionJson.add(VALUE, context.serialize(exception));
+            jsonResponse.add(EXCEPTION, exceptionJson);
         }
 
         return jsonResponse;

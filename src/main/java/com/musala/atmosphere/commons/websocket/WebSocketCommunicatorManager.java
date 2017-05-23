@@ -12,27 +12,21 @@ import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
  *
  */
 public class WebSocketCommunicatorManager {
-    private static WebSocketCommunicatorManager instance = null;
+    private Map<String, Object> lockObjectMap;
 
-    private static Map<String, Object> lockObjectMap;
-
-    private static Map<String, ResponseMessage> responseMap;
+    private Map<String, ResponseMessage> responseMap;
 
     private WebSocketCommunicatorManager() {
         lockObjectMap = new ConcurrentHashMap<String, Object>();
         responseMap = new ConcurrentHashMap<String, ResponseMessage>();
     }
 
-    public static WebSocketCommunicatorManager getInstance() {
-        if (instance == null) {
-            synchronized (WebSocketCommunicatorManager.class) {
-                if (instance == null) {
-                    instance = new WebSocketCommunicatorManager();
-                }
-            }
-        }
+    private static class WebSocketCommunicatorManagerLoader {
+        private static final WebSocketCommunicatorManager INSTANCE = new WebSocketCommunicatorManager();
+    }
 
-        return instance;
+    public static WebSocketCommunicatorManager getInstance() {
+        return WebSocketCommunicatorManagerLoader.INSTANCE;
     }
 
     /**
@@ -59,7 +53,7 @@ public class WebSocketCommunicatorManager {
      *        - session identifier
      * @return {@link ResponseMessage response message}
      */
-    public ResponseMessage getResponse(String sessionId) {
+    public ResponseMessage popResponse(String sessionId) {
         ResponseMessage response = responseMap.remove(sessionId);
 
         return response;
@@ -71,7 +65,7 @@ public class WebSocketCommunicatorManager {
      * @param response
      *        - {@link ResponseMessage response message}
      */
-    public void setResponse(ResponseMessage response) {
+    public void addResponse(ResponseMessage response) {
         String sessionId = response.getSessionId();
         responseMap.put(sessionId, response);
         Object lockObject = lockObjectMap.get(sessionId);

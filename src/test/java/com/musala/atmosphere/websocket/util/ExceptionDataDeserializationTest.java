@@ -20,7 +20,7 @@ import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
  * @author dimcho.nedev
  *
  */
-public class ExceptionDataDeserializationTest extends BaseDataSerialization {
+public class ExceptionDataDeserializationTest extends DataSerializationTestBase {
     public static final String EXCEPTION_MESSAGE = "Exception Message";
 
     @Test
@@ -28,14 +28,14 @@ public class ExceptionDataDeserializationTest extends BaseDataSerialization {
         ResponseMessage responseMessage = new ResponseMessage(MessageAction.ROUTING_ACTION,
                                                               RoutingAction.GET_LOGCAT_BUFFER,
                                                               null);
-        WebElementNotPresentException expectedExcpetion = new WebElementNotPresentException(EXCEPTION_MESSAGE);
+        WebElementNotPresentException expectedException = new WebElementNotPresentException(EXCEPTION_MESSAGE);
         StackTraceElement[] ste = new StackTraceElement[3];
         ste[0] = new StackTraceElement("declaringClass_1", "methodName_1", "fileName_1", 1);
         ste[1] = new StackTraceElement("declaringClass_2", "methodName_2", "fileName_2", 2);
         ste[2] = new StackTraceElement("declaringClass_3", "methodName_3", "fileName_3", 2);
-        expectedExcpetion.setStackTrace(ste);
-        expectedExcpetion.initCause(new RuntimeException("cause"));
-        responseMessage.setException(expectedExcpetion);
+        expectedException.setStackTrace(ste);
+        expectedException.initCause(new RuntimeException("cause"));
+        responseMessage.setException(expectedException);
 
         String jsonResponse = jsonUtil.serialize(responseMessage);
 
@@ -45,17 +45,17 @@ public class ExceptionDataDeserializationTest extends BaseDataSerialization {
         Assert.assertArrayEquals(ste, actualException.getStackTrace());
         Assert.assertEquals(actualException.getMessage(), EXCEPTION_MESSAGE);
         Assert.assertEquals(WebElementNotPresentException.class, actualException.getClass());
-        Assert.assertEquals(actualException.getCause().getMessage(), expectedExcpetion.getCause().getMessage());
-        Assert.assertArrayEquals(actualException.getStackTrace(), expectedExcpetion.getStackTrace());
+        Assert.assertEquals(actualException.getCause().getMessage(), expectedException.getCause().getMessage());
+        Assert.assertArrayEquals(actualException.getStackTrace(), expectedException.getStackTrace());
     }
 
     @Test(expected = AtmosphereConfigurationException.class)
-    public void throwDeserializedExcpetionTest() throws Exception {
+    public void throwDeserializedExceptionTest() throws Exception {
         ResponseMessage responseMessage = new ResponseMessage(MessageAction.ROUTING_ACTION,
                                                               RoutingAction.GET_LOGCAT_BUFFER,
                                                               null);
-        AtmosphereConfigurationException expectedExcpetion = new AtmosphereConfigurationException(EXCEPTION_MESSAGE);
-        responseMessage.setException(expectedExcpetion);
+        AtmosphereConfigurationException expectedException = new AtmosphereConfigurationException(EXCEPTION_MESSAGE);
+        responseMessage.setException(expectedException);
         String jsonResponse = jsonUtil.serialize(responseMessage);
 
         ResponseMessage deserializedResponse = jsonUtil.deserializeResponse(jsonResponse);
@@ -63,7 +63,6 @@ public class ExceptionDataDeserializationTest extends BaseDataSerialization {
         Exception actualException = deserializedResponse.getException();
 
         Assert.assertEquals(EXCEPTION_MESSAGE, actualException.getMessage());
-        Assert.assertEquals(AtmosphereConfigurationException.class, actualException.getClass());
 
         throw actualException;
     }
@@ -83,8 +82,6 @@ public class ExceptionDataDeserializationTest extends BaseDataSerialization {
         Assert.assertEquals(RoutingAction.GET_WEB_VIEWS, response.getRoutingAction());
         Assert.assertNull(response.getAgentId());
         Assert.assertEquals(EXCEPTION_MESSAGE, response.getException().getMessage());
-        Assert.assertEquals(CommandFailedException.class, response.getException().getClass());
-
         Assert.assertEquals(set, response.getData());
 
         throw response.getException();

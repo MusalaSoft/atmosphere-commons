@@ -1,5 +1,7 @@
 package com.musala.atmosphere.commons.websocket.util.deserializer;
 
+import static com.musala.atmosphere.commons.websocket.util.JsonConst.*;
+
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +21,6 @@ import com.musala.atmosphere.commons.util.Pair;
 import com.musala.atmosphere.commons.util.structure.tree.Tree;
 import com.musala.atmosphere.commons.websocket.message.MessageAction;
 import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
-import com.musala.atmosphere.commons.websocket.util.JsonConst;
 
 /**
  * Deserializer for the {@link ResponseMessage} object.
@@ -36,33 +37,31 @@ public class ResponseMessageDeserializer implements JsonDeserializer<ResponseMes
         ResponseMessage responseMessage = new ResponseMessage();
         JsonObject jsonResponse = json.getAsJsonObject();
 
-        MessageAction messageAction = context.deserialize(jsonResponse.get(JsonConst.MESSAGE_ACTION),
-                                                          MessageAction.class);
-        RoutingAction routingAction = context.deserialize(jsonResponse.get(JsonConst.ROUTING_ACTION),
-                                                          RoutingAction.class);
-        String agentId = getPropertyString(JsonConst.AGENT_ID, jsonResponse);
-        String sessionId = getPropertyString(JsonConst.SESSION_ID, jsonResponse);
-        String deviceId = getPropertyString(JsonConst.DEVICE_ID, jsonResponse);
+        MessageAction messageAction = context.deserialize(jsonResponse.get(MESSAGE_ACTION), MessageAction.class);
+        RoutingAction routingAction = context.deserialize(jsonResponse.get(ROUTING_ACTION), RoutingAction.class);
+        String agentId = getPropertyString(AGENT_ID, jsonResponse);
+        String sessionId = getPropertyString(SESSION_ID, jsonResponse);
+        String deviceId = getPropertyString(DEVICE_ID, jsonResponse);
 
         // Sets an exception to the response
-        JsonElement pair = jsonResponse.get(JsonConst.EXCEPTION);
+        JsonElement pair = jsonResponse.get(EXCEPTION);
         if (pair != null) {
-            String exceptionClassName = pair.getAsJsonObject().get(JsonConst.KEY).getAsString();
-            JsonElement exceptionElement = pair.getAsJsonObject().get(JsonConst.VALUE);
+            String exceptionClassName = pair.getAsJsonObject().get(KEY).getAsString();
+            JsonElement exceptionElement = pair.getAsJsonObject().get(VALUE);
             try {
                 Exception exception = context.deserialize(exceptionElement, Class.forName(exceptionClassName));
                 responseMessage.setException(exception);
             } catch (ClassNotFoundException e) {
-                LOGGER.error(String.format(JsonConst.FAILED_TO_FIND_CLASS, exceptionClassName), e);
+                LOGGER.error(String.format(FAILED_TO_FIND_CLASS, exceptionClassName), e);
             }
         }
 
         // Sets a data to the response
-        JsonElement dataElement = jsonResponse.get(JsonConst.DATA);
+        JsonElement dataElement = jsonResponse.get(DATA);
 
         if (dataElement != null) {
-            JsonElement typeElement = dataElement.getAsJsonObject().get(JsonConst.KEY);
-            JsonElement dataValue = dataElement.getAsJsonObject().get(JsonConst.VALUE);
+            JsonElement typeElement = dataElement.getAsJsonObject().get(KEY);
+            JsonElement dataValue = dataElement.getAsJsonObject().get(VALUE);
             Type type = resolveTypeForRoutingAction(typeElement, messageAction, routingAction);
             Object data = context.deserialize(dataValue, type);
 
@@ -79,7 +78,8 @@ public class ResponseMessageDeserializer implements JsonDeserializer<ResponseMes
     }
 
     private String getPropertyString(String property, JsonObject jsonResponse) {
-        return jsonResponse.get(property) != null ? jsonResponse.get(property).getAsString() : null;
+        JsonElement element = jsonResponse.get(property);
+        return element != null ? element.getAsString() : null;
     }
 
     /**
@@ -159,7 +159,7 @@ public class ResponseMessageDeserializer implements JsonDeserializer<ResponseMes
         try {
             type = Class.forName(className);
         } catch (ClassNotFoundException e) {
-            LOGGER.error(String.format(JsonConst.FAILED_TO_FIND_CLASS, className), e);
+            LOGGER.error(String.format(FAILED_TO_FIND_CLASS, className), e);
         } catch (NullPointerException e1) {
             // nothing to do here
         }

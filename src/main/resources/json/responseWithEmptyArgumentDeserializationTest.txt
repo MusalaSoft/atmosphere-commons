@@ -1,0 +1,13 @@
+{
+    "arguments": [
+        {},
+        {
+            "mKey": "java.lang.Integer",
+            "mValue": 10000
+        }
+    ],
+    "messageAction": "ROUTING_ACTION",
+    "routingAction": "WAIT_FOR_WINDOW_UPDATE",
+    "deviceId": "deviceId",
+    "sessionId": "sessionId"
+}
