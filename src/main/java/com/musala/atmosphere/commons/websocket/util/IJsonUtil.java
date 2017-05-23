@@ -55,5 +55,5 @@ public interface IJsonUtil {
      *        - the {@Class class} of the property
      * @return the value of the property as a {@link Java object}
      */
-    public Object getProperty(String jsonMessage, String propertyName, Class<?> type);
+    public <T> T getProperty(String jsonMessage, String propertyName, Class<T> type);
 }

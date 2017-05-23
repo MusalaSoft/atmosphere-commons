@@ -1,5 +1,7 @@
 package com.musala.atmosphere.commons.websocket.util.deserializer;
 
+import static com.musala.atmosphere.commons.websocket.util.JsonConst.*;
+
 import java.lang.reflect.Type;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -15,7 +17,6 @@ import com.musala.atmosphere.commons.geometry.Bounds;
 import com.musala.atmosphere.commons.ui.selector.CssAttribute;
 import com.musala.atmosphere.commons.ui.selector.UiElementSelectionOption;
 import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
-import com.musala.atmosphere.commons.websocket.util.JsonConst;
 
 /**
  * Deserializer for the {@link UiElementSelector} object.
@@ -28,18 +29,18 @@ public class UiElementSelectorDeserializer implements JsonDeserializer<UiElement
 
     @Override
     public UiElementSelector deserialize(JsonElement json, Type type, JsonDeserializationContext context)
-            throws JsonParseException {
+        throws JsonParseException {
         UiElementSelector selector = new UiElementSelector();
 
         JsonObject jsonObject = json.getAsJsonObject();
-        JsonElement attributeProjectionMap = jsonObject.get(JsonConst.ATTRIBUTE_PROJECTION_MAP);
+        JsonElement attributeProjectionMap = jsonObject.get(ATTRIBUTE_PROJECTION_MAP);
 
         if (attributeProjectionMap.equals(new JsonObject())) {
             // empty attribute map: {}
             return selector;
         }
 
-        LOGGER.debug(String.format("%s: %s", JsonConst.ATTRIBUTE_PROJECTION_MAP, attributeProjectionMap));
+        LOGGER.debug(String.format("%s: %s", ATTRIBUTE_PROJECTION_MAP, attributeProjectionMap));
 
         Set<Entry<String, JsonElement>> set = attributeProjectionMap.getAsJsonObject().entrySet();
 
@@ -48,9 +49,9 @@ public class UiElementSelectorDeserializer implements JsonDeserializer<UiElement
 
             CssAttribute cssAttribute = CssAttribute.valueOf(entry.getKey());
 
-            JsonElement key = entry.getValue().getAsJsonObject().get(JsonConst.KEY);
+            JsonElement key = entry.getValue().getAsJsonObject().get(KEY);
             if (key != null) {
-                String optionName = entry.getValue().getAsJsonObject().get(JsonConst.VALUE).getAsString();
+                String optionName = entry.getValue().getAsJsonObject().get(VALUE).getAsString();
                 UiElementSelectionOption option = UiElementSelectionOption.valueOf(optionName);
 
                 switch (cssAttribute) {

@@ -53,7 +53,7 @@ public class AtmosphereIntent implements Serializable {
      * 
      * @return the set of categories
      */
-    public Set<String> getCategory() {
+    public Set<String> getCategories() {
         return new HashSet<String>(categories);
     }
 

@@ -13,7 +13,7 @@ import com.musala.atmosphere.commons.websocket.util.deserializer.RequestMessageD
 import com.musala.atmosphere.commons.websocket.util.deserializer.ResponseMessageDeserializer;
 import com.musala.atmosphere.commons.websocket.util.deserializer.UiElementSelectorDeserializer;
 import com.musala.atmosphere.commons.websocket.util.serializer.RequestMessageSerializer;
-import com.musala.atmosphere.commons.websocket.util.serializer.ResponseMessageSeriazlizer;
+import com.musala.atmosphere.commons.websocket.util.serializer.ResponseMessageSerializer;
 
 /**
  * Represents a concrete implementation of the {@link IJsonUtil JSON util interface}. Responsible for
@@ -29,18 +29,13 @@ public class GsonUtil implements IJsonUtil {
     protected static Gson g;
 
     public GsonUtil() {
-        gsonBuilder = new GsonBuilder().enableComplexMapKeySerialization()
-                                       .registerTypeHierarchyAdapter(Pack.class, new PackDeserializer())
-                                       .registerTypeHierarchyAdapter(UiElementSelector.class,
-                                                                     new UiElementSelectorDeserializer())
-                                       .registerTypeHierarchyAdapter(RequestMessage.class,
-                                                                     new RequestMessageSerializer())
-                                       .registerTypeHierarchyAdapter(RequestMessage.class,
-                                                                     new RequestMessageDeserializer())
-                                       .registerTypeHierarchyAdapter(ResponseMessage.class,
-                                                                     new ResponseMessageSeriazlizer())
-                                       .registerTypeHierarchyAdapter(ResponseMessage.class,
-                                                                     new ResponseMessageDeserializer());
+        gsonBuilder = new GsonBuilder().enableComplexMapKeySerialization();
+        gsonBuilder.registerTypeHierarchyAdapter(Pack.class, new PackDeserializer());
+        gsonBuilder.registerTypeHierarchyAdapter(UiElementSelector.class, new UiElementSelectorDeserializer());
+        gsonBuilder.registerTypeHierarchyAdapter(RequestMessage.class, new RequestMessageSerializer());
+        gsonBuilder.registerTypeHierarchyAdapter(RequestMessage.class, new RequestMessageDeserializer());
+        gsonBuilder.registerTypeHierarchyAdapter(ResponseMessage.class, new ResponseMessageSerializer());
+        gsonBuilder.registerTypeHierarchyAdapter(ResponseMessage.class, new ResponseMessageDeserializer());
         g = gsonBuilder.create();
     }
 
@@ -60,10 +55,10 @@ public class GsonUtil implements IJsonUtil {
     }
 
     @Override
-    public Object getProperty(String jsonMessage, String propertyName, Class<?> clazz) {
+    public <T> T getProperty(String jsonMessage, String propertyName, Class<T> clazz) {
         JsonObject jsonObject = g.fromJson(jsonMessage, JsonObject.class);
         JsonElement propertyElement = jsonObject.get(propertyName);
-        Object propertyData = g.fromJson(propertyElement, clazz);
+        T propertyData = g.fromJson(propertyElement, clazz);
 
         return propertyData;
     }

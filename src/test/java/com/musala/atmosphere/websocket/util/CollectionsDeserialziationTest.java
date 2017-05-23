@@ -17,7 +17,6 @@ import com.musala.atmosphere.commons.geometry.Point;
 import com.musala.atmosphere.commons.ui.tree.AccessibilityElement;
 import com.musala.atmosphere.commons.util.Pair;
 import com.musala.atmosphere.commons.websocket.message.MessageAction;
-import com.musala.atmosphere.commons.websocket.message.RequestMessage;
 import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
 
 /**
@@ -27,7 +26,7 @@ import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
  *
  */
 @SuppressWarnings("unchecked")
-public class CollectionsDeserialziationTest extends BaseDataSerialization {
+public class CollectionsDeserialziationTest extends DataSerializationTestBase {
 
     @Test
     public void stringListResponseDataDeserializationTest() {
@@ -37,10 +36,7 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
 
         List<String> deserializedResponseData = (List<String>) getExpectedResponseData(RoutingAction.EXECUTE_SHELL_COMMAND_SEQUENCE,
                                                                                        commands);
-
-        Assert.assertEquals(2, deserializedResponseData.size());
-        Assert.assertEquals("first", deserializedResponseData.get(0));
-        Assert.assertEquals("second", deserializedResponseData.get(1));
+        Assert.assertEquals(commands, deserializedResponseData);
     }
 
     @Test
@@ -49,7 +45,6 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
 
         Set<String> deserializedResponseData = (Set<String>) getExpectedResponseData(RoutingAction.GET_WEB_VIEWS, set);
 
-        Assert.assertEquals(3, deserializedResponseData.size());
         Assert.assertEquals(set, deserializedResponseData);
     }
 
@@ -69,9 +64,7 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
         List<Map<String, Object>> deserializedResponseData = (List<Map<String, Object>>) getExpectedResponseData(RoutingAction.FIND_WEB_ELEMENTS,
                                                                                                                  listOfMaps);
 
-        Assert.assertEquals("first_value", (deserializedResponseData.get(0).get("first")));
-        Assert.assertEquals("second_value", (deserializedResponseData.get(0).get("second")));
-        Assert.assertEquals("third_value", (deserializedResponseData.get(1).get("third")));
+        Assert.assertEquals(listOfMaps, deserializedResponseData);
     }
 
     // Check whether Map<String, Object> is used only as Map<String, String>
@@ -93,14 +86,14 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
     @Test
     public void listOfAccessibilityElementsDeserializerTest() {
         AccessibilityElement firstElement = new AccessibilityElement();
-        AccessibilityElement seconfElement = new AccessibilityElement();
+        AccessibilityElement secondElement = new AccessibilityElement();
         AccessibilityElement thirdElement = new AccessibilityElement();
 
         firstElement.setPath(TestConst.TEST_PATH);
-        seconfElement.setEnabled(true);
+        secondElement.setEnabled(true);
         thirdElement.setBounds(new Bounds(new Point(0, 0), new Point(4, 4)));
 
-        List<AccessibilityElement> list = Arrays.asList(firstElement, seconfElement, thirdElement);
+        List<AccessibilityElement> list = Arrays.asList(firstElement, secondElement, thirdElement);
 
         List<AccessibilityElement> deserializedResponseData = (List<AccessibilityElement>) getExpectedResponseData(RoutingAction.GET_UI_ELEMENTS,
                                                                                                                    list);
@@ -139,6 +132,8 @@ public class CollectionsDeserialziationTest extends BaseDataSerialization {
         ResponseMessage expected = jsonUtil.deserializeResponse(jsonUtil.serialize(response));
 
         Assert.assertEquals(list, ((List<Pair<String, String>>)expected.getData()));
+        Assert.assertEquals(response.getMessageAction(), expected.getMessageAction());
+        Assert.assertNull(expected.getRoutingAction());
     }
 
 }

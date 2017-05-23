@@ -22,7 +22,7 @@ import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
  * @author dimcho.nedev
  *
  */
-public class CustomDataDeserializationTest extends BaseDataSerialization {
+public class CustomDataDeserializationTest extends DataSerializationTestBase {
 
     @Test
     public void deviceInformationResponseDataDeserializationTest() {
@@ -32,10 +32,7 @@ public class CustomDataDeserializationTest extends BaseDataSerialization {
                                                                                                  deviceInformation);
 
         Assert.assertEquals(TestConst.DEVICE_API_LEVEL, deserializedResponseData.getApiLevel());
-        Assert.assertEquals(new Integer(TestConst.RESOLUTION_X), deserializedResponseData.getResolution().getKey());
-        Assert.assertEquals(new Integer(TestConst.RESOLUTION_Y), deserializedResponseData.getResolution().getValue());
-        Assert.assertEquals(new Pair<Integer, Integer>(TestConst.RESOLUTION_X, TestConst.RESOLUTION_Y),
-                            deserializedResponseData.getResolution());
+        Assert.assertEquals(deviceInformation.getResolution(), deserializedResponseData.getResolution());
     }
 
     @SuppressWarnings("unchecked")
@@ -56,9 +53,9 @@ public class CustomDataDeserializationTest extends BaseDataSerialization {
         // setup the nodes
         Node<AccessibilityElement> firstChildNode = new Node<AccessibilityElement>(firstChildElement);
         Node<AccessibilityElement> secondChildNode = new Node<AccessibilityElement>(secondChildElement);
-        Node<AccessibilityElement> childOfsecondChildNode = new Node<AccessibilityElement>(childOfFirstChildElement);
+        Node<AccessibilityElement> childOfFirstChildNode = new Node<AccessibilityElement>(childOfFirstChildElement);
 
-        firstChildNode.addChild(childOfsecondChildNode);
+        firstChildNode.addChild(childOfFirstChildNode);
 
         // setup the tree
         Tree<AccessibilityElement> tree = new Tree<AccessibilityElement>(rootElement);
@@ -135,18 +132,16 @@ public class CustomDataDeserializationTest extends BaseDataSerialization {
 
     @Test
     public void responseWithEmptyArgumentDeserializationTest() {
-        String jsonMessage = "{\"arguments\":[{},{\"mKey\":\"java.lang.Integer\",\"mValue\":10000}],"
-                + "\"messageAction\":\"ROUTING_ACTION\",\"routingAction\":\"WAIT_FOR_WINDOW_UPDATE\","
-                + "\"deviceId\":\"deviceId\",\"sessionId\":\"sessionId\"}";
+        String jsonMessage = readFile(jsonPath + "responseWithEmptyArgumentDeserializationTest.txt");
 
         RequestMessage message = jsonUtil.deserializeRequest(jsonMessage);
 
-        Object[] argsuments = message.getArguments();
+        Object[] arguments = message.getArguments();
 
         Assert.assertEquals(MessageAction.ROUTING_ACTION, message.getMessageAction());
         Assert.assertEquals(RoutingAction.WAIT_FOR_WINDOW_UPDATE, message.getRoutingAction());
-        Assert.assertNull(argsuments[0]);
-        Assert.assertEquals(10000, argsuments[1]);
+        Assert.assertNull(arguments[0]);
+        Assert.assertEquals(10000, arguments[1]);
         Assert.assertNull(message.getAgentId());
         Assert.assertEquals("deviceId", message.getDeviceId());
         Assert.assertEquals("sessionId", message.getSessionId());
