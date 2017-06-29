@@ -58,9 +58,6 @@ public class DeviceInformation implements Serializable {
         hasCamera = FALLBACK_HAS_CAMERA_OPTION;
     }
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = -6289200803789024053L;
 
     /**

@@ -9,10 +9,6 @@ import java.io.Serializable;
  *
  */
 public class WifiConnectionProperties implements Serializable {
-
-    /**
-     * auto-generated serialization id
-     */
     private static final long serialVersionUID = -1238602101763163867L;
 
     private WifiConfiguration upLink;

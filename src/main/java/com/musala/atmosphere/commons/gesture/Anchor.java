@@ -10,10 +10,6 @@ import java.io.Serializable;
  * 
  */
 public class Anchor implements Serializable {
-
-    /**
-	 * 
-	 */
     private static final long serialVersionUID = -6965038093837682224L;
 
     private float x;

@@ -9,10 +9,6 @@ import java.util.LinkedList;
  * 
  */
 public class Gesture extends LinkedList<Timeline> {
-
-    /**
-     * auto-generated serialization id
-     */
     private static final long serialVersionUID = -5546428458678128751L;
 
 }

@@ -11,9 +11,6 @@ import com.musala.atmosphere.commons.parameters.CommandParameter;
  * 
  */
 public class DeviceAcceleration implements Serializable, CommandParameter {
-    /**
-	 *
-	 */
     private static final long serialVersionUID = 3379968408421438681L;
 
     /**

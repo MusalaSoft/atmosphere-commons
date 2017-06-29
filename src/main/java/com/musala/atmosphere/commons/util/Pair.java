@@ -16,9 +16,6 @@ import java.util.Map;
  *        The type of the second element of the pair.
  */
 public class Pair<K, V> implements Map.Entry<K, V>, Serializable {
-    /**
-	 * 
-	 */
     private static final long serialVersionUID = 4044395775550083992L;
 
     private K mKey;

@@ -10,9 +10,5 @@ import java.util.LinkedList;
  * 
  */
 public class Timeline extends LinkedList<Anchor> {
-
-    /**
-     * auto-generated serialization id
-     */
     private static final long serialVersionUID = 4037933611110545542L;
 }

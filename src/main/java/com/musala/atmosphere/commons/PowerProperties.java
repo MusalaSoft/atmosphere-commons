@@ -14,9 +14,6 @@ import com.musala.atmosphere.commons.beans.PowerSource;
  * 
  */
 public class PowerProperties implements Serializable {
-    /**
-     * auto-generated serialization id
-     */
     private static final long serialVersionUID = -7654104783965352503L;
 
     /**
