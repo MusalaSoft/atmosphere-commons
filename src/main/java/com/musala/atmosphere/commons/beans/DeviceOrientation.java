@@ -11,10 +11,6 @@ import com.musala.atmosphere.commons.parameters.CommandParameter;
  * 
  */
 public class DeviceOrientation implements Serializable, CommandParameter {
-
-    /**
-	 *
-	 */
     private static final long serialVersionUID = 5579467936945061534L;
 
     /**

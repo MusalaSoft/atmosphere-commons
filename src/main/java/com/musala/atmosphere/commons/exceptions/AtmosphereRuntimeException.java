@@ -8,10 +8,6 @@ package com.musala.atmosphere.commons.exceptions;
  */
 
 public class AtmosphereRuntimeException extends RuntimeException {
-
-    /**
-     * auto generated serialization id
-     */
     private static final long serialVersionUID = -806936737487760417L;
 
     public AtmosphereRuntimeException() {
