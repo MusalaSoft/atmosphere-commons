@@ -8,16 +8,16 @@ import com.musala.atmosphere.commons.ui.selector.UiElementSelectionOption;
  * to make them easier to create and manage.
  *
  */
-public class SelectionAttribute {
+public abstract class SelectionAttribute {
     private CssAttribute cssAttribute;
     private UiElementSelectionOption selectionOption;
     private Object attributeValue;
 
-    public SelectionAttribute(CssAttribute cssAttribute, Object attributeValue) {
+    protected SelectionAttribute(CssAttribute cssAttribute, Object attributeValue) {
         this(cssAttribute, UiElementSelectionOption.EQUALS, attributeValue);
     }
 
-    public SelectionAttribute(CssAttribute cssAttribute, UiElementSelectionOption selectionOption, Object attributeValue) {
+    protected SelectionAttribute(CssAttribute cssAttribute, UiElementSelectionOption selectionOption, Object attributeValue) {
         this.cssAttribute = cssAttribute;
         this.selectionOption = selectionOption;
         this.attributeValue = attributeValue;
