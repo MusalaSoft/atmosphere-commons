@@ -32,7 +32,8 @@ public interface IJsonUtil {
      * Deserializes a JSON string as a {@link ResponseMessage} response message.
      *
      * @param jsonMessage
-     * @return the deserialized {@link ResponseMessage} request message
+     *        - JSON response message
+     * @return the deserialized {@link ResponseMessage} response message
      */
     public ResponseMessage deserializeResponse(String jsonMessage);
 
@@ -40,6 +41,7 @@ public interface IJsonUtil {
      * Deserializes a JSON string as a {@link RequestMessage} request message.
      *
      * @param jsonMessage
+     *        - JSON request message
      * @return the deserialized {@link RequestMessage} request message
      */
     public RequestMessage deserializeRequest(String jsonMessage);
@@ -51,9 +53,10 @@ public interface IJsonUtil {
      *        - JSON message
      * @param propertyName
      *        - name of a property
-     * @param type
-     *        - the {@Class class} of the property
-     * @return the value of the property as a {@link Java object}
+     * @param clazz
+     *        - the class of the property
+     * @param <T> the type of the property
+     * @return the value of the property
      */
-    public <T> T getProperty(String jsonMessage, String propertyName, Class<T> type);
+    public <T> T getProperty(String jsonMessage, String propertyName, Class<T> clazz);
 }

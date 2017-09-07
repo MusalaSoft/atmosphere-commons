@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.musala.atmosphere.commons.ui.selector.UiElementSelector;
 import com.musala.atmosphere.commons.util.Pack;
+import com.musala.atmosphere.commons.websocket.message.Message;
 import com.musala.atmosphere.commons.websocket.message.RequestMessage;
 import com.musala.atmosphere.commons.websocket.message.ResponseMessage;
 import com.musala.atmosphere.commons.websocket.util.deserializer.PackDeserializer;
