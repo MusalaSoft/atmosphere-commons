@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/MusalaSoft/atmosphere-commons.svg?branch=master)](https://travis-ci.org/MusalaSoft/atmosphere-commons) [ ![Download](https://api.bintray.com/packages/musala/atmosphere/atmosphere-commons/images/download.svg) ](https://bintray.com/musala/atmosphere/atmosphere-commons/_latestVersion)    
 See our site for better context of this readme. [Click here](http://atmosphereframework.com/)
 
 # atmosphere-commons
