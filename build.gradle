@@ -24,7 +24,7 @@ sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
 // bintray publishing parameters
-version = '0.1.0'
+version = '0.1.1'
 def repoName = 'atmosphere'
 def projectName = 'atmosphere-commons'
 def organizationName = 'musala'
