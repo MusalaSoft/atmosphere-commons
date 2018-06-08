@@ -14,12 +14,23 @@
 // You should have received a copy of the GNU General Public License
 // along with ATMOSPHERE.  If not, see <http://www.gnu.org/licenses/>.
 
-apply plugin: 'java'
-apply plugin: 'maven-publish'
+plugins {
+    id "java"
+    id "maven-publish"
+    id "com.jfrog.bintray" version "1.8.1"
+}
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
+
+// bintray publishing parameters
 version = '0.1.0'
+def repoName = 'atmosphere'
+def projectName = 'atmosphere-commons'
+def organizationName = 'musala'
+def url = 'https://github.com/MusalaSoft/atmosphere-commons.git'
+def description = 'Add license notices and an exception'
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'Atmosphere Commons',
@@ -47,10 +58,14 @@ publishing {
     publications {
         atmosphereCommons(MavenPublication) {
             groupId 'com.musala.atmosphere'
-            artifactId 'atmosphere-commons'
+            artifactId "$projectName"
             version version
 
             from components.java
+            if (System.getProperty('bintray.user') != null) {
+                artifact sourcesJar
+                artifact javadocJar
+            }
 
             // Credit: http://stackoverflow.com/a/32353697/3370842
             pom.withXml {
@@ -96,7 +111,40 @@ task sourcesJar(type: Jar, dependsOn: classes) {
     from sourceSets.main.allSource
 }
 
+javadoc.failOnError = false
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
+}
+
+/*
+ This is publishing task that uploads the artifacts to bintray.com.
+ see: https://github.com/bintray/gradle-bintray-plugin
+ see: https://reflectoring.io/guide-publishing-to-bintray-with-gradle/
+
+ Use the following command for automatic upload to bintray:
+ $ ./gradlew bintrayUpload -Dbintray.user=<BINTRAY_USERNAME> -Dbintray.key=<BINTRAY_API_KEY> -Dgpg.pass=<ATMOSPHERE_PASSPHRASE>
+*/
+bintray {
+    user = System.getProperty('bintray.user')
+    key = System.getProperty('bintray.key')
+    publications = ['atmosphereCommons']
+
+	pkg {
+        repo = "$repoName" // existing repository in bintray to add the artifacts to
+        name = "$projectName" // package name, current project name
+        userOrg = "$organizationName" // the name of the organization, If not added will use 'BINTRAY_USER' by default
+        licenses = ['GPL-3.0']
+        vcsUrl = "$url" // your VCS URL
+        version {
+            name = project.version.toString()
+            desc = "$description"
+            released  = new Date()
+
+            gpg {
+                sign = true // Determines whether to GPG sign the files. The default is false
+                passphrase = System.getProperty('gpg.pass') // Optional. The passphrase for GPG signing'
+            }
+        }
+    }
 }
