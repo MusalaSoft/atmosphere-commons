@@ -15,3 +15,6 @@ If you make changes to this project and would like to use your new version in an
 * `gradlew publishToMavenLocal` (Windows)
 
 to publish the jar to your local Maven repository. The ATMOSPHERE framework projects are configured to use the artifact published in the local Maven repository first.
+
+## Publishing a new version to Bintray
+For more information see this **[publishing to Bintray](https://github.com/MusalaSoft/atmosphere-docs/blob/master/bintray-publishing.md)** guide.
